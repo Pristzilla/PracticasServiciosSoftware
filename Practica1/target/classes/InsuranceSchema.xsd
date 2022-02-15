@@ -29,11 +29,12 @@
 
 	<!-- SEGURO -->
 	<xs:complexType name="Seguro" abstract="true">
+		<xs:sequence maxOccurs="1" minOccurs="1">
+			<xs:element name="vehiculoAsegurado" type="tns:Vehiculo"  />
+		</xs:sequence>
 		<xs:attribute name="id" type="xs:ID" use="required" />
 		<xs:attribute name="precio" type="xs:decimal"
 			use="required" />
-		<xs:attribute name="vehiculoAsegurado"
-			type="tns:Vehiculo" />
 	</xs:complexType>
 
 	<xs:complexType name="Terceros">
@@ -59,11 +60,12 @@
 
 	<!-- PARTE -->
 	<xs:complexType name="Parte">
+		<xs:sequence maxOccurs="1" minOccurs="1">
+			<xs:element name="seguro" type="tns:Seguro"  />
+		</xs:sequence>
 		<xs:attribute name="importe" type="xs:decimal"
 			use="required" />
 		<xs:attribute name="fecha" type="xs:date" use="required" />
-		<xs:attribute name="seguro" type="xs:IDREF"
-			use="required" />
 
 	</xs:complexType>
 
@@ -88,8 +90,6 @@
 				maxOccurs="unbounded" minOccurs="0" />
 		</xs:sequence>
 	</xs:complexType>
-
-
 
 
 	<xs:element name="empresa" type="tns:empresa" />
