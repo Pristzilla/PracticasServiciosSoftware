@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.unican.es/ss/InsuranceSchema"
+	xmlns:tns="http://www.unican.es/ss/InsuranceSchema"
+	elementFormDefault="qualified">
+	<!-- DNI -->
+	<xs:simpleType name="DNI">
+		<xs:restriction base="xs:token">
+			<xs:pattern value="\d{8}[A-Z]" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- EMAIL -->
+	<xs:simpleType name="email">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[^@]+@[^\.]+\..+" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- VEHICULO -->
+	<xs:complexType name="Vehiculo">
+		<xs:attribute name="matricula" type="xs:ID"
+			use="required"></xs:attribute>
+		<xs:attribute name="potencia" type="xs:int"
+			use="required"></xs:attribute>
+		<xs:attribute name="usoProfesional" type="xs:boolean"
+			use="required" />
+	</xs:complexType>
+
+	<!-- SEGURO -->
+	<xs:complexType name="Seguro" abstract="true">
+		<xs:attribute name="id" type="xs:ID" use="required" />
+		<xs:attribute name="precio" type="xs:decimal"
+			use="required" />
+		<xs:attribute name="vehiculoAsegurado"
+			type="tns:Vehiculo" />
+	</xs:complexType>
+
+	<xs:complexType name="Terceros">
+		<xs:complexContent>
+			<xs:extension base="tns:Seguro">
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="TodoRiesgo">
+		<xs:complexContent>
+			<xs:extension base="tns:Seguro">
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="TodoRiesgoFranquicia">
+		<xs:complexContent>
+			<xs:extension base="tns:Seguro">
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<!-- PARTE -->
+	<xs:complexType name="Parte">
+		<xs:attribute name="importe" type="xs:decimal"
+			use="required" />
+		<xs:attribute name="fecha" type="xs:date" use="required" />
+		<xs:attribute name="seguro" type="xs:IDREF"
+			use="required" />
+
+	</xs:complexType>
+
+	<!-- CLIENTE -->
+	<xs:complexType name="Cliente">
+		<xs:sequence maxOccurs="unbounded">
+			<xs:element name="seguros" type="tns:Seguro" />
+			<xs:element name="partes" type="tns:Parte" minOccurs="0"></xs:element>
+		</xs:sequence>
+		<xs:attribute name="nombre" type="xs:string"
+			use="required"></xs:attribute>
+		<xs:attribute name="email" type="xs:string"
+			use="required"></xs:attribute>
+		<xs:attribute name="dni" type="tns:DNI" use="required" />
+	</xs:complexType>
+
+
+	<!-- EMPRESA -->
+	<xs:complexType name="empresa">
+		<xs:sequence>
+			<xs:element name="clientes" type="tns:Cliente"
+				maxOccurs="unbounded" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+
+
+
+	<xs:element name="empresa" type="tns:empresa" />
+
+</xs:schema>

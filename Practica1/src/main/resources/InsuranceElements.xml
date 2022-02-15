@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:empresa
+	xmlns:tns="http://www.unican.es/ss/InsuranceSchema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.unican.es/ss/InsuranceSchema InsuranceSchema.xsd ">
+	<!-- Clientes -->
+	<tns:clientes dni="12345678A" email="ana@maria.com"
+		nombre="Ana Maria">
+		<tns:seguros precio="12.2" id="idSeguro0"></tns:seguros> TIPO ESPECIFICPO DE SEGUROP
+		<tns:partes fecha="2022-01-01" importe="123.04"
+			seguro="idSeguro0" />
+	</tns:clientes>
+</tns:empresa>
