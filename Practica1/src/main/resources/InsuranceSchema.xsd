@@ -84,7 +84,7 @@
 
 
 	<!-- EMPRESA -->
-	<xs:complexType name="empresa">
+	<xs:complexType name="Empresa">
 		<xs:sequence>
 			<xs:element name="clientes" type="tns:Cliente"
 				maxOccurs="unbounded" minOccurs="0" />
@@ -92,6 +92,6 @@
 	</xs:complexType>
 
 
-	<xs:element name="empresa" type="tns:empresa" />
+	<xs:element name="empresa" type="tns:Empresa" />
 
 </xs:schema>
