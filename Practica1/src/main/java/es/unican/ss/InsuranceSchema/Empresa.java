@@ -2,10 +2,11 @@ package es.unican.ss.InsuranceSchema;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import javax.xml.bind.annotation.*;
 
 @XmlRootElement(name="empresa")
 @XmlType(name="Empresa")
-@XmlAccesorType(value=AccessType.FIELD)
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Empresa implements Serializable{
 	
 	// TODO: falta @XmlSchema

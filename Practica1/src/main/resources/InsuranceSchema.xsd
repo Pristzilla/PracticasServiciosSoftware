@@ -61,7 +61,7 @@
 	<!-- PARTE -->
 	<xs:complexType name="Parte">
 		<xs:sequence maxOccurs="1" minOccurs="1">
-			<xs:element name="seguro" type="tns:Seguro"  />
+			<xs:element name="seguro" type="xs:IDREF"  />
 		</xs:sequence>
 		<xs:attribute name="importe" type="xs:decimal"
 			use="required" />
@@ -71,9 +71,9 @@
 
 	<!-- CLIENTE -->
 	<xs:complexType name="Cliente">
-		<xs:sequence maxOccurs="unbounded">
-			<xs:element name="seguros" type="tns:Seguro" />
-			<xs:element name="partes" type="tns:Parte" minOccurs="0"></xs:element>
+		<xs:sequence>
+			<xs:element name="seguros" type="tns:Seguro" maxOccurs="unbounded" />
+			<xs:element name="partes" type="tns:Parte" minOccurs="0" maxOccurs="unbounded"></xs:element>
 		</xs:sequence>
 		<xs:attribute name="nombre" type="xs:string"
 			use="required"></xs:attribute>

@@ -8,46 +8,49 @@
 		NO ME LO DEJA PONER -->
 	<!-- ¿DONDE SE CREAN LOS VEHICULOS? -->
 	<!-- Vehiculos? -->
-	<tns:Vehiculo></tns:Vehiculo>
+	
 	<!-- Clientes -->
 	<!-- Cliente con 1 seguro a terceros y 1 parte -->
-	<tns:clientes dni="12345678A" email="ana@maria.com"
-		nombre="Ana Maria">
-		<tns:seguros xsi:type="tns:Terceros" precio="12.2"
-			id="idSeguro0">
-			<tns:vehiculoAsegurado matricula="A0443DML"
-				usoProfesional="true" potencia="235" />
+	<tns:clientes dni="12345678A" email="ana@maria.com" nombre="Ana Maria">
+		<tns:seguros xsi:type="tns:Terceros" precio="12.2" id="AAA-111111">
+			<tns:vehiculoAsegurado matricula="A0443DML" usoProfesional="true" potencia="235" />
 		</tns:seguros>
 		<tns:partes fecha="2022-01-01" importe="123.04">
-			<tns:seguro><tns:vehiculoAsegurado matricula="" usoProfesional="true" potencia=""/>
-			</tns:seguro>
+			<tns:seguro>AAA-111111</tns:seguro>
 		</tns:partes>
 
 	</tns:clientes>
+	
 	<!-- Cliente con 1 seguro a todo riesgo y 2 partes -->
-	<tns:clientes dni="12345678B" email="pepe@castro.com"
-		nombre="Pepe Castro">
-		<tns:seguros xsi:type="tns:TodoRiesgo" precio="30.9"
-			id="idSeguro1" />
-		<tns:partes fecha="2021-03-04" importe="80.35"
-			seguro="idSeguro1" />
-		<tns:partes fecha="2021-06-07" importe="224.60"
-			seguro="idSeguro1" />
+	<tns:clientes dni="12345678B" email="pepe@castro.com" nombre="Pepe Castro">
+		<tns:seguros xsi:type="tns:TodoRiesgo" precio="30.9" id="BBB-222222" >
+				<tns:vehiculoAsegurado matricula="D7835AVL" usoProfesional="false" potencia="80" />
+		</tns:seguros>
+		<tns:partes fecha="2021-03-04" importe="80.35" >
+			<tns:seguro>BBB-222222</tns:seguro>
+		</tns:partes>
+		<tns:partes fecha="2021-06-07" importe="224.60">
+			<tns:seguro>BBB-222222</tns:seguro>
+		</tns:partes>
 	</tns:clientes>
+	
 	<!-- Cliente con 1 seguro a todo riesgo franquicia y 1 parte -->
-	<tns:clientes dni="12345678C" email="isabela@madrigal.com"
-		nombre="Isabela Madrigal">
-		<tns:seguros xsi:type="tns:TodoRiesgoFranquicia"
-			precio="40.0" id="idSeguro2"></tns:seguros>
-		<tns:partes fecha="2020-05-10" importe="60.80"
-			seguro="idSeguro2" />
+	<tns:clientes dni="12345678C" email="isabela@madrigal.com" nombre="Isabela Madrigal">
+		<tns:seguros xsi:type="tns:TodoRiesgoFranquicia" precio="40.0" id="CCC-333333">
+				<tns:vehiculoAsegurado matricula="A8392KIE" usoProfesional="true" potencia="80" />
+		</tns:seguros>
+		<tns:partes fecha="2020-05-10" importe="60.80">
+			<tns:seguro>CCC-333333</tns:seguro>
+		</tns:partes>
 	</tns:clientes>
-	<!-- Cliente con 1 seguro a terceros y ningun parte -->
-	<tns:clientes dni="12345678D" email="javier@losada.com"
-		nombre="Javier Losada">
-		<tns:seguros xsi:type="tns:Terceros" precio="40.0"
-			id="idSeguro3"></tns:seguros>
-		<tns:partes fecha="2021-08-12" importe="15.30"
-			seguro="idSeguro3" />
+	
+	<!-- Cliente con 1 seguro a terceros, 1 seguro a todo riesgo y ningun parte -->
+	<tns:clientes dni="12345678D" email="javier@losada.com" nombre="Javier Losada">
+		<tns:seguros xsi:type="tns:Terceros" precio="40.0" id="DDD-444444">
+				<tns:vehiculoAsegurado matricula="B2718MES" usoProfesional="false" potencia="120" />
+		</tns:seguros>
+		<tns:seguros xsi:type="tns:TodoRiesgo" precio="20.00" id="EEE-555555">
+				<tns:vehiculoAsegurado matricula="R7839KOE" usoProfesional="false" potencia="120" />
+		</tns:seguros>
 	</tns:clientes>
 </tns:empresa>

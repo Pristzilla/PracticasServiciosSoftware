@@ -1,8 +1,9 @@
 package es.unican.ss.InsuranceSchema;
 
 import java.util.Date;
+import javax.xml.bind.annotation.*;
 
-@XmlAccesorType(value=AccessType.FIELD)
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Parte {
 	
 	@XmlElement(required= true)
