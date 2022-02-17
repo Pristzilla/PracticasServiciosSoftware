@@ -30,7 +30,7 @@
 	<!-- SEGURO -->
 	<xs:complexType name="Seguro" abstract="true">
 		<xs:sequence maxOccurs="1" minOccurs="1">
-			<xs:element name="vehiculoAsegurado" type="tns:Vehiculo" />
+			<xs:element name="vehiculoAsegurado" type="tns:Vehiculo"  />
 		</xs:sequence>
 		<xs:attribute name="id" type="xs:ID" use="required" />
 		<xs:attribute name="precio" type="xs:decimal"
@@ -61,7 +61,7 @@
 	<!-- PARTE -->
 	<xs:complexType name="Parte">
 		<xs:sequence maxOccurs="1" minOccurs="1">
-			<xs:element name="seguro" type="tns:Seguro" />
+			<xs:element name="seguro" type="tns:Seguro"  />
 		</xs:sequence>
 		<xs:attribute name="importe" type="xs:decimal"
 			use="required" />
@@ -84,15 +84,14 @@
 
 
 	<!-- EMPRESA -->
-	<xs:complexType name="empresa">
-		<xs:sequence maxOccurs="unbounded">
-			<xs:element name="vehiculos" type="tns:Vehiculo" />
+	<xs:complexType name="Empresa">
+		<xs:sequence>
 			<xs:element name="clientes" type="tns:Cliente"
 				maxOccurs="unbounded" minOccurs="0" />
 		</xs:sequence>
 	</xs:complexType>
 
 
-	<xs:element name="empresa" type="tns:empresa" />
+	<xs:element name="empresa" type="tns:Empresa" />
 
 </xs:schema>
