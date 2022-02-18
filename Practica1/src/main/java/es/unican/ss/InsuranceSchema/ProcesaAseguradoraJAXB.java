@@ -18,7 +18,7 @@ public class ProcesaAseguradoraJAXB {
 
 			// Se procesa el documento (Unmarshall)
 			Unmarshaller unmarshaller = jaxbctx.createUnmarshaller();
-			Empresa emp = (Empresa) unmarshaller.unmarshal(new File("InsuranceElements.xml"));
+			Empresa emp = (Empresa) unmarshaller.unmarshal(new File("src/main/resources/InsuranceElements.xml"));
 
 			// Hay que mostrar DNI de cada cliente, NUM seguros a su nombre,
 			/**
@@ -47,7 +47,7 @@ public class ProcesaAseguradoraJAXB {
 			furgoneta = new Vehiculo("FUR1234", 100, true);
 			seguro1 = new Terceros("CHE-098765", coche);
 			seguro2 = new TodoRiesgo("FUR-121212", furgoneta);
-			List<Seguro> listaSeguros = new LinkedList<Seguro>();
+			List<Seguro> listaSeguros = new LinkedList<>();
 			listaSeguros.add(seguro1);
 			listaSeguros.add(seguro2);
 
@@ -56,7 +56,7 @@ public class ProcesaAseguradoraJAXB {
 			
 			// Se vuelca en un nuevo fichero XML
 			Marshaller marshaller = jaxbctx.createMarshaller();
-			marshaller.marshal(emp, new File("InsuranceElementsV2.xml"));
+			marshaller.marshal(emp, new File("src/main/resources/InsuranceElementsV2.xml"));
 
 		} catch(JAXBException e) {
 			e.printStackTrace();
