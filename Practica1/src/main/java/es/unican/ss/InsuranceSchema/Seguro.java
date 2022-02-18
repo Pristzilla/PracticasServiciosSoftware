@@ -17,15 +17,19 @@ public abstract class Seguro implements Serializable{
 	@XmlElement(required= true)
 	private Vehiculo vehiculoAsegurado;
 	
+	public Seguro() {}
+	public Seguro (String id, Vehiculo vehiculoAsegurado) {
+		this.id = id;
+		this.vehiculoAsegurado = vehiculoAsegurado;
+	}
 	public String getId() {
 		return id;
 	}
 	public void setId(String id) {
 		this.id = id;
 	}
-	public double getPrecio() {
-		return precio;
-	}
+	public abstract double getPrecio();
+	
 	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
