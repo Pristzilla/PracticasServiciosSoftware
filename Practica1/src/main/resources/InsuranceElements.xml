@@ -18,7 +18,6 @@
 		<tns:partes fecha="2022-01-01" importe="123.04">
 			<tns:seguro>AAA-111111</tns:seguro>
 		</tns:partes>
-
 	</tns:clientes>
 	
 	<!-- Cliente con 1 seguro a todo riesgo y 2 partes -->

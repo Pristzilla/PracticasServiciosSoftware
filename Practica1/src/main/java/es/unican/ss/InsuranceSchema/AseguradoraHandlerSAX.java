@@ -1,8 +1,10 @@
 package es.unican.ss.InsuranceSchema;
 
 
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
@@ -12,11 +14,10 @@ public class AseguradoraHandlerSAX extends DefaultHandler {
 
 	private String dniCliente = null;
 	private List<String> matriculasCliente = new LinkedList<String>();
-	private List<String> segurosCliente = new LinkedList<String>();
+	private Set<String> segurosCliente = new HashSet<String>();
 	private String fecha = null;
 	private String idSeguro = null;
 	private String texto = null;
-	private boolean isIdEquals = false;
 	
 	// Este methodo en realidad no hace falta, se pone a modo
 	// de ejemplo
@@ -63,6 +64,11 @@ public class AseguradoraHandlerSAX extends DefaultHandler {
 		fecha = null;
 	}	
 	
+	/*
+	 * En este caso podemos comprobar aqui si el id del seguro de cada parte existe en el cliente
+	 * por como hemos definido la estructura en el esquema (primero se declaran los seguros y despues los partes).
+	 * En caso de no haberlo hecho asi, se tendria que comprobar al terminar de leer el cliente.
+	 */
 	@Override
 	public void endElement(String uri, String localName, String qName) throws SAXException {
 		switch (qName) {
@@ -71,15 +77,7 @@ public class AseguradoraHandlerSAX extends DefaultHandler {
 			break;
 		}
 		
-		int i = 0;
-		while (i < segurosCliente.size() || !isIdEquals) {
-			if (segurosCliente.get(i).equals(idSeguro)) {
-				isIdEquals = true;
-			}
-			i++;
-		}
-		
-		if (!isIdEquals) {
+		if (!segurosCliente.contains(idSeguro)) {
 			System.out.println("El parte de accidente con fecha " + fecha + "no pertenece a ningun seguro valido");
 		}
 	}
