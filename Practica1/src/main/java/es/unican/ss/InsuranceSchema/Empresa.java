@@ -11,9 +11,6 @@ import javax.xml.bind.annotation.*;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Empresa implements Serializable{
 	
-	// TODO: falta @XmlSchema
-
-	
 	private static final long serialVersionUID = 1L;
 	@XmlElement()
 	private List<Cliente> clientes;

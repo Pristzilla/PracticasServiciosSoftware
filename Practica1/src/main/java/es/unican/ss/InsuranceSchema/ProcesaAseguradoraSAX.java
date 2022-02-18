@@ -8,7 +8,7 @@ import javax.xml.parsers.SAXParserFactory;
 
 import org.xml.sax.SAXException;
 
-public class ProcesaAseguradoraAtributos {
+public class ProcesaAseguradoraSAX {
 
 	public static void main(String[] args) {
 
@@ -19,10 +19,10 @@ public class ProcesaAseguradoraAtributos {
 			SAXParser saxParser = factory.newSAXParser();
 			
 			// Crear el manejador
-			AseguradoraAtributosHandler handler = new AseguradoraAtributosHandler();
+			AseguradoraHandlerSAX handler = new AseguradoraHandlerSAX();
 			
 			// Parsear el fichero
-			saxParser.parse("src/main/resources/agencia.xml", handler);
+			saxParser.parse("src/main/resources/InsuranceElements.xml", handler);
 
 		} catch (ParserConfigurationException e) {
 			e.printStackTrace();
