@@ -16,5 +16,25 @@ public abstract class Seguro implements Serializable{
 	private double precio;
 	@XmlElement(required= true)
 	private Vehiculo vehiculoAsegurado;
+	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public double getPrecio() {
+		return precio;
+	}
+	public void setPrecio(double precio) {
+		this.precio = precio;
+	}
+	public Vehiculo getVehiculoAsegurado() {
+		return vehiculoAsegurado;
+	}
+	public void setVehiculoAsegurado(Vehiculo vehiculoAsegurado) {
+		this.vehiculoAsegurado = vehiculoAsegurado;
+	}
 
+	
 }

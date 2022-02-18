@@ -1,7 +1,8 @@
 package es.unican.ss.InsuranceSchema;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 import javax.xml.bind.annotation.*;
 
@@ -16,8 +17,45 @@ public class Cliente implements Serializable {
 	@XmlAttribute(required= true)
 	private String DNI;
 	@XmlElement(required= true)
-	private ArrayList<Seguro> seguros = new ArrayList<Seguro>();
+	private List<Seguro> seguros; 
 	@XmlElement()
-	private ArrayList<Parte> partes = new ArrayList<Parte>();
-
+	private List<Parte> partes;
+	
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getDNI() {
+		return DNI;
+	}
+	public void setDNI(String dNI) {
+		DNI = dNI;
+	}
+	public List<Seguro> getSeguros() {
+		if(seguros == null) {
+			seguros = new LinkedList<Seguro>();
+		}
+		return this.seguros;
+	}
+	public void setSeguros(List<Seguro> seguros) {
+		this.seguros = seguros;
+	}
+	public List<Parte> getPartes() {
+		if(partes == null) {
+			partes = new LinkedList<Parte>();
+		}
+		return this.partes;
+	}
+	public void setPartes(List<Parte> partes) {
+		this.partes = partes;
+	} 
+	
 }

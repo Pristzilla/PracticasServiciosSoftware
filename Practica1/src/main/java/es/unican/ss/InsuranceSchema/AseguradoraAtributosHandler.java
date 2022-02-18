@@ -1,6 +1,8 @@
 package es.unican.ss.InsuranceSchema;
 
-import java.util.ArrayList;
+
+import java.util.LinkedList;
+import java.util.List;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
@@ -10,17 +12,17 @@ public class AseguradoraAtributosHandler extends DefaultHandler {
 
 	private String dniCliente = null;
 	private int numSegurosCliente = 0;
-	private ArrayList<String> matriculasCliente = new ArrayList<String>(); // TODO asi estara bien?
+	private List<String> matriculasCliente = new LinkedList<String>();
 	String fecha = null;
 	
-	// Este método en realidad no hace falta, se pone a modo
+	// Este methodo en realidad no hace falta, se pone a modo
 	// de ejemplo
 	@Override
 	public void startDocument() throws SAXException {
 		System.out.println("Empiezo a parsear");
 	}
 
-	// Este método en realidad no hace falta, se pone a modo
+	// Este methodo en realidad no hace falta, se pone a modo
 	// de ejemplo
 	@Override
 	public void endDocument() throws SAXException {
@@ -42,11 +44,11 @@ public class AseguradoraAtributosHandler extends DefaultHandler {
 			fecha = null; // TODO: igualar a la fecha del seguro
 			// TODO: falta mostrar el mensaje de aviso en caso de que el parte no coincida
 			if (!fecha.equals("METER LA OTRA FECHA")) {
-				System.out.println("El parte de accidente con fecha " + fecha + "no pertenece a ningún seguro válido");
+				System.out.println("El parte de accidente con fecha " + fecha + "no pertenece a ningÃºn seguro vÃ¡lido");
 			}
 		}
 		System.out.println("Cliente: "+ dniCliente+ "  numero de seguros: "+ numSegurosCliente);
-		System.out.println("Listado de matrículas"); // TODO: estara bien hecho?
+		System.out.println("Listado de matrÃ­culas"); // TODO: estara bien hecho?
 		for (String m : matriculasCliente) {
 			System.out.println("Matricula " + m);
 		}

@@ -1,7 +1,9 @@
 package es.unican.ss.InsuranceSchema;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.ArrayList;
+
 import javax.xml.bind.annotation.*;
 
 @XmlRootElement(name="empresa")
@@ -10,9 +12,20 @@ import javax.xml.bind.annotation.*;
 public class Empresa implements Serializable{
 	
 	// TODO: falta @XmlSchema
+
 	
 	private static final long serialVersionUID = 1L;
 	@XmlElement()
-	private ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+	private List<Cliente> clientes;
+	
+	public List<Cliente> getClientes() {
+		if(clientes == null) {
+			clientes = new ArrayList<Cliente>();
+		}
+		return this.clientes;
+	}
+	public void setClientes(List<Cliente> clientes) {
+		this.clientes = clientes;
+	}
 
 }
