@@ -15,6 +15,12 @@ public class Vehiculo implements Serializable {
 	@XmlAttribute(required= true)
 	private Boolean usoProfesional;
 	
+	public Vehiculo() {}
+	public Vehiculo (String matricula, int potencia, boolean usoProfesional) {
+		this.matricula = matricula;
+		this.potencia = potencia;
+		this.usoProfesional = usoProfesional;
+	}
 	public String getMatricula() {
 		return matricula;
 	}

@@ -5,9 +5,23 @@ import javax.xml.bind.annotation.*;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class TodoRiesgoFranquicia extends Seguro {
 
+	public TodoRiesgoFranquicia() {
+		super();
+	}
+	public TodoRiesgoFranquicia(String id, Vehiculo vehiculoAsegurado) {
+		super(id, vehiculoAsegurado);
+	}
 	private static final long serialVersionUID = 1L;
-	private static final double PRECIO_BASE = 600.0;
-	private static final double PRECIO_FRANQUICIA = 70.0;
+	
+	@Override
+	public double getPrecio() {
+		double prec = this.getVehiculoAsegurado().getPotencia() * 1.5;
+		if(this.getVehiculoAsegurado().getUsoProfesional()) {
+			prec+=100;
+		}
+		
+		return prec;
+	}
 
 
 }
