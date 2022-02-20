@@ -3,22 +3,30 @@ package es.unican.ss.InsuranceSchema;
 import java.io.Serializable;
 import javax.xml.bind.annotation.*;
 
-@XmlSeeAlso({Terceros.class, TodoRiesgo.class, TodoRiesgoFranquicia.class})
 @XmlAccessorType(XmlAccessType.FIELD)
-public abstract class Seguro implements Serializable{
+@XmlType(name = "Seguro", propOrder = {
+	    "vehiculoAsegurado"
+	})
+@XmlSeeAlso({
+	Terceros.class,
+	TodoRiesgo.class,
+	TodoRiesgoFranquicia.class
+})
+public abstract class Seguro implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
-	@XmlAttribute(required= true)
+	@XmlElement(required= true)
+	private Vehiculo vehiculoAsegurado;
+	@XmlAttribute(name = "id", required= true)
 	@XmlID
+	@XmlSchemaType(name = "ID")
 	private String id;
 	@XmlAttribute(required= true)
 	private double precio;
-	@XmlElement(required= true)
-	private Vehiculo vehiculoAsegurado;
+
 	
-	public Seguro() {}
-	public Seguro (String id, Vehiculo vehiculoAsegurado) {
+	protected Seguro() {}
+	protected Seguro (String id, Vehiculo vehiculoAsegurado) {
 		this.id = id;
 		this.vehiculoAsegurado = vehiculoAsegurado;
 	}

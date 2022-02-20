@@ -4,6 +4,9 @@ import java.util.Date;
 import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(propOrder = {
+	    "seguro"
+	})
 public class Parte {
 	
 	@XmlElement(required= true)
@@ -13,6 +16,7 @@ public class Parte {
 	@XmlAttribute(required= true)
 	private Date fecha;
 	// TODO: los partes no se identifican no? para estar seguros
+	
 	public Seguro getSeguro() {
 		return seguro;
 	}

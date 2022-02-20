@@ -13,8 +13,8 @@ import org.xml.sax.helpers.DefaultHandler;
 public class AseguradoraHandlerSAX extends DefaultHandler {
 
 	private String dniCliente = null;
-	private List<String> matriculasCliente = new LinkedList<String>();
-	private Set<String> segurosCliente = new HashSet<String>();
+	private List<String> matriculasCliente = new LinkedList<>();
+	private Set<String> segurosCliente = new HashSet<>();
 	private String fecha = null;
 	private String idSeguro = null;
 	private String texto = null;
@@ -37,23 +37,24 @@ public class AseguradoraHandlerSAX extends DefaultHandler {
 	@Override
 	public void startElement(String uri, String localName, String qName, Attributes attrs) throws SAXException {
 		switch (qName) {
-		case "clientes":
+		case "tns:clientes":
 			dniCliente = attrs.getValue("dni");
 			break;
-		case "seguros":
+		case "tns:seguros":
 			segurosCliente.add(attrs.getValue("id"));
 			break;
-		case "vehiculoAsegurado":
+		case "tns:vehiculoAsegurado":
 			matriculasCliente.add(attrs.getValue("matricula"));
 			break;
-		case "partes": 
+		case "tns:partes": 
 			fecha = attrs.getValue("fecha");
 			break;
 		default:
 			break;
 		}
 
-		System.out.println("Cliente: "+ dniCliente+ "  numero de seguros: "+ segurosCliente.size());
+
+		System.out.println("Cliente: "+ dniCliente + "  numero de seguros: "+ segurosCliente.size());
 		System.out.println("Listado de matriculas");
 		for (String m : matriculasCliente) {
 			System.out.println("Matricula " + m);
@@ -71,14 +72,13 @@ public class AseguradoraHandlerSAX extends DefaultHandler {
 	 */
 	@Override
 	public void endElement(String uri, String localName, String qName) throws SAXException {
-		switch (qName) {
-		case "seguro": 
+		System.out.println("***************** " + qName);
+		if (qName.equals("tns:seguro")) {
 			idSeguro = texto;
-			break;
 		}
 		
 		if (!segurosCliente.contains(idSeguro)) {
-			System.out.println("El parte de accidente con fecha " + fecha + "no pertenece a ningun seguro valido");
+			System.out.println("El parte de accidente con fecha " + fecha + " no pertenece a ningun seguro valido");
 		}
 	}
 	

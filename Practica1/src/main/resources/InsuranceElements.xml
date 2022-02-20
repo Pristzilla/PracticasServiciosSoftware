@@ -4,11 +4,6 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.unican.es/ss/InsuranceSchema InsuranceSchema.xsd ">
 
-	<!-- EN SEGUROS: ME DICE QUE SE NECESITA EL ATRIBUTO VEHICULO PERO LUEGO 
-		NO ME LO DEJA PONER -->
-	<!-- ¿DONDE SE CREAN LOS VEHICULOS? -->
-	<!-- Vehiculos? -->
-	
 	<!-- Clientes -->
 	<!-- Cliente con 1 seguro a terceros y 1 parte -->
 	<tns:clientes dni="12345678A" email="ana@maria.com" nombre="Ana Maria">
