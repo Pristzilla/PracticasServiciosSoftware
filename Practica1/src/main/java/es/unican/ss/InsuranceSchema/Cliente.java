@@ -21,6 +21,7 @@ public class Cliente implements Serializable {
 	@XmlElement()
 	private List<Parte> partes;
 	
+	public Cliente() { /* constructor vacio */ }
 	public String getNombre() {
 		return nombre;
 	}
@@ -41,7 +42,7 @@ public class Cliente implements Serializable {
 	}
 	public List<Seguro> getSeguros() {
 		if(seguros == null) {
-			seguros = new LinkedList<Seguro>();
+			seguros = new LinkedList<>();
 		}
 		return this.seguros;
 	}
@@ -50,7 +51,7 @@ public class Cliente implements Serializable {
 	}
 	public List<Parte> getPartes() {
 		if(partes == null) {
-			partes = new LinkedList<Parte>();
+			partes = new LinkedList<>();
 		}
 		return this.partes;
 	}

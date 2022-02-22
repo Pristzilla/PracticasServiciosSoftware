@@ -8,7 +8,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
-//import javax.xml.bind.helpers.DefaultValidationEventHandler;
+import javax.xml.bind.helpers.DefaultValidationEventHandler;
 
 public class ProcesaAseguradoraJAXB {
 
@@ -19,8 +19,8 @@ public class ProcesaAseguradoraJAXB {
 
 			// Se procesa el documento (Unmarshall)
 			Unmarshaller unmarshaller = jaxbctx.createUnmarshaller();
-			// unmarshaller.setEventHandler(new DefaultValidationEventHandler());
-			// unmarshaller.unmarshal(new File("src/main/resources/InsuranceElements.xml"));
+//			 unmarshaller.setEventHandler(new DefaultValidationEventHandler());
+			 unmarshaller.unmarshal(new File("src/main/resources/InsuranceElements.xml"));
 			Empresa emp = (Empresa) unmarshaller.unmarshal(new File("src/main/resources/InsuranceElements.xml"));
 
 			// Hay que mostrar DNI de cada cliente, NUM seguros a su nombre,

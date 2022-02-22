@@ -17,6 +17,7 @@ public class Parte {
 	private Date fecha;
 	// TODO: los partes no se identifican no? para estar seguros
 	
+	public Parte() { /* constructor vacio */ }
 	public Seguro getSeguro() {
 		return seguro;
 	}

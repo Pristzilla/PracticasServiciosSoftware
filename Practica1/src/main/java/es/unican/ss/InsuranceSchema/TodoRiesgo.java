@@ -5,14 +5,15 @@ import javax.xml.bind.annotation.*;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class TodoRiesgo extends Seguro {
 
+	private static final long serialVersionUID = 1L;
+	private static final double PRECIO_BASE = 600.0;
+	
 	public TodoRiesgo() {
 		super();
 	}
 	public TodoRiesgo(String id, Vehiculo vehiculoAsegurado) {
 		super(id, vehiculoAsegurado);
 	}
-	private static final long serialVersionUID = 1L;
-	private static final double PRECIO_BASE = 600.0;
 	
 	@Override
 	public double getPrecio() {

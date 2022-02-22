@@ -15,6 +15,8 @@ public class Empresa implements Serializable{
 	@XmlElement()
 	private List<Cliente> clientes;
 	
+	public Empresa() { /* constructor vacio */ }
+	
 	public List<Cliente> getClientes() {
 		if(clientes == null) {
 			clientes = new ArrayList<Cliente>();

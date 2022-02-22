@@ -4,9 +4,6 @@ import java.io.Serializable;
 import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Seguro", propOrder = {
-	    "vehiculoAsegurado"
-	})
 @XmlSeeAlso({
 	Terceros.class,
 	TodoRiesgo.class,
@@ -15,16 +12,15 @@ import javax.xml.bind.annotation.*;
 public abstract class Seguro implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	@XmlElement(required= true)
-	private Vehiculo vehiculoAsegurado;
 	@XmlAttribute(name = "id", required= true)
 	@XmlID
 	@XmlSchemaType(name = "ID")
 	private String id;
+	@XmlElement(required= true)
+	private Vehiculo vehiculoAsegurado;
 	@XmlAttribute(required= true)
 	private double precio;
 
-	
 	protected Seguro() {}
 	protected Seguro (String id, Vehiculo vehiculoAsegurado) {
 		this.id = id;
