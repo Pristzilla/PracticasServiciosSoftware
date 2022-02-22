@@ -4,7 +4,7 @@ import java.util.Date;
 import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(propOrder = {
+@XmlType(name="Parte", propOrder = {
 	    "seguro"
 	})
 public class Parte {

@@ -1,9 +1,12 @@
 package es.unican.ss.InsuranceSchema;
 
+import java.io.Serializable;
+
 import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public class TodoRiesgo extends Seguro {
+@XmlType(name="TodoRiesgo")
+public class TodoRiesgo extends Seguro implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private static final double PRECIO_BASE = 600.0;

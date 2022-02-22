@@ -15,7 +15,7 @@ public class ProcesaAseguradoraJAXB {
 	public static void main(String[] args) {
 		JAXBContext jaxbctx;
 		try {
-			jaxbctx = JAXBContext.newInstance(Empresa.class);
+			jaxbctx = JAXBContext.newInstance(ObjectFactory.class, Empresa.class);
 
 			// Se procesa el documento (Unmarshall)
 			Unmarshaller unmarshaller = jaxbctx.createUnmarshaller();

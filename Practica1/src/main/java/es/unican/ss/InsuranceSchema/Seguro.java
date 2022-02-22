@@ -3,6 +3,7 @@ package es.unican.ss.InsuranceSchema;
 import java.io.Serializable;
 import javax.xml.bind.annotation.*;
 
+@XmlType(name="Seguro")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlSeeAlso({
 	Terceros.class,
