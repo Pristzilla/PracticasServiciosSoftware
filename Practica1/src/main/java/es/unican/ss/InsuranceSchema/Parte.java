@@ -3,21 +3,25 @@ package es.unican.ss.InsuranceSchema;
 import java.util.Date;
 import javax.xml.bind.annotation.*;
 
+@XmlType(name="Parte")
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name="Parte", propOrder = {
-	    "seguro"
-	})
 public class Parte {
-	
-	@XmlElement(required= true)
+
+	@XmlElements({
+		@XmlElement(name="terceros", type = Terceros.class),
+		@XmlElement(name="todoRiesgo", type = TodoRiesgo.class),
+		@XmlElement(name="todoRiesgoFranquicia", type = TodoRiesgoFranquicia.class),
+		})
 	private Seguro seguro;
 	@XmlAttribute(required= true)
 	private double importe;
 	@XmlAttribute(required= true)
 	private Date fecha;
-	// TODO: los partes no se identifican no? para estar seguros
 	
 	public Parte() { /* constructor vacio */ }
+	
+	
+	
 	public Seguro getSeguro() {
 		return seguro;
 	}

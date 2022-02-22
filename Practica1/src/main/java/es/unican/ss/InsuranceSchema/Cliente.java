@@ -6,8 +6,8 @@ import java.util.List;
 
 import javax.xml.bind.annotation.*;
 
-@XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name="Cliente")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Cliente implements Serializable {
 
 	private static final long serialVersionUID = 1L;

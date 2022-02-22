@@ -4,8 +4,8 @@ import java.io.Serializable;
 
 import javax.xml.bind.annotation.*;
 
-@XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name="TodoRiesgo")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class TodoRiesgo extends Seguro implements Serializable {
 
 	private static final long serialVersionUID = 1L;
