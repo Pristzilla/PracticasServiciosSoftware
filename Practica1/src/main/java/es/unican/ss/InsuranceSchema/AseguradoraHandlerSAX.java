@@ -33,7 +33,6 @@ public class AseguradoraHandlerSAX extends DefaultHandler {
 		System.out.println("Finalizo el parseo");
 	}
 
-	
 	@Override
 	public void startElement(String uri, String localName, String qName, Attributes attrs) throws SAXException {
 		switch (qName) {
@@ -52,14 +51,6 @@ public class AseguradoraHandlerSAX extends DefaultHandler {
 		default:
 			break;
 		}
-
-
-		System.out.println("Cliente: "+ dniCliente + "  numero de seguros: "+ segurosCliente.size());
-		System.out.println("Listado de matriculas");
-		for (String m : matriculasCliente) {
-			System.out.println("Matricula " + m);
-		}
-		fecha = null;
 	}	
 	
 	/*
@@ -69,16 +60,22 @@ public class AseguradoraHandlerSAX extends DefaultHandler {
 	 */
 	@Override
 	public void endElement(String uri, String localName, String qName) throws SAXException {
-		System.out.println("***************** " + qName);
 		if (qName.equals("tns:seguro")) {
 			idSeguro = texto;
+			if (!segurosCliente.contains(idSeguro)) {
+				System.out.println("El parte de accidente con fecha " + fecha + " no pertenece a ningun seguro valido");
+			}
 		}
-		
-		if (!segurosCliente.contains(idSeguro)) {
-			System.out.println("El parte de accidente con fecha " + fecha + " no pertenece a ningun seguro valido");
+		if (qName.equals("tns:partes")) {
+			fecha = null;
 		}
 		
 		if (qName.equals("tns:clientes")) {
+			System.out.println("Cliente: "+ dniCliente + "  numero de seguros: "+ segurosCliente.size());
+			System.out.println("Listado de matriculas");
+			for (String m : matriculasCliente) {
+				System.out.println("Matricula " + m + "\n");
+			}
 			dniCliente=null;
 			matriculasCliente.clear();
 			segurosCliente.clear();

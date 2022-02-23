@@ -5,13 +5,16 @@
 	xsi:schemaLocation="http://www.unican.es/ss/InsuranceSchema InsuranceSchema.xsd ">
 
 	<!-- Clientes -->
-	<!-- Cliente con 1 seguro a terceros y 1 parte -->
+	<!-- Cliente con 1 seguro a terceros y 1 parte valido y otro no valido -->
 	<tns:clientes dni="12345678A" email="ana@maria.com" nombre="Ana Maria">
 		<tns:seguros xsi:type="tns:Terceros" precio="12.2" id="AAA-111111">
 			<tns:vehiculoAsegurado matricula="A0443DML" usoProfesional="true" potencia="235" />
 		</tns:seguros>
 		<tns:partes fecha="2022-01-01" importe="123.04">
 			<tns:seguro>AAA-111111</tns:seguro>
+		</tns:partes>
+		<tns:partes fecha="2022-02-03" importe="123.04">
+			<tns:seguro>AAA-222222</tns:seguro>
 		</tns:partes>
 	</tns:clientes>
 	
