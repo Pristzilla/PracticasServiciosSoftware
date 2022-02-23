@@ -7,11 +7,8 @@ import javax.xml.bind.annotation.*;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Parte {
 
-	@XmlElements({
-		@XmlElement(name="terceros", type = Terceros.class),
-		@XmlElement(name="todoRiesgo", type = TodoRiesgo.class),
-		@XmlElement(name="todoRiesgoFranquicia", type = TodoRiesgoFranquicia.class),
-		})
+	@XmlElement(required = true)
+	@XmlIDREF
 	private Seguro seguro;
 	@XmlAttribute(required= true)
 	private double importe;

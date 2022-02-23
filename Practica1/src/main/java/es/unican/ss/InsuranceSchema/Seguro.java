@@ -16,11 +16,11 @@ public abstract class Seguro implements Serializable {
 	@XmlAttribute(name = "id", required= true)
 	@XmlID
 	@XmlSchemaType(name = "ID")
-	private String id;
+	protected String id;
 	@XmlElement(required= true)
-	private Vehiculo vehiculoAsegurado;
+	protected Vehiculo vehiculoAsegurado;
 	@XmlAttribute(required= true)
-	private double precio;
+	protected double precio;
 
 	protected Seguro() {}
 	protected Seguro (String id, Vehiculo vehiculoAsegurado) {

@@ -21,7 +21,10 @@ public class Terceros extends Seguro implements Serializable{
 	
 	@Override
 	public double getPrecio() {
-		return PRECIO_BASE + this.getVehiculoAsegurado().getPotencia() * 1.5;
+		if(this.precio == 0.0) {
+			this.precio = PRECIO_BASE + this.getVehiculoAsegurado().getPotencia() * 1.5;
+		}
+		return precio;
 
 	}
 

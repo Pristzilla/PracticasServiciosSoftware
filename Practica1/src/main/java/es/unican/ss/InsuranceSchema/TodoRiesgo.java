@@ -20,12 +20,14 @@ public class TodoRiesgo extends Seguro implements Serializable {
 	
 	@Override
 	public double getPrecio() {
-		double prec = PRECIO_BASE + this.getVehiculoAsegurado().getPotencia() * 1.5;
-		if(this.getVehiculoAsegurado().getUsoProfesional()) {
-			prec+=100;
+		if(this.precio == 0.0) {
+			this.precio = PRECIO_BASE + this.getVehiculoAsegurado().getPotencia() * 1.5;
+			if(this.getVehiculoAsegurado().getUsoProfesional()) {
+				this.precio+=100;
+			}
 		}
-		
-		return prec;
+		return this.precio;
+
 	}
 	
 	

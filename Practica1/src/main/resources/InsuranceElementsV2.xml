@@ -7,7 +7,9 @@
 			<vehiculoAsegurado matricula="A0443DML"
 				potencia="235" usoProfesional="true" />
 		</seguros>
-		<partes importe="123.04" fecha="2022-01-01T00:00:00+01:00" />
+		<partes importe="123.04" fecha="2022-01-01T00:00:00+01:00">
+			<seguro>AAA-111111</seguro>
+		</partes>
 	</clientes>
 	<clientes nombre="Pepe Castro" email="pepe@castro.com"
 		dni="12345678B">
@@ -16,8 +18,12 @@
 			<vehiculoAsegurado matricula="D7835AVL"
 				potencia="80" usoProfesional="false" />
 		</seguros>
-		<partes importe="80.35" fecha="2021-03-04T00:00:00+01:00" />
-		<partes importe="224.6" fecha="2021-06-07T00:00:00+02:00" />
+		<partes importe="80.35" fecha="2021-03-04T00:00:00+01:00">
+			<seguro>BBB-222222</seguro>
+		</partes>
+		<partes importe="224.6" fecha="2021-06-07T00:00:00+02:00">
+			<seguro>BBB-222222</seguro>
+		</partes>
 	</clientes>
 	<clientes nombre="Isabela Madrigal"
 		email="isabela@madrigal.com" dni="12345678C">
@@ -26,7 +32,9 @@
 			<vehiculoAsegurado matricula="A8392KIE"
 				potencia="80" usoProfesional="true" />
 		</seguros>
-		<partes importe="60.8" fecha="2020-05-10T00:00:00+02:00" />
+		<partes importe="60.8" fecha="2020-05-10T00:00:00+02:00">
+			<seguro>CCC-333333</seguro>
+		</partes>
 	</clientes>
 	<clientes nombre="Javier Losada" email="javier@losada.com"
 		dni="12345678D">
@@ -41,14 +49,14 @@
 				potencia="120" usoProfesional="false" />
 		</seguros>
 	</clientes>
-	<clientes>
+	<clientes dni="00001111A">
 		<seguros xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-			xsi:type="Terceros" id="CHE-098765" precio="0.0">
+			xsi:type="Terceros" id="CHE-098765" precio="320.0">
 			<vehiculoAsegurado matricula="CHE1234"
 				potencia="80" usoProfesional="false" />
 		</seguros>
 		<seguros xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-			xsi:type="TodoRiesgo" id="FUR-121212" precio="0.0">
+			xsi:type="TodoRiesgo" id="FUR-121212" precio="850.0">
 			<vehiculoAsegurado matricula="FUR1234"
 				potencia="100" usoProfesional="true" />
 		</seguros>

@@ -19,8 +19,8 @@ public class ProcesaAseguradoraJAXB {
 
 			// Se procesa el documento (Unmarshall)
 			Unmarshaller unmarshaller = jaxbctx.createUnmarshaller();
-//			 unmarshaller.setEventHandler(new DefaultValidationEventHandler());
-			 unmarshaller.unmarshal(new File("src/main/resources/InsuranceElements.xml"));
+			//			 unmarshaller.setEventHandler(new DefaultValidationEventHandler());
+			unmarshaller.unmarshal(new File("src/main/resources/InsuranceElements.xml"));
 			Empresa emp = (Empresa) unmarshaller.unmarshal(new File("src/main/resources/InsuranceElements.xml"));
 
 			// Hay que mostrar DNI de cada cliente, NUM seguros a su nombre,
@@ -32,16 +32,17 @@ public class ProcesaAseguradoraJAXB {
 			 * 
 			 */
 			double precioTotal = 0.0;
-			
+
 			for (Cliente cli : emp.getClientes()) {
 				System.out.println(cli.getDNI());
 				for(Seguro seg: cli.getSeguros()) {
 					precioTotal+= seg.getPrecio();
 				}
 				System.out.println("Total a pagar: " + precioTotal);
-			
+				precioTotal = 0.0;
 			}
 			Cliente cliNuevo = new Cliente();
+			cliNuevo.setDNI("00001111A");
 			Seguro seguro1;
 			Seguro seguro2;
 			Vehiculo coche;
@@ -49,14 +50,27 @@ public class ProcesaAseguradoraJAXB {
 			coche = new Vehiculo("CHE1234", 80, false);
 			furgoneta = new Vehiculo("FUR1234", 100, true);
 			seguro1 = new Terceros("CHE-098765", coche);
+			seguro1.setPrecio(seguro1.getPrecio());
 			seguro2 = new TodoRiesgo("FUR-121212", furgoneta);
+			seguro2.setPrecio(seguro2.getPrecio());
 			List<Seguro> listaSeguros = new LinkedList<>();
 			listaSeguros.add(seguro1);
 			listaSeguros.add(seguro2);
 
 			cliNuevo.setSeguros(listaSeguros);
 			emp.getClientes().add(cliNuevo);
-			
+
+			System.out.println("*************************");
+
+			precioTotal = 0.0;
+			for (Cliente cli : emp.getClientes()) {
+				System.out.println(cli.getDNI());
+				for(Seguro seg: cli.getSeguros()) {
+					precioTotal+= seg.getPrecio();
+				}
+				System.out.println("Total a pagar: " + precioTotal);
+				precioTotal = 0.0;
+			}
 			// Se vuelca en un nuevo fichero XML
 			Marshaller marshaller = jaxbctx.createMarshaller();
 			marshaller.marshal(emp, new File("src/main/resources/InsuranceElementsV2.xml"));
