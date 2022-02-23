@@ -59,9 +59,6 @@ public class AseguradoraHandlerSAX extends DefaultHandler {
 		for (String m : matriculasCliente) {
 			System.out.println("Matricula " + m);
 		}
-		dniCliente=null;
-		matriculasCliente.clear();
-		segurosCliente.clear();
 		fecha = null;
 	}	
 	
@@ -80,6 +77,13 @@ public class AseguradoraHandlerSAX extends DefaultHandler {
 		if (!segurosCliente.contains(idSeguro)) {
 			System.out.println("El parte de accidente con fecha " + fecha + " no pertenece a ningun seguro valido");
 		}
+		
+		if (qName.equals("tns:clientes")) {
+			dniCliente=null;
+			matriculasCliente.clear();
+			segurosCliente.clear();
+		}
+		
 	}
 	
 	@Override
