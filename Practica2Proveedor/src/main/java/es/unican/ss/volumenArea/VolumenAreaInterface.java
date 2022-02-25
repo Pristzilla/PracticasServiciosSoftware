@@ -25,6 +25,7 @@ public interface VolumenAreaInterface {
 
     /**
      * Retorna el area del objeto dado
+     * 			
      * 
      * @param params
      * @return
@@ -40,7 +41,8 @@ public interface VolumenAreaInterface {
     ;
 
     /**
-     * Retorna el volumen del objeto dado 
+     * Retorna el volumen del objeto dado
+     * 			
      * 
      * @param params
      * @return
