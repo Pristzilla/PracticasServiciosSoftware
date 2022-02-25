@@ -14,7 +14,7 @@
 			<version>2.6</version>
 			<!-- Ejemplo de configuración para wsgen-->
 			<configuration>
-				<genWSDL>true</genWSDL>
+				<genJWS>true</genJWS>
 				<inlineSchemas>true</inlineSchemas>
 				<resourceDestDir>src/main/resources</resourceDestDir>
 				<wsdlDirectory>src/main/resources</wsdlDirectory>
