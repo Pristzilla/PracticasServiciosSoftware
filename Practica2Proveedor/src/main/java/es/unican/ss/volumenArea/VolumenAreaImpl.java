@@ -32,6 +32,9 @@ implements VolumenAreaInterface
 	public double area(Dimensiones params)
 			throws DatosNoValidosException
 	{
+		if (params == null) {
+			throw new DatosNoValidosException("datos no validos", "infoERRROR");
+		}
 		return params.getAlto() * params.getLargo();
 	}
 
