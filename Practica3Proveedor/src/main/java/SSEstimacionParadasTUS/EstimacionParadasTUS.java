@@ -13,14 +13,15 @@ import javax.xml.parsers.SAXParserFactory;
 
 import org.xml.sax.SAXException;
 
+import SSEstimacionParadasTUS.HandlerNumeroParadaSAX.SAXTerminationException;
+
 
 
 @WebService(endpointInterface = "es.unican.ss.SSEstimacionParadasTUS.IEstimacionParadasTUS",
 targetNamespace = "http://unican.es/ss/SSEstimacionParadasTUS")
 public class EstimacionParadasTUS implements IEstimacionParadasTUS {
 	
-	private final String urlServicio1 = "http://datos.santander.es/api/rest/datasets/lineas_bus_secuencia.json?query=ayto|:Linea:";
-	private final String urlServicio2 = "http://www.ayto-santander.es:9001/services/dinamica.asmx";
+	private final String urlServicio1 = "http://datos.santander.es/api/rest/datasets/lineas_bus_secuencia.xml?query=ayto|:Linea:";
 
 	public EstimacionTUS getEstimacionSiguienteBus(String nombreParada, int linea)
 			throws ParadaNoValidaException, DatosNoDisponiblesException {
@@ -39,7 +40,11 @@ public class EstimacionParadasTUS implements IEstimacionParadasTUS {
 			HandlerNumeroParadaSAX handler = new HandlerNumeroParadaSAX();
 			
 			// Parsear el fichero
-			saxParser.parse(respuesta, handler);
+			try {
+				saxParser.parse(respuesta, handler);
+			} catch (SAXTerminationException e) {
+				// Ha encontrado el nombre de la parada
+			}
 			
 			// Comprobamos la validez de la parada
 			if (!handler.getIsEqual()) {
@@ -50,7 +55,9 @@ public class EstimacionParadasTUS implements IEstimacionParadasTUS {
 			
 			// Segundo servicio
 			// TODO: establecer conexion 
-			List<String> resultado = null; // TODO: igualarlo al resultado del servicio 2
+			HelloWorldService helloService = new HelloWorldService();
+			HelloInterface aytoPort = helloService.getHelloWorldPort();
+			List<String> resultado = aytoPort.getPasoParada(numParada,linea,0);
 			
 			if (resultado.isEmpty()) {
 				throw new DatosNoDisponiblesException();

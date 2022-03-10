@@ -6,6 +6,8 @@ import org.xml.sax.helpers.DefaultHandler;
 
 public class HandlerNumeroParadaSAX extends DefaultHandler {
 	
+	public class SAXTerminationException extends SAXException {}
+	
 	private boolean leerNumParada = false;
 	private String numParada = null;
 	private boolean leerNombreParada = false;
@@ -43,7 +45,7 @@ public class HandlerNumeroParadaSAX extends DefaultHandler {
 		if (qName.equals("resource")) {
 			if (nombreParada.equals(nombreParadaParametro)) {
 				isEqual = true;
-				// PARAR DE LEER EL DOCUMENTO - lanzar excepcion ?
+				throw new SAXTerminationException();
 			} 
 		}
 	}
