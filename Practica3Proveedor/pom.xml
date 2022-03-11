@@ -16,6 +16,5 @@
 	</dependencies>
 	<build>
 		<finalName>SSEstimacionParadasTUS</finalName>
-		
 	</build>
 </project>
