@@ -13,6 +13,11 @@ public class EstimacionTUS {
 		this.estimacion2 = estimacion2;
 		this.direccion = direccion;
 	}
+	public EstimacionTUS(int estimacion1, int estimacion2, String direccion) {
+		this.estimacion1 = Integer.toString(estimacion1);
+		this.estimacion2 = Integer.toString(estimacion2);
+		this.direccion = direccion;
+	}
 	public String getEstimacion1() {
 		return estimacion1;
 	}

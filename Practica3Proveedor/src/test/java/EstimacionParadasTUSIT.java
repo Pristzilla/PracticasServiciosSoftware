@@ -42,33 +42,56 @@ public class EstimacionParadasTUSIT {
 	@Test
 	public void testGetEstimacionSiguienteBus()  {
 		Endpoint endpoint = Endpoint.publish("http://unican.es/ss/SSEstimacionPatadasTUS", new EstimacionParadasTUS());
+		URL url = null;
 		try {
-			URL url = new URL("http://unican.es/ss/SSEstimacionPatadasTUS?wsdl");
+			url = new URL("http://unican.es/ss/SSEstimacionPatadasTUS?wsdl");
+
 		} catch(MalformedURLException e) {
 			e.printStackTrace();
 		}
+
+		QName serviceQName = new QName("http://unican.es/ss/SSEstimacionPatadasTUS", "EstimacionParadasTUSService");
+		QName portQName = new QName("http://unican.es/ss/SSEstimacionPatadasTUS", "EstimacionParadasTUSPort");
+
+		Service service = Service.create(url, serviceQName);
+		IEstimacionParadasTUS sut = service.getPort(portQName, IEstimacionParadasTUS.class);
+
 		try {
-			QName serviceQName = new QName("http://unican.es/ss/SSEstimacionPatadasTUS", "EstimacionParadasTUSService");
-			QName portQName = new QName("http://unican.es/ss/SSEstimacionPatadasTUS", "EstimacionParadasTUSPort");
-			
-			URL url;
-			Service service = Service.create(url, serviceQName);
-			IEstimacionParadasTUS sut = service.getPort(portQName, IEstimacionParadasTUS.class);
-			
+			// IGIC1.a Parada y linea corresponden
 			String nombreParada = "AVENIDA CANTABRIA 43";
 			int linea = 62;
-			// IGIC1.a Parada y linea corresponden
-			
-			EstimacionTUS estimacion = sut.getEstimacionSiguienteBus(nombreParada, linea);
-			assertEquals(estimacion.getEstimacion1(), 1);
 
-		 catch (ParadaNoValidaException e) {
-			// TODO Auto-generated catch block
+			EstimacionTUS estimacion = sut.getEstimacionSiguienteBus(nombreParada, linea);
+			assertEquals("1", estimacion.getEstimacion1());
+			assertEquals("2", estimacion.getEstimacion2());
+			assertEquals("1", estimacion.getDireccion());
+
+		} catch (ParadaNoValidaException e) {
+			// No tiene que entrar aqui
 			e.printStackTrace();
 		} catch (DatosNoDisponiblesException e) {
-			// TODO Auto-generated catch block
+			// No tiene que entrar aqui
 			e.printStackTrace();
 		}
+		try {
+			// IGIC1.b Parada y linea no corresponden
+			String nombreParada = "AVENIDA CANTABRIA 43232";
+			int linea = 622;
+
+			EstimacionTUS estimacion = sut.getEstimacionSiguienteBus(nombreParada, linea);
+			fail("No tiene que llegar aqui");
+
+		} catch (ParadaNoValidaException e) {
+			// Tiene que llegar aqui
+		System.out.println("");
+		
+			e.printStackTrace();
+		} catch (DatosNoDisponiblesException e) {
+			// No tiene que entrar aqui
+			e.printStackTrace();
+		}
+
+
 		endpoint.stop();
 	}
 
