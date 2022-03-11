@@ -1,4 +1,4 @@
-package SSEstimacionParadasTUS;
+package es.unican.ss.SSEstimacionParadasTUS;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
