@@ -1,4 +1,4 @@
-package SSEstimacionParadasTUS;
+package es.unican.ss.SSEstimacionParadasTUS;
 
 import javax.jws.WebService;
 
