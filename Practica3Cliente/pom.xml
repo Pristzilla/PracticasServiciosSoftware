@@ -4,4 +4,23 @@
   <artifactId>Practica3Cliente</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
+  
+  <build>
+        <finalName>SSEstimacionParadasTUS</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxws-maven-plugin</artifactId>
+                <version>2.6</version>
+                <!-- Ejemplo de configuración para wsgen -->
+                <configuration>
+                    <inlineSchemas>true</inlineSchemas>
+                    <resourceDestDir>src/main/resources</resourceDestDir>
+                    <sourceDestDir>src/main/java</sourceDestDir>
+                    <packageName>es.unican.ss.SSEstimacionParadasTUS</packageName>
+                    <wsdlUrls>http://localhost:8080/SSEstimacionParadasTUS?wsdl</wsdlUrls>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
