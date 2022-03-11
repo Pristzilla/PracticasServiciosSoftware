@@ -1,4 +1,4 @@
-//package SSEstimacionParadasTUS;
+//package es.unican.ss.SSEstimacionParadasTUS;
 //import static org.junit.Assert.*;
 //
 //import java.net.MalformedURLException;
@@ -15,11 +15,11 @@
 //import org.junit.BeforeClass;
 //import org.junit.Test;
 //
-//import SSEstimacionParadasTUS.DatosNoDisponiblesException;
-//import SSEstimacionParadasTUS.EstimacionParadasTUS;
-//import SSEstimacionParadasTUS.EstimacionTUS;
-//import SSEstimacionParadasTUS.IEstimacionParadasTUS;
-//import SSEstimacionParadasTUS.ParadaNoValidaException;
+//import es.unican.ss.SSEstimacionParadasTUS.DatosNoDisponiblesException;
+//import es.unican.ss.SSEstimacionParadasTUS.EstimacionParadasTUS;
+//import es.unican.ss.SSEstimacionParadasTUS.EstimacionTUS;
+//import es.unican.ss.SSEstimacionParadasTUS.IEstimacionParadasTUS;
+//import es.unican.ss.SSEstimacionParadasTUS.ParadaNoValidaException;
 //
 //public class EstimacionParadasTUSIT {
 //
