@@ -70,7 +70,6 @@ public class EstimacionParadasTUS implements IEstimacionParadasTUS {
 			// Segundo servicio
 			// TODO: establecer conexion 
 			DinamicaSoap pasoParadaService = new Dinamica().getDinamicaSoap();
-			//HelloInterface aytoPort = pasoParadaService.getHelloWorldPort();
 			Holder<ArrayOfPasoParada> resultado = new Holder<ArrayOfPasoParada>();
 			pasoParadaService.getPasoParada(nombreParada, numParada, 0, resultado);
 			List<PasoParada> lista = resultado.value.getPasoParada();
@@ -78,6 +77,7 @@ public class EstimacionParadasTUS implements IEstimacionParadasTUS {
 				throw new DatosNoDisponiblesException();
 			}
 			PasoParada pp = lista.get(0);
+			
 			return new EstimacionTUS(pp.getE1().getMinutos(), pp.getE2().getMinutos(), pp.getRuta());
 
 		} else {
