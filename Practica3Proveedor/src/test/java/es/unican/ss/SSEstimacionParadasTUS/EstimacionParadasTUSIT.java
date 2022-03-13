@@ -42,17 +42,17 @@ public class EstimacionParadasTUSIT {
 
 	@Test
 	public void testGetEstimacionSiguienteBus()  {
-		Endpoint endpoint = Endpoint.publish("http://unican.es/ss/SSEstimacionPatadasTUS", new EstimacionParadasTUS());
+		Endpoint endpoint = Endpoint.publish("http://localhost:8080/SSEstimacionParadasTUS", new EstimacionParadasTUS());
 		URL url = null;
 		try {
-			url = new URL("http://unican.es/ss/SSEstimacionPatadasTUS?wsdl");
+			url = new URL("http://localhost:8080/SSEstimacionParadasTUS?wsdl");
 
 		} catch(MalformedURLException e) {
 			e.printStackTrace();
 		}
 
-		QName serviceQName = new QName("http://unican.es/ss/SSEstimacionPatadasTUS", "EstimacionParadasTUSService");
-		QName portQName = new QName("http://unican.es/ss/SSEstimacionPatadasTUS", "EstimacionParadasTUSPort");
+		QName serviceQName = new QName("http://unican.es/ss/es.unican.ss.SSEstimacionParadasTUS", "EstimacionParadasTUSService");
+		QName portQName = new QName("http://unican.es/ss/es.unican.ss.SSEstimacionParadasTUS", "EstimacionParadasTUSPort");
 
 		Service service = Service.create(url, serviceQName);
 		IEstimacionParadasTUS sut = service.getPort(portQName, IEstimacionParadasTUS.class);
