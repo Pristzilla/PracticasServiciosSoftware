@@ -21,7 +21,7 @@ import org.xml.sax.SAXException;
 
 
 @WebService(endpointInterface = "es.unican.ss.SSEstimacionParadasTUS.IEstimacionParadasTUS",
-targetNamespace = "http://unican.es/ss/SSEstimacionParadasTUS")
+targetNamespace = "http://unican.es/ss/es.unican.ss.SSEstimacionParadasTUS")
 public class EstimacionParadasTUS implements IEstimacionParadasTUS {
 
 	private final String urlServicio1 = "http://datos.santander.es/api/rest/datasets/lineas_bus_secuencia.xml?query=ayto|:Linea:";
