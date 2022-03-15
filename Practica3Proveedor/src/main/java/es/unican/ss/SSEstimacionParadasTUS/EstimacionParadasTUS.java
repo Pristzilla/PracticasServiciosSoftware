@@ -20,8 +20,9 @@ import org.xml.sax.SAXException;
 
 
 
-@WebService(endpointInterface = "es.unican.ss.SSEstimacionParadasTUS.IEstimacionParadasTUS",
-targetNamespace = "http://unican.es/ss/es.unican.ss.SSEstimacionParadasTUS")
+@WebService(
+		endpointInterface = "es.unican.ss.SSEstimacionParadasTUS.IEstimacionParadasTUS",
+		targetNamespace = "http://www.unican.es/ss/SSEstimacionParadasTUS")
 public class EstimacionParadasTUS implements IEstimacionParadasTUS {
 
 	private final String urlServicio1 = "http://datos.santander.es/api/rest/datasets/lineas_bus_secuencia.xml?query=ayto\\:Linea:";
@@ -57,9 +58,9 @@ public class EstimacionParadasTUS implements IEstimacionParadasTUS {
 
 		// Leemos el fichero XML
 		try {
-		HandlerNumeroParadaSAX handler = null;
+			HandlerNumeroParadaSAX handler = null;
 
-		
+
 			// Instanciar el parser
 			SAXParserFactory factory = SAXParserFactory.newInstance();
 			SAXParser saxParser = factory.newSAXParser();

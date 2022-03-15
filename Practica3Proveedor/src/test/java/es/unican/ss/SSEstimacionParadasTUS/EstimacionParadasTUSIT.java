@@ -51,8 +51,8 @@ public class EstimacionParadasTUSIT {
 			e.printStackTrace();
 		}
 
-		QName serviceQName = new QName("http://unican.es/ss/es.unican.ss.SSEstimacionParadasTUS", "EstimacionParadasTUSService");
-		QName portQName = new QName("http://unican.es/ss/es.unican.ss.SSEstimacionParadasTUS", "EstimacionParadasTUSPort");
+		QName serviceQName = new QName("http://www.unican.es/ss/SSEstimacionParadasTUS", "EstimacionParadasTUSService");
+		QName portQName = new QName("http://www.unican.es/ss/SSEstimacionParadasTUS", "EstimacionParadasTUSPort");
 
 		Service service = Service.create(url, serviceQName);
 		IEstimacionParadasTUS sut = service.getPort(portQName, IEstimacionParadasTUS.class);
