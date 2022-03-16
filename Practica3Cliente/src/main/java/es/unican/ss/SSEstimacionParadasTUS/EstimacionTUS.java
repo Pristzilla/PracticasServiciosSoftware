@@ -1,5 +1,5 @@
 
-package es.unican.ss.SSEstimacionParadasTUS;
+package es.unican.ss.ssestimacionparadastus;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

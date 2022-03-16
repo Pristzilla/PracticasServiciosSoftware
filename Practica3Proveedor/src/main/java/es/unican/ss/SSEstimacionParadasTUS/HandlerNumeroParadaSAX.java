@@ -6,7 +6,12 @@ import org.xml.sax.helpers.DefaultHandler;
 
 public class HandlerNumeroParadaSAX extends DefaultHandler {
 	
-	public class SAXTerminationException extends SAXException {}
+	public class SAXTerminationException extends SAXException {
+
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;}
 	
 	private boolean leerNumParada = false;
 	private String numParada = null;
@@ -15,11 +20,12 @@ public class HandlerNumeroParadaSAX extends DefaultHandler {
 	private String nombreParadaParametro;
 	private String texto = null;
 	private boolean isEqual = false;
+	private int numResources= 0;
 	
 	public HandlerNumeroParadaSAX() {}
 	
-	public HandlerNumeroParadaSAX(String nombreParada) {
-		this.nombreParadaParametro = nombreParada;
+	public HandlerNumeroParadaSAX(String parada) {
+		this.nombreParadaParametro = parada;
 	}
 	
 	@Override
@@ -40,14 +46,19 @@ public class HandlerNumeroParadaSAX extends DefaultHandler {
 		}
 		if (qName.equals("str") && leerNombreParada) {
 			nombreParada = texto;
+			System.out.println("Nparada: " + numParada + "\n Nombre: " + nombreParada);
+
 			leerNombreParada = false;
 		}
 		if (qName.equals("resource")) {
 			if (nombreParada.equals(nombreParadaParametro)) {
+				System.out.println("******es esta parada******");
 				isEqual = true;
 				throw new SAXTerminationException();
 			} 
+			numResources++;
 		}
+		
 	}
 
 	@Override
@@ -62,8 +73,11 @@ public class HandlerNumeroParadaSAX extends DefaultHandler {
 	public String getNombreParada() {
 		return nombreParada;
 	}
-	
-	public boolean getIsEqual() {
+	public boolean paradaValida() {
 		return isEqual;
 	}
+	public int numResources() {
+		return numResources;
+	}
+
 }

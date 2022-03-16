@@ -1,5 +1,5 @@
 
-package es.unican.ss.SSEstimacionParadasTUS;
+package es.unican.ss.ssestimacionparadastus;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;
@@ -24,10 +24,10 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _GetEstimacionSiguienteBusResponse_QNAME = new QName("http://unican.es/ss/SSEstimacionParadasTUS", "getEstimacionSiguienteBusResponse");
-    private final static QName _GetEstimacionSiguienteBus_QNAME = new QName("http://unican.es/ss/SSEstimacionParadasTUS", "getEstimacionSiguienteBus");
-    private final static QName _DatosNoDisponiblesException_QNAME = new QName("http://unican.es/ss/SSEstimacionParadasTUS", "DatosNoDisponiblesException");
-    private final static QName _ParadaNoValidaException_QNAME = new QName("http://unican.es/ss/SSEstimacionParadasTUS", "ParadaNoValidaException");
+    private final static QName _GetEstimacionSiguienteBusResponse_QNAME = new QName("http://www.unican.es/ss/SSEstimacionParadasTUS", "getEstimacionSiguienteBusResponse");
+    private final static QName _GetEstimacionSiguienteBus_QNAME = new QName("http://www.unican.es/ss/SSEstimacionParadasTUS", "getEstimacionSiguienteBus");
+    private final static QName _DatosNoDisponiblesException_QNAME = new QName("http://www.unican.es/ss/SSEstimacionParadasTUS", "DatosNoDisponiblesException");
+    private final static QName _ParadaNoValidaException_QNAME = new QName("http://www.unican.es/ss/SSEstimacionParadasTUS", "ParadaNoValidaException");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: es.unican.ss.ssestimacionparadastus
@@ -80,7 +80,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link GetEstimacionSiguienteBusResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://unican.es/ss/SSEstimacionParadasTUS", name = "getEstimacionSiguienteBusResponse")
+    @XmlElementDecl(namespace = "http://www.unican.es/ss/SSEstimacionParadasTUS", name = "getEstimacionSiguienteBusResponse")
     public JAXBElement<GetEstimacionSiguienteBusResponse> createGetEstimacionSiguienteBusResponse(GetEstimacionSiguienteBusResponse value) {
         return new JAXBElement<GetEstimacionSiguienteBusResponse>(_GetEstimacionSiguienteBusResponse_QNAME, GetEstimacionSiguienteBusResponse.class, null, value);
     }
@@ -89,7 +89,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link GetEstimacionSiguienteBus }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://unican.es/ss/SSEstimacionParadasTUS", name = "getEstimacionSiguienteBus")
+    @XmlElementDecl(namespace = "http://www.unican.es/ss/SSEstimacionParadasTUS", name = "getEstimacionSiguienteBus")
     public JAXBElement<GetEstimacionSiguienteBus> createGetEstimacionSiguienteBus(GetEstimacionSiguienteBus value) {
         return new JAXBElement<GetEstimacionSiguienteBus>(_GetEstimacionSiguienteBus_QNAME, GetEstimacionSiguienteBus.class, null, value);
     }
@@ -98,7 +98,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link DatosNoDisponiblesException }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://unican.es/ss/SSEstimacionParadasTUS", name = "DatosNoDisponiblesException")
+    @XmlElementDecl(namespace = "http://www.unican.es/ss/SSEstimacionParadasTUS", name = "DatosNoDisponiblesException")
     public JAXBElement<DatosNoDisponiblesException> createDatosNoDisponiblesException(DatosNoDisponiblesException value) {
         return new JAXBElement<DatosNoDisponiblesException>(_DatosNoDisponiblesException_QNAME, DatosNoDisponiblesException.class, null, value);
     }
@@ -107,7 +107,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link ParadaNoValidaException }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://unican.es/ss/SSEstimacionParadasTUS", name = "ParadaNoValidaException")
+    @XmlElementDecl(namespace = "http://www.unican.es/ss/SSEstimacionParadasTUS", name = "ParadaNoValidaException")
     public JAXBElement<ParadaNoValidaException> createParadaNoValidaException(ParadaNoValidaException value) {
         return new JAXBElement<ParadaNoValidaException>(_ParadaNoValidaException_QNAME, ParadaNoValidaException.class, null, value);
     }

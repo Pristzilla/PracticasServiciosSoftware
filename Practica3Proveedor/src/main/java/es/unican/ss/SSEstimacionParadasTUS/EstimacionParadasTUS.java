@@ -41,6 +41,7 @@ public class EstimacionParadasTUS implements IEstimacionParadasTUS {
 		// Primer servicio
 		URL url = null;
 		try {
+			System.out.println(urlServicio1+linea);
 			url = new URL(urlServicio1+linea);
 		} catch (MalformedURLException e2) {
 			e2.printStackTrace();
@@ -52,50 +53,55 @@ public class EstimacionParadasTUS implements IEstimacionParadasTUS {
 			conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
 			respuesta = conn.getInputStream(); 
-		} catch (IOException e1) {
-			e1.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}		
 
 		// Leemos el fichero XML
-		try {
-			HandlerNumeroParadaSAX handler = null;
+		HandlerNumeroParadaSAX handler = null;
 
+		try {
 
 			// Instanciar el parser
 			SAXParserFactory factory = SAXParserFactory.newInstance();
 			SAXParser saxParser = factory.newSAXParser();
 
 			// Crear el manejador
-			handler = new HandlerNumeroParadaSAX();
+			handler = new HandlerNumeroParadaSAX(nombreParada);
 			saxParser.parse(respuesta, handler);
-			// Comprobamos la validez de la parada
-			if (!handler.getIsEqual()) {
-				throw new ParadaNoValidaException();
-			}
-
-			String numParada = handler.getNumeroParada();
-			// Segundo servicio
-			DinamicaSoap pasoParadaService = new Dinamica().getDinamicaSoap();
-			Holder<ArrayOfPasoParada> resultado = new Holder<ArrayOfPasoParada>();
-			Holder<Integer> status = new Holder<Integer>();
-			status.value = 0;
-			pasoParadaService.getPasoParada(nombreParada, numParada, status, resultado);
-			List<PasoParada> lista = resultado.value.getPasoParada();
-			if (lista.isEmpty()) {
-				throw new DatosNoDisponiblesException();
-			}
-			PasoParada paso = lista.get(0);
-			return new EstimacionTUS(paso.getE1().getMinutos(), paso.getE2().getMinutos(), paso.getRuta());
-		} catch (SAXTerminationException e) {
-			e.printStackTrace();
-		} catch (SAXException e) {
+		}
+		//		catch (SAXTerminationException e) {
+		//		System.out.println("SAXTERMINexception");
+		//	}
+		catch (SAXException e) {
+			//System.out.println("SAXXexception");
+		} catch (ParserConfigurationException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (ParserConfigurationException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+
+		// Comprobamos la validez de la parada
+		if (!handler.paradaValida()) {
+			throw new ParadaNoValidaException();
+		}
+
+		String numParada = handler.getNumeroParada();
+		// Segundo servicio
+		DinamicaSoap pasoParadaService = new Dinamica().getDinamicaSoap();
+		Holder<ArrayOfPasoParada> resultado = new Holder<ArrayOfPasoParada>();
+		Holder<Integer> status = new Holder<Integer>();
+		status.value = 0;
+		pasoParadaService.getPasoParada(nombreParada, numParada, status, resultado);
+		List<PasoParada> lista = resultado.value.getPasoParada();
+		if (lista.isEmpty()) {
+			throw new DatosNoDisponiblesException();
+		}
+		PasoParada paso = lista.get(0);
+		return new EstimacionTUS(paso.getE1().getMinutos(), paso.getE2().getMinutos(), paso.getRuta());
+
 
 
 	}

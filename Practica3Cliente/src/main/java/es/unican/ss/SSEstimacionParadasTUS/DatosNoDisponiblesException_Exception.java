@@ -1,5 +1,5 @@
 
-package es.unican.ss.SSEstimacionParadasTUS;
+package es.unican.ss.ssestimacionparadastus;
 
 import javax.xml.ws.WebFault;
 
@@ -10,7 +10,7 @@ import javax.xml.ws.WebFault;
  * Generated source version: 2.2
  * 
  */
-@WebFault(name = "DatosNoDisponiblesException", targetNamespace = "http://unican.es/ss/SSEstimacionParadasTUS")
+@WebFault(name = "DatosNoDisponiblesException", targetNamespace = "http://www.unican.es/ss/SSEstimacionParadasTUS")
 public class DatosNoDisponiblesException_Exception
     extends Exception
 {

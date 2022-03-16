@@ -1,4 +1,4 @@
-package es.unican.ss.SSEstimacionParadasTUS;
+package es.unican.ss.ssestimacionparadastus;
 
 
 
@@ -11,7 +11,7 @@ public class MainEstimacionParadas {
 
 		// Caso Valido
 		String nombreParada = "AVENIDA CANTABRIA 43";
-		int linea = 62;
+		int linea = 61;
 		
 		try {
 			EstimacionTUS et = epPort.getEstimacionSiguienteBus(nombreParada, linea);
@@ -23,6 +23,7 @@ public class MainEstimacionParadas {
 		}catch (ParadaNoValidaException_Exception e) {
 			// no entra aqui
 			System.out.println("He fallao PARADA NO VALIDA");
+			e.printStackTrace();
 
 		}
 		catch (DatosNoDisponiblesException_Exception e) {

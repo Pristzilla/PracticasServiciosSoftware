@@ -1,5 +1,5 @@
 
-package es.unican.ss.SSEstimacionParadasTUS;
+package es.unican.ss.ssestimacionparadastus;
 
 import javax.xml.ws.WebFault;
 
@@ -10,7 +10,7 @@ import javax.xml.ws.WebFault;
  * Generated source version: 2.2
  * 
  */
-@WebFault(name = "ParadaNoValidaException", targetNamespace = "http://unican.es/ss/SSEstimacionParadasTUS")
+@WebFault(name = "ParadaNoValidaException", targetNamespace = "http://www.unican.es/ss/SSEstimacionParadasTUS")
 public class ParadaNoValidaException_Exception
     extends Exception
 {
