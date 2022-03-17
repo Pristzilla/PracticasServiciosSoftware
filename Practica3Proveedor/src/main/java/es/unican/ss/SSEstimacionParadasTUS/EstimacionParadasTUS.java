@@ -58,7 +58,7 @@ public class EstimacionParadasTUS implements IEstimacionParadasTUS {
 		}		
 
 		// Leemos el fichero XML
-		HandlerNumeroParadaSAX handler = null;
+		HandlerNumeroParadaSAX handler = null; 
 
 		try {
 
@@ -76,10 +76,10 @@ public class EstimacionParadasTUS implements IEstimacionParadasTUS {
 		catch (SAXException e) {
 			//System.out.println("SAXXexception");
 		} catch (ParserConfigurationException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
@@ -94,7 +94,9 @@ public class EstimacionParadasTUS implements IEstimacionParadasTUS {
 		Holder<ArrayOfPasoParada> resultado = new Holder<ArrayOfPasoParada>();
 		Holder<Integer> status = new Holder<Integer>();
 		status.value = 0;
-		pasoParadaService.getPasoParada(nombreParada, numParada, status, resultado);
+		String nlinea = Integer.toString(linea);
+		System.out.println("linea:" + nlinea + "numpa:" + numParada );
+		pasoParadaService.getPasoParada(nlinea, numParada, status, resultado);
 		List<PasoParada> lista = resultado.value.getPasoParada();
 		if (lista.isEmpty()) {
 			throw new DatosNoDisponiblesException();

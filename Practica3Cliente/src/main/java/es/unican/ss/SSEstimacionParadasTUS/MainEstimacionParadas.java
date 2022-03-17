@@ -10,8 +10,8 @@ public class MainEstimacionParadas {
 		IEstimacionParadasTUS epPort = epService.getEstimacionParadasTUSPort();
 
 		// Caso Valido
-		String nombreParada = "AVENIDA CANTABRIA 43";
-		int linea = 61;
+		String nombreParada = "CORREOS";
+		int linea = 1;
 		
 		try {
 			EstimacionTUS et = epPort.getEstimacionSiguienteBus(nombreParada, linea);

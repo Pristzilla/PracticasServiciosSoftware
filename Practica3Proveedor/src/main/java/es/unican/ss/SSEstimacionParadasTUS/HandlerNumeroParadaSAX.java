@@ -46,13 +46,10 @@ public class HandlerNumeroParadaSAX extends DefaultHandler {
 		}
 		if (qName.equals("str") && leerNombreParada) {
 			nombreParada = texto;
-			System.out.println("Nparada: " + numParada + "\n Nombre: " + nombreParada);
-
 			leerNombreParada = false;
 		}
 		if (qName.equals("resource")) {
 			if (nombreParada.equals(nombreParadaParametro)) {
-				System.out.println("******es esta parada******");
 				isEqual = true;
 				throw new SAXTerminationException();
 			} 
