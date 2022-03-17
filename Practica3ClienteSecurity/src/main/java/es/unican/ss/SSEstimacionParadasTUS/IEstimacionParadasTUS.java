@@ -18,7 +18,7 @@ import javax.xml.ws.ResponseWrapper;
  * Generated source version: 2.2
  * 
  */
-@WebService(name = "IEstimacionParadasTUS", targetNamespace = "http://unican.es/ss/SSEstimacionParadasTUS")
+@WebService(name = "IEstimacionParadasTUS", targetNamespace = "http://www.unican.es/ss/SSEstimacionParadasTUS")
 @XmlSeeAlso({
     ObjectFactory.class
 })
@@ -30,17 +30,17 @@ public interface IEstimacionParadasTUS {
      * @param arg1
      * @param arg0
      * @return
-     *     returns es.unican.ss.ssestimacionparadastus.EstimacionTUS
+     *     returns es.unican.ss.SSEstimacionParadasTUS.EstimacionTUS
      * @throws ParadaNoValidaException_Exception
      * @throws DatosNoDisponiblesException_Exception
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getEstimacionSiguienteBus", targetNamespace = "http://unican.es/ss/SSEstimacionParadasTUS", className = "es.unican.ss.ssestimacionparadastus.GetEstimacionSiguienteBus")
-    @ResponseWrapper(localName = "getEstimacionSiguienteBusResponse", targetNamespace = "http://unican.es/ss/SSEstimacionParadasTUS", className = "es.unican.ss.ssestimacionparadastus.GetEstimacionSiguienteBusResponse")
-    @Action(input = "http://unican.es/ss/SSEstimacionParadasTUS/IEstimacionParadasTUS/getEstimacionSiguienteBusRequest", output = "http://unican.es/ss/SSEstimacionParadasTUS/IEstimacionParadasTUS/getEstimacionSiguienteBusResponse", fault = {
-        @FaultAction(className = ParadaNoValidaException_Exception.class, value = "http://unican.es/ss/SSEstimacionParadasTUS/IEstimacionParadasTUS/getEstimacionSiguienteBus/Fault/ParadaNoValidaException"),
-        @FaultAction(className = DatosNoDisponiblesException_Exception.class, value = "http://unican.es/ss/SSEstimacionParadasTUS/IEstimacionParadasTUS/getEstimacionSiguienteBus/Fault/DatosNoDisponiblesException")
+    @RequestWrapper(localName = "getEstimacionSiguienteBus", targetNamespace = "http://www.unican.es/ss/SSEstimacionParadasTUS", className = "es.unican.ss.SSEstimacionParadasTUS.GetEstimacionSiguienteBus")
+    @ResponseWrapper(localName = "getEstimacionSiguienteBusResponse", targetNamespace = "http://www.unican.es/ss/SSEstimacionParadasTUS", className = "es.unican.ss.SSEstimacionParadasTUS.GetEstimacionSiguienteBusResponse")
+    @Action(input = "http://www.unican.es/ss/SSEstimacionParadasTUS/IEstimacionParadasTUS/getEstimacionSiguienteBusRequest", output = "http://www.unican.es/ss/SSEstimacionParadasTUS/IEstimacionParadasTUS/getEstimacionSiguienteBusResponse", fault = {
+        @FaultAction(className = ParadaNoValidaException_Exception.class, value = "http://www.unican.es/ss/SSEstimacionParadasTUS/IEstimacionParadasTUS/getEstimacionSiguienteBus/Fault/ParadaNoValidaException"),
+        @FaultAction(className = DatosNoDisponiblesException_Exception.class, value = "http://www.unican.es/ss/SSEstimacionParadasTUS/IEstimacionParadasTUS/getEstimacionSiguienteBus/Fault/DatosNoDisponiblesException")
     })
     public EstimacionTUS getEstimacionSiguienteBus(
         @WebParam(name = "arg0", targetNamespace = "")

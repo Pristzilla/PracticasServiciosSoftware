@@ -13,15 +13,30 @@
 			<artifactId>webservices-rt</artifactId>
 			<version>2.3.1</version>
 		</dependency>
-		  <!-- https://mvnrepository.com/artifact/junit/junit -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
-        </dependency>
+		<!-- https://mvnrepository.com/artifact/junit/junit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>SSEstimacionParadasTUS</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jaxws-maven-plugin</artifactId>
+				<version>2.6</version>
+				<!-- Ejemplo de configuración para wsgen -->
+				<configuration>
+					<genJWS>true</genJWS>
+					<inlineSchemas>true</inlineSchemas>
+					<resourceDestDir>src/main/resources</resourceDestDir>
+					<wsdlDirectory>src/main/resources</wsdlDirectory>
+				</configuration>
+			</plugin>
+		</plugins>
+
 	</build>
 </project>

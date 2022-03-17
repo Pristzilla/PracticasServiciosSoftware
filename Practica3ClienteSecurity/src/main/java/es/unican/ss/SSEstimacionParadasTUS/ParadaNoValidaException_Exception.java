@@ -10,7 +10,7 @@ import javax.xml.ws.WebFault;
  * Generated source version: 2.2
  * 
  */
-@WebFault(name = "ParadaNoValidaException", targetNamespace = "http://unican.es/ss/SSEstimacionParadasTUS")
+@WebFault(name = "ParadaNoValidaException", targetNamespace = "http://www.unican.es/ss/SSEstimacionParadasTUS")
 public class ParadaNoValidaException_Exception
     extends Exception
 {
@@ -45,7 +45,7 @@ public class ParadaNoValidaException_Exception
     /**
      * 
      * @return
-     *     returns fault bean: es.unican.ss.ssestimacionparadastus.ParadaNoValidaException
+     *     returns fault bean: es.unican.ss.SSEstimacionParadasTUS.ParadaNoValidaException
      */
     public ParadaNoValidaException getFaultInfo() {
         return faultInfo;

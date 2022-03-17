@@ -17,20 +17,20 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "EstimacionParadasTUSService", targetNamespace = "http://unican.es/ss/SSEstimacionParadasTUS", wsdlLocation = "http://localhost:8080/SSEstimacionParadasTUS?wsdl")
+@WebServiceClient(name = "EstimacionParadasTUSService", targetNamespace = "http://www.unican.es/ss/SSEstimacionParadasTUS", wsdlLocation = "http://localhost:8080/SSEstimacionParadasTUSSecurity?wsdl")
 public class EstimacionParadasTUSService
     extends Service
 {
 
     private final static URL ESTIMACIONPARADASTUSSERVICE_WSDL_LOCATION;
     private final static WebServiceException ESTIMACIONPARADASTUSSERVICE_EXCEPTION;
-    private final static QName ESTIMACIONPARADASTUSSERVICE_QNAME = new QName("http://unican.es/ss/SSEstimacionParadasTUS", "EstimacionParadasTUSService");
+    private final static QName ESTIMACIONPARADASTUSSERVICE_QNAME = new QName("http://www.unican.es/ss/SSEstimacionParadasTUS", "EstimacionParadasTUSService");
 
     static {
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("http://localhost:8080/SSEstimacionParadasTUS?wsdl");
+            url = new URL("http://localhost:8080/SSEstimacionParadasTUSSecurity?wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }
@@ -69,7 +69,7 @@ public class EstimacionParadasTUSService
      */
     @WebEndpoint(name = "EstimacionParadasTUSPort")
     public IEstimacionParadasTUS getEstimacionParadasTUSPort() {
-        return super.getPort(new QName("http://unican.es/ss/SSEstimacionParadasTUS", "EstimacionParadasTUSPort"), IEstimacionParadasTUS.class);
+        return super.getPort(new QName("http://www.unican.es/ss/SSEstimacionParadasTUS", "EstimacionParadasTUSPort"), IEstimacionParadasTUS.class);
     }
 
     /**
@@ -81,7 +81,7 @@ public class EstimacionParadasTUSService
      */
     @WebEndpoint(name = "EstimacionParadasTUSPort")
     public IEstimacionParadasTUS getEstimacionParadasTUSPort(WebServiceFeature... features) {
-        return super.getPort(new QName("http://unican.es/ss/SSEstimacionParadasTUS", "EstimacionParadasTUSPort"), IEstimacionParadasTUS.class, features);
+        return super.getPort(new QName("http://www.unican.es/ss/SSEstimacionParadasTUS", "EstimacionParadasTUSPort"), IEstimacionParadasTUS.class, features);
     }
 
     private static URL __getWsdlLocation() {

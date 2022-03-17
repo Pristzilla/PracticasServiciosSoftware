@@ -2,7 +2,8 @@ package es.unican.ss.SSEstimacionParadasTUS;
 
 
 
-public class MainEstimacionParadas {
+
+public class MainEstimacionParadasSecurity {
 
 	public static void main(String[] args) {
 
@@ -10,8 +11,8 @@ public class MainEstimacionParadas {
 		IEstimacionParadasTUS epPort = epService.getEstimacionParadasTUSPort();
 
 		// Caso Valido
-		String nombreParada = "AVENIDA CANTABRIA 43";
-		int linea = 62;
+		String nombreParada = "CORREOS";
+		int linea = 1;
 		
 		try {
 			EstimacionTUS et = epPort.getEstimacionSiguienteBus(nombreParada, linea);
@@ -21,15 +22,14 @@ public class MainEstimacionParadas {
 			System.out.println("E2: " +  et.getEstimacion2());
 
 		}catch (ParadaNoValidaException_Exception e) {
-			// no entra aqui
-			System.out.println("He fallao PARADA NO VALIDA");
+			// no Tiene que entrar aqui
+			System.out.println("PARADA NO VALIDA");
 
 		}
 		catch (DatosNoDisponiblesException_Exception e) {
 			// no debe entrar
-			System.out.println("He fallao DATOS NO DISPONIBLES");
+			System.out.println("DATOS NO DISPONIBLES");
 		}
-
 	}
 
 }
