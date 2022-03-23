@@ -43,7 +43,7 @@ public class MainEstimacionParadas {
 
 		}catch (ParadaNoValidaException_Exception e) {
 			// Tiene que entrar aqui
-			System.out.println("PARADA NO VALIDA");
+			System.out.println("PARADA NO VALIDA Linea 5 no para en Correos");
 
 		}
 		catch (DatosNoDisponiblesException_Exception e) {
