@@ -4,7 +4,7 @@
  * Date: 25 mar. 2022
  *
  */
-package ss.unican.ssjornadas.controller;
+package ss.unican.ssjornadas.persistencia;
 
 import java.util.List;
 

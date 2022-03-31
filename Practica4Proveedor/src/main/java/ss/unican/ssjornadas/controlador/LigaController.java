@@ -4,7 +4,7 @@
  * Date: 25 mar. 2022
  *
  */
-package ss.unican.ssjornadas.controller;
+package ss.unican.ssjornadas.controlador;
 
 
 import java.net.URI;
@@ -26,6 +26,8 @@ import javax.ws.rs.core.UriInfo;
 import ss.unican.ssjornadas.entidades.Equipo;
 import ss.unican.ssjornadas.entidades.Grupo;
 import ss.unican.ssjornadas.entidades.Jugador;
+import ss.unican.ssjornadas.persistencia.ILigaDAO;
+import ss.unican.ssjornadas.persistencia.LigaDAO;
 
 /**
  * @author barquinj
