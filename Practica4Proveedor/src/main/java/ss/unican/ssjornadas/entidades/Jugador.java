@@ -1,4 +1,4 @@
-package ss.unican.ssjornadas;
+package ss.unican.ssjornadas.entidades;
 
 public class Jugador implements Comparable<Jugador>{
 

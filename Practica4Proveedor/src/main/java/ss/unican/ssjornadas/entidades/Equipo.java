@@ -1,4 +1,4 @@
-package ss.unican.ssjornadas;
+package ss.unican.ssjornadas.entidades;
 
 import java.util.Collections;
 import java.util.List;
