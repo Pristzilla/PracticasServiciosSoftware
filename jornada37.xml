@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jornada num="37" grupo="I">
+	<partido>
+		<local nombre="Racing de Santander">
+			<gol dorsal="2" minuto="38"/>
+			<gol dorsal="10" minuto="25"/>
+			<tarjetaAmarilla dorsal="2" minuto="40"/>
+			<tarjetaAmarilla dorsal="1" minuto="60"/>
+			<tarjetaAmarilla dorsal="10" minuto="90"/>
+		</local>
+		<visitante nombre= "RC Deportivo">
+			<gol dorsal="2" minuto="5"/>
+			<tarjetaRoja dorsal="1" minuto="70"/>
+		</visitante>
+	</partido>
+	
+	<partido>
+		<local nombre="Racing Ferrol">
+			<gol dorsal="3" minuto="3"/>
+			<gol dorsal="3" minuto="25"/>
+			<tarjetaAmarilla dorsal="1" minuto="90"/>
+			<tarjetaAmarilla dorsal="3" minuto="60"/>
+		</local>
+		<visitante nombre= "UD Logroñes">
+			<gol dorsal="1" minuto="3"/>
+			<gol dorsal="2" minuto="25"/>
+			<gol dorsal="1" minuto="70"/>
+			<gol dorsal="3" minuto="72"/>
+			<tarjetaRoja dorsal="1" minuto="76"/>
+		</visitante>
+	</partido>
+	
+</jornada>
