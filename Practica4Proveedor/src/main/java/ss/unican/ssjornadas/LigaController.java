@@ -7,6 +7,7 @@
 package ss.unican.ssjornadas;
 
 
+import java.net.URI;
 import java.util.Collections;
 import java.util.List;
 
@@ -17,8 +18,10 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 
 /**
  * @author barquinj
@@ -115,8 +118,7 @@ public class LigaController {
 				builder = Response.ok(e);
 			}
 			else {
-				// TODO conflict o not modified
-				builder = Response.status(Response.Status.CONFLICT);
+				builder = Response.status(Response.Status.NOT_FOUND);
 			}
 		}
 		else {
@@ -181,19 +183,19 @@ public class LigaController {
 	@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
 	@Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
 	public Response addJugador(@PathParam("id") String idGrupo, @PathParam("nombre") String nombreEquipo,
-			@PathParam("dorsal") String dorsal, Jugador jugador) {
+			@PathParam("dorsal") String dorsal, @Context UriInfo uriInfo, Jugador jugador) {
 		Response.ResponseBuilder builder;
 		Jugador j;
 		Grupo g = ligaDAO.getGrupo(idGrupo);
 		if (g!= null) {
 			j = ligaDAO.getJugador(nombreEquipo, Integer.parseInt(dorsal));
 			if (j == null) {
-				j = ligaDAO.actualizaJugador(nombreEquipo, jugador);
-				//j = ligaDAO.anhadeJugador(nombreEquipo, jugador);
-				// TODO:
-				builder = Response.created(null);
+				ligaDAO.anhadeJugador(nombreEquipo, jugador);
+				URI location = uriInfo.getAbsolutePathBuilder().build();
+				builder = Response.created(location);
 			} else {
-				builder = Response.status(Response.Status.CONFLICT);
+				j = ligaDAO.actualizaJugador(nombreEquipo, jugador);
+				builder = Response.ok(j);
 			}
 		}
 		else {

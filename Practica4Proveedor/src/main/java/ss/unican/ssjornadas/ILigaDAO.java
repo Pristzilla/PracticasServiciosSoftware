@@ -70,4 +70,12 @@ public interface ILigaDAO {
 	 */
 	public Jugador eliminaJugador(String equipo, String dorsal);
 
+	/**
+	 * Crea un jugador en un equipo
+	 * @param nombreEquipo
+	 * @param jugador
+	 * @return Jugador el jugador creado
+	 */
+	public Jugador anhadeJugador(String nombreEquipo, Jugador jugador);
+
 }

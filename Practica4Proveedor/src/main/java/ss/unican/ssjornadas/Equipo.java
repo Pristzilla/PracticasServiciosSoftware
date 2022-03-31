@@ -97,7 +97,6 @@ public class Equipo implements Comparable<Equipo> {
 	}
 	
 
-	@Override
 	public int compareTo(Equipo e)
 	{
 		if (this.puntos > e.puntos) {

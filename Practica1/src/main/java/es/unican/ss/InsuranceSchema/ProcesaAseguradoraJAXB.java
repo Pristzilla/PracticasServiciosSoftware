@@ -19,7 +19,6 @@ public class ProcesaAseguradoraJAXB {
 
 			// Se procesa el documento (Unmarshall)
 			Unmarshaller unmarshaller = jaxbctx.createUnmarshaller();
-			//			 unmarshaller.setEventHandler(new DefaultValidationEventHandler());
 			unmarshaller.unmarshal(new File("src/main/resources/InsuranceElements.xml"));
 			Empresa emp = (Empresa) unmarshaller.unmarshal(new File("src/main/resources/InsuranceElements.xml"));
 

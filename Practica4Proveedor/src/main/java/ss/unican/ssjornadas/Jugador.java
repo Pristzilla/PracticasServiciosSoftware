@@ -77,9 +77,8 @@ public class Jugador implements Comparable<Jugador>{
 		return this.dorsal == j.dorsal;     
 	}
 
-	@Override
-	public int compareTo(Jugador j)
-	{
+
+	public int compareTo(Jugador j){
 		if (this.goles > j.goles) {
 
 			// if current object is greater,then return 1

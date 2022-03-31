@@ -52,4 +52,9 @@ public class LigaDAO implements ILigaDAO {
 		return null;
 	}
 
+	public Jugador anhadeJugador(String nombreEquipo, Jugador jugador) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
