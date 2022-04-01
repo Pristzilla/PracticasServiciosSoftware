@@ -1,7 +1,8 @@
 package ss.unican.ssjornadas.entidades;
 
-import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
+
 
 public class Grupo {
 	private String id;
@@ -11,7 +12,7 @@ public class Grupo {
 	
 	public Grupo(String id) {
 		this.id = id;
-		equipos = Collections.emptyList();
+		equipos = new LinkedList<Equipo>();
 	}
 
 	public String getId() {
@@ -29,6 +30,17 @@ public class Grupo {
 	public void setEquipos(List<Equipo> equipos) {
 		this.equipos = equipos;
 	}
+	
+	public Equipo getEquipo(String nombreEquipo) {
+		for(Equipo e: this.equipos) {
+			if(e.getNombre().equals(nombreEquipo)) {
+				return e;
+			}
+		}
+		return null;
+	}
+	
+
 
 	@Override
 	public int hashCode() {

@@ -11,17 +11,17 @@ public interface ILigaDAO {
 	/**
 	 * Retorna la lista de equipos inscritos en el 
 	 * grupo que se indica como parametro
-	 * @param grupo de la liga
+	 * @param idGrupo de la liga
 	 * @return Lista de equipos del grupo
 	 */
-	public List<Equipo> getEquipos(String grupo);
+	public List<Equipo> getEquipos(String idGrupo);
 
 	/**
 	 * Retorna el equipo cuyo nombre se pasa como parametro
 	 * @param Nombre del equipo
 	 * @return El equipo o null si no existe
 	 */
-	public Equipo getEquipo(String equipo);
+	public Equipo getEquipo(String nombreEquipo);
 
 	/**
 	 * Actualiza el equipo con los datos que se pasan
@@ -31,13 +31,13 @@ public interface ILigaDAO {
 	 */
 	public Equipo actualizaEquipo(Equipo e);
 
-	/**
-	 * Retorna la lista completa de jugadores del
-	 * grupo que se pasa como parametro
-	 * @param El grupo
-	 * @return Lista de jugadores inscritos en el grupo
-	 */
-	public List<Jugador> getJugadores(String grupo);
+//	/**
+//	 * Retorna la lista completa de jugadores del
+//	 * grupo que se pasa como parametro
+//	 * @param El grupo
+//	 * @return Lista de jugadores inscritos en el grupo
+//	 */
+//	public List<Jugador> getJugadores(String grupo);
 
 	/**
 	 * Retorna el jugador cuyo equipo y dorsal se pasan 
@@ -47,7 +47,7 @@ public interface ILigaDAO {
 	 * @return El jugador o null si no existe un jugador
 	 * con el dorsal y equipo indicados
 	 */
-	public Jugador getJugador(String equipo, int dorsal);
+	public Jugador getJugador(String nombreEquipo, int dorsal);
 
 	/**
 	 * Actualiza el jugador perteneciente al equipo que 
@@ -56,7 +56,7 @@ public interface ILigaDAO {
 	 * @param j El jugador actualizado
 	 * @return Jugador actualizado o null si no existe
 	 */
-	public Jugador actualizaJugador(String equipo, Jugador j);
+	public Jugador actualizaJugador(String nombreEquipo, Jugador j);
 
 	/**
 	 * Retorna el grupo cuyo id se pasa como parametro
@@ -72,7 +72,7 @@ public interface ILigaDAO {
 	 * @param dorsal
 	 * @return
 	 */
-	public Jugador eliminaJugador(String equipo, String dorsal);
+	public Jugador eliminaJugador(String nombreEquipo, int dorsal);
 
 	/**
 	 * Crea un jugador en un equipo

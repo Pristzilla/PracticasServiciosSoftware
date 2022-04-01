@@ -71,6 +71,28 @@ public class Equipo implements Comparable<Equipo> {
 		this.jugadores = jugadores;
 	}
 
+	public Jugador getJugador(int dorsal) {
+		for(Jugador j: this.jugadores) {
+			if (j.getDorsal() == dorsal) {
+				return j;
+			}
+		}
+		return null;
+	}
+
+
+	public Jugador modificaJugador(Jugador jugador) {
+		for(Jugador j: this.jugadores) {
+			if(j.getNombre().equals(jugador.getNombre())){
+				this.jugadores.remove(j);
+				if(this.jugadores.add(jugador)) {
+					return jugador;
+				}
+			}
+		}
+		return null;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -95,7 +117,7 @@ public class Equipo implements Comparable<Equipo> {
 			return false;
 		return true;
 	}
-	
+
 
 	public int compareTo(Equipo e)
 	{
@@ -115,5 +137,21 @@ public class Equipo implements Comparable<Equipo> {
 			return 0;
 		}
 	}
+
+	public Jugador eliminaJugador(int dorsal) {
+		for(int i = jugadores.size(); i >=0; i--) {
+			if (jugadores.get(i).getDorsal() == dorsal) {
+				return jugadores.remove(i);
+			}
+		}
+		return null;
+	}
+	public Jugador addJugador(Jugador jugador) { 
+		if (jugador != null && jugadores.add(jugador)) {
+			return jugador;
+		}
+		return null;
+	}
+
 
 }

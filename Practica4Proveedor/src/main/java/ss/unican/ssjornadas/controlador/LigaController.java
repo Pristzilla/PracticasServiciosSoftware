@@ -139,7 +139,7 @@ public class LigaController {
 	public Response getRankingGoleadoresEquipo(@PathParam("id") String idGrupo,
 			@PathParam("nombre") String nombreEquipo) {
 		Response.ResponseBuilder builder;
-		List<Jugador> rankingJugadores = Collections.emptyList();
+		List<Jugador> rankingJugadores;
 		Equipo equipo;
 		Grupo g = ligaDAO.getGrupo(idGrupo);
 		if(g != null) {
@@ -222,7 +222,7 @@ public class LigaController {
 		if (g!= null) {
 			j = ligaDAO.getJugador(nombreEquipo, Integer.parseInt(dorsal));
 			if (j != null) {
-				j = ligaDAO.eliminaJugador(nombreEquipo, dorsal);
+				j = ligaDAO.eliminaJugador(nombreEquipo, Integer.parseInt(dorsal));
 				builder = Response.ok(j);
 			} else {
 				builder = Response.status(Response.Status.NOT_FOUND);

@@ -4,19 +4,21 @@ import java.io.File;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
 import ss.unican.ssjornadas.entidades.PrimeraRFEF;
 
 public class ProcesaJornadasJAXB {
 	
-	public PrimeraRFEF procesaFichero(String ordenador) {
+	private PrimeraRFEF liga = null;
 
-		JAXBContext jaxbctx = null;
-		PrimeraRFEF liga = null;
-		String ruta;
-		if(ordenador.equals("sara")) {
-			ruta="/Usuarios/Windows/Sara";
+	JAXBContext jaxbctx = null;
+	String ruta;
+	public PrimeraRFEF procesaFichero(String ordenadorDe) {
+		
+		if(ordenadorDe.equals("sara")) {
+			ruta="C:/Users/Sara/Desktop/Uni/SS/primeraRFEF.xml";
 		}
 		else {
 			ruta = "/Users/barquinj/GitHub/PracticasServiciosSoftware/primeraRFEF.xml";
@@ -32,6 +34,27 @@ public class ProcesaJornadasJAXB {
 			e.printStackTrace();
 			return null;
 		}
+		
+	}
+	public PrimeraRFEF escribeFichero(PrimeraRFEF ligaAGuardar, String ordenadorDe) {
+		liga = ligaAGuardar;
+		if(ordenadorDe.equals("sara")) {
+			ruta="C:/Users/Sara/Desktop/Uni/SS/primeraRFEF.xml";
+		}
+		else {
+			ruta = "/Users/barquinj/GitHub/PracticasServiciosSoftware/primeraRFEF.xml";
+		}
+		try {
+			jaxbctx = JAXBContext.newInstance(PrimeraRFEF.class);
 
+			// Se procesa el documento (Unmarshall)
+			// Se vuelca en un nuevo fichero XML
+			Marshaller marshaller = jaxbctx.createMarshaller();
+			marshaller.marshal(liga, new File(ruta));
+			return liga;
+		}catch(JAXBException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 }
