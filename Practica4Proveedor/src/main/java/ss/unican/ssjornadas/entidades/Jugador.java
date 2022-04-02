@@ -1,12 +1,16 @@
 package ss.unican.ssjornadas.entidades;
 
-public class Jugador implements Comparable<Jugador>{
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlID;
 
+public class Jugador implements Comparable<Jugador>{
+	
 	private int dorsal;
 	private int goles;
 	private String nombre;
 	private int tAmarillas;
 	private int tRojas;
+	private String juegaEn;
 	
 	public Jugador() {}
 	
@@ -16,8 +20,11 @@ public class Jugador implements Comparable<Jugador>{
 		this.goles = 0;
 		this.tAmarillas = 0;
 		this.tRojas = 0;
+		this.juegaEn = "";
 	}
 
+	@XmlID
+	@XmlElement()
 	public int getDorsal() {
 		return dorsal;
 	}
@@ -25,7 +32,7 @@ public class Jugador implements Comparable<Jugador>{
 	public void setDorsal(int dorsal) {
 		this.dorsal = dorsal;
 	}
-
+	@XmlElement()
 	public int getGoles() {
 		return goles;
 	}
@@ -33,7 +40,7 @@ public class Jugador implements Comparable<Jugador>{
 	public void setGoles(int goles) {
 		this.goles = goles;
 	}
-
+	@XmlElement()
 	public String getNombre() {
 		return nombre;
 	}
@@ -41,7 +48,7 @@ public class Jugador implements Comparable<Jugador>{
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
+	@XmlElement()
 	public int gettAmarillas() {
 		return tAmarillas;
 	}
@@ -49,7 +56,7 @@ public class Jugador implements Comparable<Jugador>{
 	public void settAmarillas(int tAmarillas) {
 		this.tAmarillas = tAmarillas;
 	}
-
+	@XmlElement()
 	public int gettRojas() {
 		return tRojas;
 	}
@@ -57,7 +64,15 @@ public class Jugador implements Comparable<Jugador>{
 	public void settRojas(int tRojas) {
 		this.tRojas = tRojas;
 	}
-	
+	@XmlElement()
+	public String getJuegaEn() {
+		return juegaEn;
+	}
+
+	public void setJuegaEn(String juegaEn) {
+		this.juegaEn = juegaEn;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 

@@ -62,15 +62,9 @@ public class LigaDAO implements ILigaDAO {
 			this.procesador.escribeFichero(liga,ordenador);
 			return  e;
 		}
-		return  null;
+		return null;
 	}
 
-	//	// jugadores
-	//	public List<Jugador> getJugadores(String grupo) {
-	//		this.liga = this.procesador.procesaFichero(ordenador);
-	//		this.liga.getGrupo(grupo)
-	//		return null;
-	//	}
 
 	public Jugador getJugador(String nombreEquipo, int dorsal) {
 		this.liga = this.procesador.procesaFichero(ordenador);
@@ -89,9 +83,8 @@ public class LigaDAO implements ILigaDAO {
 		if(equipo != null) {
 			jugador = equipo.modificaJugador(j);
 			this.procesador.escribeFichero(liga,ordenador);
-			return jugador;
 		}
-		return null;
+		return jugador;
 	}
 
 
@@ -100,9 +93,8 @@ public class LigaDAO implements ILigaDAO {
 		Jugador j = this.liga.getEquipo(nombreEquipo).eliminaJugador(dorsal);
 		if(j != null) {
 			this.procesador.escribeFichero(liga,ordenador);
-			return j;
 		}
-		return null;
+		return j;
 		
 	}
 

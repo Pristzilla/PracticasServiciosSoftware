@@ -3,8 +3,11 @@ package ss.unican.ssjornadas.entidades;
 import java.util.Collections;
 import java.util.List;
 
-public class Equipo implements Comparable<Equipo> {
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlID;
 
+public class Equipo implements Comparable<Equipo> {
+	
 	private String nombre;
 	private int puntos;
 	private int partidosGanados;
@@ -22,7 +25,8 @@ public class Equipo implements Comparable<Equipo> {
 		this.partidosPerdidos = 0;
 		this.jugadores = Collections.emptyList();
 	}
-
+	@XmlID
+	@XmlElement()
 	public String getNombre() {
 		return nombre;
 	}
@@ -30,7 +34,7 @@ public class Equipo implements Comparable<Equipo> {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
+	@XmlElement()
 	public int getPuntos() {
 		return puntos;
 	}
@@ -38,7 +42,7 @@ public class Equipo implements Comparable<Equipo> {
 	public void setPuntos(int puntos) {
 		this.puntos = puntos;
 	}
-
+	@XmlElement()
 	public int getPartidosGanados() {
 		return partidosGanados;
 	}
@@ -46,7 +50,7 @@ public class Equipo implements Comparable<Equipo> {
 	public void setPartidosGanados(int partidosGanados) {
 		this.partidosGanados = partidosGanados;
 	}
-
+	@XmlElement()
 	public int getPartidosJugados() {
 		return partidosJugados;
 	}
@@ -54,7 +58,7 @@ public class Equipo implements Comparable<Equipo> {
 	public void setPartidosJugados(int partidosJugados) {
 		this.partidosJugados = partidosJugados;
 	}
-
+	@XmlElement()
 	public int getPartidosPerdidos() {
 		return partidosPerdidos;
 	}

@@ -4,7 +4,13 @@ package ss.unican.ssjornadas.entidades;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement(name="primeraRFEF")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class PrimeraRFEF {
 
 	private List<Grupo> grupos;
@@ -14,7 +20,7 @@ public class PrimeraRFEF {
 	}
 
 	// Grupos 
-
+	@XmlElement(name="grupo")
 	public List<Grupo> getGrupos(){
 		return this.grupos;
 	}

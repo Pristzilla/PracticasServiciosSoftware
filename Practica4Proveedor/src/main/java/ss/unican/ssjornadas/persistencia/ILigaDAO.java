@@ -31,13 +31,6 @@ public interface ILigaDAO {
 	 */
 	public Equipo actualizaEquipo(Equipo e);
 
-//	/**
-//	 * Retorna la lista completa de jugadores del
-//	 * grupo que se pasa como parametro
-//	 * @param El grupo
-//	 * @return Lista de jugadores inscritos en el grupo
-//	 */
-//	public List<Jugador> getJugadores(String grupo);
 
 	/**
 	 * Retorna el jugador cuyo equipo y dorsal se pasan 

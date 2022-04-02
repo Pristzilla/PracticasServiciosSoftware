@@ -3,6 +3,9 @@ package ss.unican.ssjornadas.entidades;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlID;
+
 
 public class Grupo {
 	private String id;
@@ -15,6 +18,8 @@ public class Grupo {
 		equipos = new LinkedList<Equipo>();
 	}
 
+	@XmlID
+	@XmlElement()
 	public String getId() {
 		return id;
 	}
@@ -22,7 +27,7 @@ public class Grupo {
 	public void setId(String id) {
 		this.id = id;
 	}
-
+	@XmlElement(name="equipo")
 	public List<Equipo> getEquipos() {
 		return equipos;
 	}

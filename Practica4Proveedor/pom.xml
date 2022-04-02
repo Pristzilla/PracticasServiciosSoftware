@@ -37,6 +37,6 @@
 	</dependencies>
 
 	<build>
-		<finalName>SSJornadas</finalName>
+		<finalName>SSPrimeraRFEF</finalName>
 	</build>
 </project>
