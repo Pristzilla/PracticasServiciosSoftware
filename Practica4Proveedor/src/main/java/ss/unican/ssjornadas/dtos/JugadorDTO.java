@@ -1,9 +1,14 @@
 package ss.unican.ssjornadas.dtos;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import ss.unican.ssjornadas.entidades.Jugador;
 
+@XmlRootElement(name="jugador")
+@XmlAccessorType(XmlAccessType.PROPERTY)
 public class JugadorDTO {
 
 	private int dorsal;

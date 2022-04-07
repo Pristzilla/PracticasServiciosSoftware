@@ -2,11 +2,16 @@ package ss.unican.ssjornadas.dtos;
 
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import ss.unican.ssjornadas.entidades.Equipo;
 import ss.unican.ssjornadas.entidades.Jugador;
 
+@XmlRootElement(name="equipo")
+@XmlAccessorType(XmlAccessType.PROPERTY)
 public class EquipoDTO {
 
 	private String nombre;

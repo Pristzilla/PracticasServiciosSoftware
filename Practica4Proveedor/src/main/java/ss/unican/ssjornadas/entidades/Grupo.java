@@ -3,10 +3,12 @@ package ss.unican.ssjornadas.entidades;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlID;
 
-
+@XmlAccessorType(XmlAccessType.PROPERTY)
 public class Grupo {
 	private String id;
 	private List<Equipo> equipos;
@@ -71,8 +73,5 @@ public class Grupo {
 			return false;
 		return true;
 	}
-	
-	
-	
 
 }
