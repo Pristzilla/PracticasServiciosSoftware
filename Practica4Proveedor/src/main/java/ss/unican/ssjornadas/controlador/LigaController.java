@@ -23,6 +23,10 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
+import ss.unican.ssjornadas.dtos.ClasificacionDTO;
+import ss.unican.ssjornadas.dtos.EquipoDTO;
+import ss.unican.ssjornadas.dtos.JugadorDTO;
+import ss.unican.ssjornadas.dtos.RankingDTO;
 import ss.unican.ssjornadas.entidades.Equipo;
 import ss.unican.ssjornadas.entidades.Grupo;
 import ss.unican.ssjornadas.entidades.Jugador;
@@ -46,13 +50,14 @@ public class LigaController {
 	@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
 	public Response getClasificacionActual(@PathParam("id") String idGrupo) {
 		Response.ResponseBuilder builder;
-		List<Equipo> clasif;
+		List<Equipo> equipos;
 		Grupo g = ligaDAO.getGrupo(idGrupo);
 
 		if(g != null) {
-			clasif = ligaDAO.getEquipos(idGrupo);
-			Collections.sort(clasif);
-			builder = Response.ok(clasif);
+			equipos = ligaDAO.getEquipos(idGrupo);
+			Collections.sort(equipos);
+			ClasificacionDTO clasificacion = new ClasificacionDTO(equipos);
+			builder = Response.ok(clasificacion);
 		}
 		else {
 			builder = Response.status(Response.Status.NOT_FOUND);
@@ -75,7 +80,8 @@ public class LigaController {
 				rankingJugadores.addAll(e.getJugadores());
 			}
 			Collections.sort(rankingJugadores);
-			builder = Response.ok(rankingJugadores);
+			RankingDTO ranking = new RankingDTO(rankingJugadores);
+			builder = Response.ok(ranking);
 		}
 		else {
 			builder = Response.status(Response.Status.NOT_FOUND);
@@ -89,12 +95,13 @@ public class LigaController {
 	@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
 	public Response getEquipo(@PathParam("id")String idGrupo, @PathParam("nombre") String nombreEquipo) {
 		Response.ResponseBuilder builder;
-		Equipo equipo;
+		Equipo e;
 		Grupo g = ligaDAO.getGrupo(idGrupo);
 
 		if(g != null) {
-			equipo = ligaDAO.getEquipo(nombreEquipo);
-			if(equipo != null) {
+			e = ligaDAO.getEquipo(nombreEquipo);
+			if(e != null) {
+				EquipoDTO equipo = new EquipoDTO(e);
 				builder = Response.ok(equipo);
 			}
 			else {
@@ -121,7 +128,8 @@ public class LigaController {
 			e = ligaDAO.getEquipo(nombreEquipo);
 			if (e != null) {
 				e = ligaDAO.actualizaEquipo(equipo);
-				builder = Response.ok(e);
+				EquipoDTO equipoActualizado = new EquipoDTO(e);
+				builder = Response.ok(equipoActualizado);
 			}
 			else {
 				builder = Response.status(Response.Status.NOT_FOUND);
@@ -146,9 +154,9 @@ public class LigaController {
 			equipo = ligaDAO.getEquipo(nombreEquipo);
 			if(equipo != null) {
 				rankingJugadores = equipo.getJugadores();
-
 				Collections.sort(rankingJugadores);
-				builder = Response.ok(rankingJugadores);
+				RankingDTO ranking = new RankingDTO(rankingJugadores);
+				builder = Response.ok(ranking);
 			}
 			else {
 				builder = Response.status(Response.Status.NOT_FOUND);
@@ -173,7 +181,8 @@ public class LigaController {
 		if (g!= null) {
 			j = ligaDAO.getJugador(nombreEquipo, Integer.parseInt(dorsal));
 			if (j != null) {
-				builder = Response.ok(j);
+				JugadorDTO jugador = new JugadorDTO(j);
+				builder = Response.ok(jugador);
 			} else {
 				builder = Response.status(Response.Status.NOT_FOUND);
 			}
@@ -201,7 +210,8 @@ public class LigaController {
 				builder = Response.created(location);
 			} else {
 				j = ligaDAO.actualizaJugador(nombreEquipo, jugador);
-				builder = Response.ok(j);
+				JugadorDTO jugadorActualizado = new JugadorDTO(j);
+				builder = Response.ok(jugadorActualizado);
 			}
 		}
 		else {
@@ -223,7 +233,8 @@ public class LigaController {
 			j = ligaDAO.getJugador(nombreEquipo, Integer.parseInt(dorsal));
 			if (j != null) {
 				j = ligaDAO.eliminaJugador(nombreEquipo, Integer.parseInt(dorsal));
-				builder = Response.ok(j);
+				JugadorDTO jugador = new JugadorDTO(j);
+				builder = Response.ok(jugador);
 			} else {
 				builder = Response.status(Response.Status.NOT_FOUND);
 			}

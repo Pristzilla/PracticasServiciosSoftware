@@ -21,12 +21,12 @@ public class ClasificacionDTO {
 	public ClasificacionDTO() {};
 	
 	
-	public ClasificacionDTO(Grupo g) {
-		equipos = new LinkedList<EquipoDTO>();
-		
-		for(Equipo e:g.getEquipos()) {
-			EquipoDTO dto = new EquipoDTO(e);
-			equipos.add(dto);
+	public ClasificacionDTO(List<Equipo> equiposParam) {
+		this.equipos = new LinkedList<EquipoDTO>();
+		EquipoDTO eDTO = null;
+		for(Equipo e: equiposParam) {
+			eDTO = new EquipoDTO(e);
+			this.equipos.add(eDTO);
 		}
 	}
 	
@@ -40,6 +40,4 @@ public class ClasificacionDTO {
 		this.equipos = equipos;
 	}
 	
-	
-
 }
