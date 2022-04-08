@@ -4,15 +4,15 @@
  * Date: 25 mar. 2022
  *
  */
-package ss.unican.ssjornadas.persistencia;
+package es.unican.ss.ssjornadas.persistencia;
 
 import java.util.List;
 
-import ss.unican.ssjornadas.entidades.Equipo;
-import ss.unican.ssjornadas.entidades.Grupo;
-import ss.unican.ssjornadas.entidades.Jugador;
-import ss.unican.ssjornadas.entidades.PrimeraRFEF;
-import ss.unican.ssjornadas.procesaXML.ProcesaJornadasJAXB;
+import es.unican.ss.ssjornadas.entidades.Equipo;
+import es.unican.ss.ssjornadas.entidades.Grupo;
+import es.unican.ss.ssjornadas.entidades.Jugador;
+import es.unican.ss.ssjornadas.entidades.PrimeraRFEF;
+import es.unican.ss.ssjornadas.procesaxml.ProcesaJornadasJAXB;
 
 
 /**

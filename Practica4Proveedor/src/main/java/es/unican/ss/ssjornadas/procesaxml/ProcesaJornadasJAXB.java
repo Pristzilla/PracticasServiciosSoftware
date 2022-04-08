@@ -1,4 +1,4 @@
-package ss.unican.ssjornadas.procesaXML;
+package es.unican.ss.ssjornadas.procesaxml;
 
 import java.io.File;
 
@@ -7,7 +7,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
-import ss.unican.ssjornadas.entidades.PrimeraRFEF;
+import es.unican.ss.ssjornadas.entidades.PrimeraRFEF;
 
 public class ProcesaJornadasJAXB {
 	
@@ -42,7 +42,7 @@ public class ProcesaJornadasJAXB {
 			ruta="C:/Users/Sara/Desktop/Uni/SS/primeraRFEF.xml";
 		}
 		else {
-			ruta = "/Users/barquinj/GitHub/PracticasServiciosSoftware/primeraRFEF.xml";
+			ruta = "/Users/barquinj/GitHub/PracticasServiciosSoftware/primeraRFEFcopia.xml";
 		}
 		try {
 			jaxbctx = JAXBContext.newInstance(PrimeraRFEF.class);

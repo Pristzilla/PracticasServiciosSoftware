@@ -1,10 +1,10 @@
-package ss.unican.ssjornadas.persistencia;
+package es.unican.ss.ssjornadas.persistencia;
 
 import java.util.List;
 
-import ss.unican.ssjornadas.entidades.Equipo;
-import ss.unican.ssjornadas.entidades.Grupo;
-import ss.unican.ssjornadas.entidades.Jugador;
+import es.unican.ss.ssjornadas.entidades.Equipo;
+import es.unican.ss.ssjornadas.entidades.Grupo;
+import es.unican.ss.ssjornadas.entidades.Jugador;
 
 public interface ILigaDAO {
 

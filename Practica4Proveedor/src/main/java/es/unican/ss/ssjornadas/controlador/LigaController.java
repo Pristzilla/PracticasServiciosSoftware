@@ -4,7 +4,7 @@
  * Date: 25 mar. 2022
  *
  */
-package ss.unican.ssjornadas.controlador;
+package es.unican.ss.ssjornadas.controlador;
 
 
 import java.net.URI;
@@ -23,15 +23,15 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
-import ss.unican.ssjornadas.dtos.ClasificacionDTO;
-import ss.unican.ssjornadas.dtos.EquipoDTO;
-import ss.unican.ssjornadas.dtos.JugadorDTO;
-import ss.unican.ssjornadas.dtos.RankingDTO;
-import ss.unican.ssjornadas.entidades.Equipo;
-import ss.unican.ssjornadas.entidades.Grupo;
-import ss.unican.ssjornadas.entidades.Jugador;
-import ss.unican.ssjornadas.persistencia.ILigaDAO;
-import ss.unican.ssjornadas.persistencia.LigaDAO;
+import es.unican.ss.ssjornadas.dtos.ClasificacionDTO;
+import es.unican.ss.ssjornadas.dtos.EquipoDTO;
+import es.unican.ss.ssjornadas.dtos.JugadorDTO;
+import es.unican.ss.ssjornadas.dtos.RankingDTO;
+import es.unican.ss.ssjornadas.entidades.Equipo;
+import es.unican.ss.ssjornadas.entidades.Grupo;
+import es.unican.ss.ssjornadas.entidades.Jugador;
+import es.unican.ss.ssjornadas.persistencia.ILigaDAO;
+import es.unican.ss.ssjornadas.persistencia.LigaDAO;
 
 /**
  * @author barquinj

@@ -1,4 +1,4 @@
-package ss.unican.ssjornadas.dtos;
+package es.unican.ss.ssjornadas.dtos;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -8,8 +8,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import ss.unican.ssjornadas.entidades.Equipo;
-import ss.unican.ssjornadas.entidades.Grupo;
+import es.unican.ss.ssjornadas.entidades.Equipo;
+import es.unican.ss.ssjornadas.entidades.Grupo;
 
 
 @XmlRootElement(name="clasificacion")

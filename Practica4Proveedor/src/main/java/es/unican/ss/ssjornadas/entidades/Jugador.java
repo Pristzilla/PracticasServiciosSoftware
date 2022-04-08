@@ -1,4 +1,4 @@
-package ss.unican.ssjornadas.entidades;
+package es.unican.ss.ssjornadas.entidades;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -26,7 +26,7 @@ public class Jugador implements Comparable<Jugador>{
 		this.juegaEn = "";
 	}
 
-	@XmlID
+
 	@XmlElement()
 	public int getDorsal() {
 		return dorsal;
