@@ -66,7 +66,11 @@ public class PrimeraRFEF {
 	}
 
 	public List<Equipo> getEquipos(String idGrupo) {
-		return this.getGrupo(idGrupo).getEquipos();
+		Grupo g = this.getGrupo(idGrupo);
+		if(g!=null) {
+			return g.getEquipos();
+		}
+		return null;
 	}
 
 

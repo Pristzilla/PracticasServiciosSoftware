@@ -36,7 +36,7 @@ public class LigaDAO implements ILigaDAO {
 		this.ordenador = ordenador;
 
 	}
-	
+
 
 	//grupos 
 	public Grupo getGrupo(String idGrupo) {
@@ -57,11 +57,14 @@ public class LigaDAO implements ILigaDAO {
 
 	public Equipo actualizaEquipo(Equipo e) {
 		this.liga = this.procesador.procesaFichero(ordenador);
-		Equipo equipo = this.liga.getEquipo(e.getNombre());
-		if (equipo != null && this.liga.modificaEquipo(e)) {
-			this.procesador.escribeFichero(liga,ordenador);
-			return  e;
+		if(e!=null) {
+			Equipo equipo = this.liga.getEquipo(e.getNombre());
+			if (equipo != null && this.liga.modificaEquipo(e)) {
+				this.procesador.escribeFichero(liga,ordenador);
+				return  e;
+			}
 		}
+		
 		return null;
 	}
 
@@ -95,7 +98,7 @@ public class LigaDAO implements ILigaDAO {
 			this.procesador.escribeFichero(liga,ordenador);
 		}
 		return j;
-		
+
 	}
 
 	public Jugador anhadeJugador(String nombreEquipo, Jugador jugador) {
