@@ -64,7 +64,7 @@ public class LigaDAO implements ILigaDAO {
 				return  e;
 			}
 		}
-		
+
 		return null;
 	}
 
@@ -103,10 +103,14 @@ public class LigaDAO implements ILigaDAO {
 
 	public Jugador anhadeJugador(String nombreEquipo, Jugador jugador) {
 		this.liga = this.procesador.procesaFichero(ordenador);
-		Jugador j = this.liga.getEquipo(nombreEquipo).getJugador(jugador.getDorsal());
-		if(j == null) {
-			return this.liga.getEquipo(nombreEquipo).addJugador(jugador);
+		Equipo e = this.liga.getEquipo(nombreEquipo);
+		if (e!=null) {
+			Jugador j = e.getJugador(jugador.getDorsal());
+			if(j == null) {
+				return this.liga.getEquipo(nombreEquipo).addJugador(jugador);
+			}
 		}
+
 		return null;
 	}
 
