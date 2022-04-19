@@ -37,7 +37,7 @@ import es.unican.ss.ssjornadas.persistencia.LigaDAO;
  * @author barquinj
  *
  */
-@Path("/liga/grupo/{id}")
+@Path("SSPrimeraRFEF/liga/grupo")
 public class LigaController {
 
 	private ILigaDAO ligaDAO;
@@ -47,8 +47,10 @@ public class LigaController {
 	}
 
 	@GET
+	@Path("/{id}")
 	@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
 	public Response getClasificacionActual(@PathParam("id") String idGrupo) {
+		System.out.println("getClasificacionActual CONTROLLER");
 		Response.ResponseBuilder builder;
 		List<Equipo> equipos;
 		Grupo g = ligaDAO.getGrupo(idGrupo);
@@ -67,7 +69,7 @@ public class LigaController {
 	}
 
 	@GET
-	@Path("/ranking")
+	@Path("/{id}/ranking")
 	@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
 	public Response getRankingGoleadoresGrupo(@PathParam("id") String idGrupo) {
 		Response.ResponseBuilder builder;
