@@ -6,4 +6,4 @@
 		name="EstimacionParadasTUS" url-pattern="/*"
 		wsdl="WEB-INF/wsdl/SSEstimacionParadasTUS.wsdl" />
  -->
-</endpoints>
+</endpoints> 

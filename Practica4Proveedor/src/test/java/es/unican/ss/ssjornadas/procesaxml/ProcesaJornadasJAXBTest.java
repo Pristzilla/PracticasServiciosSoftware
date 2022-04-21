@@ -17,7 +17,7 @@ import es.unican.ss.ssjornadas.entidades.Jugador;
 import es.unican.ss.ssjornadas.entidades.PrimeraRFEF;
 
 public class ProcesaJornadasJAXBTest {
-
+/*
 	private ProcesaJornadasJAXB sut = new ProcesaJornadasJAXB();
 	
 
@@ -46,5 +46,5 @@ public class ProcesaJornadasJAXBTest {
 		sut.escribeFichero(liga, "javi");
 		assertEquals("I", "I");
 	}
-
+*/
 }

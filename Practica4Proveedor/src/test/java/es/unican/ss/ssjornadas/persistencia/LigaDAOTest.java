@@ -11,7 +11,7 @@ import es.unican.ss.ssjornadas.entidades.Equipo;
 import es.unican.ss.ssjornadas.entidades.Grupo;
 
 public class LigaDAOTest {
-
+/*
 	private ILigaDAO sut = new LigaDAO();
 
 
@@ -122,5 +122,5 @@ public class LigaDAOTest {
 	//	public void testAnhadeJugador() {
 	//		fail("Not yet implemented");
 	//	}
-
+*/
 }
