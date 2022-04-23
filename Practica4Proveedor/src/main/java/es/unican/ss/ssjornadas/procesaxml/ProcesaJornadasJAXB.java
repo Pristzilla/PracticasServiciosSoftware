@@ -42,7 +42,7 @@ public class ProcesaJornadasJAXB {
 			ruta="C:/Users/Sara/Desktop/Uni/SS/primeraRFEF.xml";
 		}
 		else {
-			ruta = "/Users/barquinj/GitHub/PracticasServiciosSoftware/primeraRFEFcopia.xml";
+			ruta = "/Users/barquinj/GitHub/PracticasServiciosSoftware/primeraRFEF.xml";
 		}
 		try {
 			jaxbctx = JAXBContext.newInstance(PrimeraRFEF.class);

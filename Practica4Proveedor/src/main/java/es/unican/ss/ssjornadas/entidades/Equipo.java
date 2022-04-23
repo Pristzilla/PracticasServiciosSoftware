@@ -146,7 +146,7 @@ public class Equipo implements Comparable<Equipo> {
 	}
 
 	public Jugador eliminaJugador(int dorsal) {
-		for(int i = jugadores.size(); i >=0; i--) {
+		for(int i = jugadores.size() -1; i >=0; i--) {
 			if (jugadores.get(i).getDorsal() == dorsal) {
 				return jugadores.remove(i);
 			}

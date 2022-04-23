@@ -9,6 +9,7 @@ package es.unican.ss.ssjornadas.controlador;
 
 import java.net.URI;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -72,7 +73,7 @@ public class LigaController {
 	@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
 	public Response getRankingGoleadoresGrupo(@PathParam("id") String idGrupo) {
 		Response.ResponseBuilder builder;
-		List<Jugador> rankingJugadores = Collections.emptyList();
+		List<Jugador> rankingJugadores = new LinkedList<Jugador>();
 		List<Equipo> equipos;
 		Grupo g = ligaDAO.getGrupo(idGrupo);
 		if(g != null) {
@@ -143,7 +144,7 @@ public class LigaController {
 	}
 
 	@GET
-	@Path("/{nombre}/rankingEquipo")
+	@Path("/{nombre}/ranking")
 	@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
 	public Response getRankingGoleadoresEquipo(@PathParam("id") String idGrupo,
 			@PathParam("nombre") String nombreEquipo) {

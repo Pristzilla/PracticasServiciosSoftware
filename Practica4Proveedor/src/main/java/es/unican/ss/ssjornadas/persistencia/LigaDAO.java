@@ -104,13 +104,14 @@ public class LigaDAO implements ILigaDAO {
 	public Jugador anhadeJugador(String nombreEquipo, Jugador jugador) {
 		this.liga = this.procesador.procesaFichero(ordenador);
 		Equipo e = this.liga.getEquipo(nombreEquipo);
-		if (e!=null) {
+		if (e != null) {
 			Jugador j = e.getJugador(jugador.getDorsal());
 			if(j == null) {
-				return this.liga.getEquipo(nombreEquipo).addJugador(jugador);
+				Jugador jug = this.liga.getEquipo(nombreEquipo).addJugador(jugador);
+				if (jug != null) this.procesador.escribeFichero(liga,ordenador);
+				return jug;
 			}
 		}
-
 		return null;
 	}
 

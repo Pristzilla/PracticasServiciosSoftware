@@ -97,12 +97,12 @@ public class Jugador implements Comparable<Jugador>{
 
 
 	public int compareTo(Jugador j){
-		if (this.goles > j.goles) {
+		if (this.goles < j.goles) {
 
 			// if current object is greater,then return 1
 			return 1;
 		}
-		else if (this.goles < j.goles) {
+		else if (this.goles > j.goles) {
 
 			// if current object is greater,then return -1
 			return -1;
