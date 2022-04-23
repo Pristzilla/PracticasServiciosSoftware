@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.Invocation;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.GenericType;
@@ -18,7 +19,7 @@ public class PrimeraRFEFCliente {
 		// Creamos el WebTarget base (raíz del servicio o recurso raíz)
 		WebTarget base = client.target("http://localhost:8080/SSPrimeraRFEF/liga/"); 
 		// Recurso Pepe
-		WebTarget resource = base.path("grupo/I"); 
+		WebTarget resource = base.path("I"); 
 		// Creamos la invocacion con ACCEPT = text/plain
 		Response response = resource.request(MediaType.APPLICATION_XML).get();
 		procesaRespuesta(response);
@@ -27,16 +28,17 @@ public class PrimeraRFEFCliente {
 		response = resource.request(MediaType.APPLICATION_XML).get(); 
 		procesaRespuesta(response);
 		// Creamos un nuevo usuario
-		Usuario u = new Usuario("Manuel", "manuel@hotmail.com");
-		resource = base.path("usuariosv3/Manuel");
+		Equipo u = new Equipo("Albacete");
+		resource = base.path("/Albacete");
 		response = resource.request().put(Entity.xml(u));
+	
 
 	}
 
 	private static void procesaRespuesta(Response response) {
 		if (response.getStatus() == 200) {
-			Usuario us= response.readEntity(Usuario.class);
-			System.out.println(us.toString());
+			Equipo equipo = response.readEntity(Equipo.class);
+			System.out.println(equipo.toString());
 		} else if (response.getStatus()==404) {
 			System.out.println("El usuario indicado no existe");
 		} else {
