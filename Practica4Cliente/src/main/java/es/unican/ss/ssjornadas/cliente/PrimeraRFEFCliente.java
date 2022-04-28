@@ -12,13 +12,13 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import es.unican.ss.ssjornadas.entidades.Equipo;
-import es.unican.ss.ssjornadas.entidades.Gol;
+import es.unican.ss.ssjornadas.entidadespartido.Gol;
 import es.unican.ss.ssjornadas.entidades.Grupo;
-import es.unican.ss.ssjornadas.entidades.Jornada;
+import es.unican.ss.ssjornadas.entidadespartido.Jornada;
 import es.unican.ss.ssjornadas.entidades.Jugador;
-import es.unican.ss.ssjornadas.entidades.Partido;
-import es.unican.ss.ssjornadas.entidades.TarjetaAmarilla;
-import es.unican.ss.ssjornadas.entidades.TarjetaRoja;
+import es.unican.ss.ssjornadas.entidadespartido.Partido;
+import es.unican.ss.ssjornadas.entidadespartido.TarjetaAmarilla;
+import es.unican.ss.ssjornadas.entidadespartido.TarjetaRoja;
 import es.unican.ss.ssjornadas.procesaxml.ProcesaJornadaJAXB;
 
 public class PrimeraRFEFCliente {
@@ -40,28 +40,58 @@ public class PrimeraRFEFCliente {
 		String idgrupo = jornada.getGrupo();
 		
 		// Enviamos petición a GrupoI (existe)
-		WebTarget resource = base.path(idgrupo);
-		Response response = resource.request(MediaType.APPLICATION_XML).get(); 
-		Grupo grupo = procesaRespuestaGrupo(response);
+		WebTarget resourceGrupo = base.path(idgrupo);
+		
 		
 		for(Partido p: jornada.getPartidos()) {
-			Equipo e = grupo.getEquipo(p.getLocal().getNombre());
-			if(e != null) {
-				e.setPartidosJugados(e.getPartidosJugados()+1);
-				if(p.getLocal().getGoles().size() > p.getVisitante().getGoles().size()) {
-					// gana el visitante
-					e.setPartidosGanados(e.getPartidosGanados()+1);
+			String nombreLocal = p.getLocal().getNombre();
+			String nombreVisitante = p.getVisitante().getNombre();
+			
+			// actualizamos paths LOCAL y Visitante
+			WebTarget resourceLocal = resourceGrupo.path(nombreLocal);
+			WebTarget resourceVisitante = resourceGrupo.path(nombreVisitante);
+
+			// pedimos equipo LOCAL
+			Response responseLocal = resourceLocal.request(MediaType.APPLICATION_XML).get(); 
+			Equipo eLocal = procesaRespuestaEquipo(responseLocal);
+			// peticion al equipo VISITANTE
+			Response responseVisitante = resourceVisitante.request(MediaType.APPLICATION_XML).get(); 
+			Equipo eVisitante = procesaRespuestaEquipo(responseVisitante);
+			 
+			if(eLocal != null) {
+				int jugadoslocal = eLocal.getPartidosJugados();
+				eLocal.setPartidosJugados(jugadoslocal+1);
+				
+				if(ganaLocal(p)) {
+					// gana el local
+					int ganadoslocal = eLocal.getPartidosGanados();
+					eLocal.setPartidosGanados(ganadoslocal+1);
 				}else {
-					e.setPartidosPerdidos(e.getPartidosPerdidos()+1);
+					int perdidoslocal = eLocal.getPartidosPerdidos();
+					eLocal.setPartidosPerdidos(perdidoslocal+1);
 				}
+				// Actualizo equipos
+				
+				// recorro goles
+				String dorsalJugador;
 				for(Gol g: p.getLocal().getGoles()) {
-					Jugador j = e.getJugador(g.getDorsal());
-					int golesPrevios = j.getGoles();
-					j.setGoles(golesPrevios+1);
-					// guardar jugador
+					dorsalJugador = String.valueOf(g.getDorsal());
+					WebTarget resourceJugador = resourceLocal.path(dorsalJugador);
+					Response responsejugador = resourceJugador.request(MediaType.APPLICATION_XML).get(); 
+					Jugador j = procesaRespuestaJugador(responsejugador);
+					if(j!=null) {
+						int golesPrevios = j.getGoles();
+						j.setGoles(golesPrevios+1);
+						// guardar jugador
+						responsejugador = resourceJugador.request().put(Entity.xml(j));
+						procesaRespuestaJugador(responsejugador);
+						
+					}
+					
+					
 				}
 				for(TarjetaAmarilla ta: p.getLocal().getTAmarillas()) {
-					Jugador j = e.getJugador(ta.getDorsal());
+					dorsalJugador = String.valueOf(ta.getDorsal());
 					int amPrevias = j.gettAmarillas();
 					j.settAmarillas(amPrevias+1);
 				}
@@ -72,6 +102,26 @@ public class PrimeraRFEFCliente {
 				}
 				
 			}
+			else {
+				System.out.println("Error: equipo local con nombre: " + p.getLocal().getNombre() + " no encontrado." + resourceLocal.getUri());
+			}
+			if(eVisitante!=null) {
+				int jugadosvisit = eVisitante.getPartidosJugados();
+				
+				eVisitante.setPartidosJugados(jugadosvisit+1);
+				
+				if(ganaLocal(p)) {
+					int perdidosvisit = eVisitante.getPartidosPerdidos();
+					eVisitante.setPartidosPerdidos(perdidosvisit+1);
+				} else {
+					int ganadosvisit = eVisitante.getPartidosGanados();
+					eVisitante.setPartidosGanados(ganadosvisit+1);
+
+				}
+
+			}else {
+				System.out.println("Error: equipo visitante con nombre: " + p.getVisitante().getNombre() + " no encontrado." + resourceVisitante.getUri());
+			}
 		}
 
 	
@@ -79,18 +129,37 @@ public class PrimeraRFEFCliente {
 
 	}
 
-	private static Grupo procesaRespuestaGrupo(Response response) {
+	private static Equipo procesaRespuestaEquipo(Response response) {
 		if (response.getStatus() == 200) {
-			Grupo grupo = response.readEntity(Grupo.class);
-			System.out.println(grupo.toString());
-			return grupo;
+			Equipo equip = response.readEntity(Equipo.class);
+			System.out.println(equip.toString());
+			return equip;
 		} else if (response.getStatus() == 404) {
-			System.out.println("El grupo indicado no existe");
+			System.out.println("El equipo indicado no existe");
 			return null;
 		} else {
 			System.out.println(response.getStatus());
 			return null;
 		}
+	}
+	
+	private static Jugador procesaRespuestaJugador(Response response) {
+		if (response.getStatus() == 200) {
+			Jugador jugador = response.readEntity(Jugador.class);
+			System.out.println(jugador.toString());
+			return jugador;
+		} else if (response.getStatus() == 404) {
+			System.out.println("El jugador indicado no existe");
+			return null;
+		} else {
+			System.out.println(response.getStatus());
+			return null;
+		}
+	}
+	
+	private static boolean ganaLocal(Partido p) {
+		return p.getLocal().getGoles().size()>p.getVisitante().getGoles().size();
+		
 	}
 
 }

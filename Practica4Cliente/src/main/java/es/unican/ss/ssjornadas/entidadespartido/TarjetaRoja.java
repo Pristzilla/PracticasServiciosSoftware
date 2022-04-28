@@ -1,17 +1,14 @@
-package es.unican.ss.ssjornadas.entidades;
+package es.unican.ss.ssjornadas.entidadespartido;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 
-@XmlAccessorType(XmlAccessType.PROPERTY)
-public class Gol {
+public class TarjetaRoja {
 	
 	private int dorsal;
 	private int minuto;
 	
-	public Gol() {}
-
+	public TarjetaRoja() {}
+	
 	@XmlAttribute
 	public int getDorsal() {
 		return dorsal;
@@ -28,11 +25,9 @@ public class Gol {
 	public void setMinuto(int minuto) {
 		this.minuto = minuto;
 	}
-	
 	@Override
 	public String toString() {
 		return "Dorsal: "+ this.dorsal + "\tMinuto: " +this.minuto +"\n";
 	}
-	
 
 }

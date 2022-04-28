@@ -14,47 +14,61 @@ import es.unican.ss.ssjornadas.entidades.Equipo;
 import es.unican.ss.ssjornadas.entidades.Grupo;
 import es.unican.ss.ssjornadas.entidades.Jugador;
 
-
-@XmlRootElement(name="clasificacion")
+@XmlRootElement(name = "clasificacion")
 @XmlAccessorType(XmlAccessType.PROPERTY)
 public class ClasificacionDTO {
-	
+
 	private List<AtomLink> equipos;
 	private AtomLink self;
 	private AtomLink next;
 	private AtomLink previous;
-	
-	public ClasificacionDTO() {};
-	
-	
+
+	public ClasificacionDTO() {
+	};
+
 	public ClasificacionDTO(List<EquipoDTO> equiposParam, UriInfo uri) {
-		for (EquipoDTO e: equiposParam) {
+		for (EquipoDTO e : equiposParam) {
 			// TODO: preguntar si el getBaseUri coge el 'liga/{id}/'
-			AtomLink equipoLink = new AtomLink ("equipo", uri.getBaseUriBuilder().path(e.getNombre()).build().toString());
+			// no, no lo coge, solo el localhost:8080/nombreWAR
+			AtomLink equipoLink = new AtomLink("equipo", uri.getBaseUriBuilder().path(e.getNombre()).build().toString());
 			equipos.add(equipoLink);
 		}
 	}
-	
-	@XmlElement(name="equipo")
+
+	@XmlElement(name = "equipo")
 	public List<NestedReference> getEquipos() {
 		return equipos;
 	}
 
-
 	public void setEquipos(List<NestedReference> equipos) {
 		this.equipos = equipos;
 	}
-	
-	@XmlElement
-	public AtomLink getSelf() {return self;}
-	public void setSelf(AtomLink self) {this.self = self;}
 
 	@XmlElement
-	public AtomLink getNext() {return next;}
-	public void setNext(AtomLink next) {this.next = next;}
-	
+	public AtomLink getSelf() {
+		return self;
+	}
+
+	public void setSelf(AtomLink self) {
+		this.self = self;
+	}
+
 	@XmlElement
-	public AtomLink getPrevious() {return previous;}
-	public void setPrevious(AtomLink previous) {this.previous = previous;}
-	
+	public AtomLink getNext() {
+		return next;
+	}
+
+	public void setNext(AtomLink next) {
+		this.next = next;
+	}
+
+	@XmlElement
+	public AtomLink getPrevious() {
+		return previous;
+	}
+
+	public void setPrevious(AtomLink previous) {
+		this.previous = previous;
+	}
+
 }

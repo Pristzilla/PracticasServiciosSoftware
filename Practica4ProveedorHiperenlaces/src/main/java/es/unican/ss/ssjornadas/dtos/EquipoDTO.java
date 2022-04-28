@@ -12,22 +12,25 @@ import es.unican.ss.ssjornadas.entidades.AtomLink;
 import es.unican.ss.ssjornadas.entidades.Equipo;
 import es.unican.ss.ssjornadas.entidades.Jugador;
 
-@XmlRootElement(name="equipo")
+@XmlRootElement(name = "equipo")
 @XmlAccessorType(XmlAccessType.PROPERTY)
 public class EquipoDTO {
 
 	private Equipo equipo;
 	private List<AtomLink> jugadores;
-	private AtomLink self; // TODO: preguntar como se inicializa esto
+	private AtomLink self = null; // TODO: preguntar como se inicializa esto : (no me ha sabido responder, me ha
+																// dicho null?)
 	private AtomLink next;
 	private AtomLink previous;
-	
-	public EquipoDTO () {};
-	
+
+	public EquipoDTO() {
+	};
+
 	public EquipoDTO(Equipo e, UriInfo uri) {
 		this.equipo = e;
 		for (Jugador j : e.getJugadores()) {
 			// TODO: preguntar si el getBaseUri coge el 'liga/{id}/{nombre}/'
+			// no, solo lo del localhost:8080/nombreWAR
 			AtomLink jugadorLink = new AtomLink ("jugador", uri.getBaseUriBuilder().path("jugadores/"+j.getDorsal()).build().toString()));
 			jugadores.add(jugadorLink);
 		}
@@ -42,6 +45,7 @@ public class EquipoDTO {
 	public void setNombre(String nombre) {
 		this.equipo.setNombre(nombre);
 	}
+
 	@XmlElement()
 	public int getPuntos() {
 		return equipo.getPuntos();
@@ -50,6 +54,7 @@ public class EquipoDTO {
 	public void setPuntos(int puntos) {
 		this.equipo.setPuntos(puntos);
 	}
+
 	@XmlElement()
 	public int getPartidosGanados() {
 		return this.equipo.getPartidosGanados();
@@ -58,6 +63,7 @@ public class EquipoDTO {
 	public void setPartidosGanados(int partidosGanados) {
 		this.equipo.setPartidosGanados(partidosGanados);
 	}
+
 	@XmlElement()
 	public int getPartidosJugados() {
 		return this.equipo.getPartidosJugados();
@@ -66,6 +72,7 @@ public class EquipoDTO {
 	public void setPartidosJugados(int partidosJugados) {
 		this.equipo.setPartidosJugados(partidosJugados);
 	}
+
 	@XmlElement()
 	public int getPartidosPerdidos() {
 		return this.equipo.getPartidosPerdidos();
@@ -74,8 +81,9 @@ public class EquipoDTO {
 	public void setPartidosPerdidos(int partidosPerdidos) {
 		this.equipo.setPartidosPerdidos(partidosPerdidos);
 	}
-	
+
 	// TODO: preguntar de donde sale esta clase
+	// esta puesto en el seminario Jaxrs para implementar
 	@XmlElement(name = "jugador")
 	public List<NestedReference> getJugadores() {
 		return jugadores;
@@ -84,17 +92,32 @@ public class EquipoDTO {
 	public void setJugadores(List<NestedReference> jugadores) {
 		this.jugadores = jugadores;
 	}
-	
+
 	@XmlElement
-	public AtomLink getSelf() {return self;}
-	public void setSelf(AtomLink self) {this.self = self;}
-	
+	public AtomLink getSelf() {
+		return self;
+	}
+
+	public void setSelf(AtomLink self) {
+		this.self = self;
+	}
+
 	@XmlElement
-	public AtomLink getNext() {return next;}
-	public void setNext(AtomLink next) {this.next = next;}
-	
+	public AtomLink getNext() {
+		return next;
+	}
+
+	public void setNext(AtomLink next) {
+		this.next = next;
+	}
+
 	@XmlElement
-	public AtomLink getPrevious() {return previous;}
-	public void setPrevious(AtomLink previous) {this.previous = previous;}
-	
+	public AtomLink getPrevious() {
+		return previous;
+	}
+
+	public void setPrevious(AtomLink previous) {
+		this.previous = previous;
+	}
+
 }

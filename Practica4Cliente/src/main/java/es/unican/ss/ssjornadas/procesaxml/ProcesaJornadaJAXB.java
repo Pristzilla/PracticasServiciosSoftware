@@ -6,7 +6,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
-import es.unican.ss.ssjornadas.entidades.Jornada;
+import es.unican.ss.ssjornadas.entidadespartido.Jornada;
 
 public class ProcesaJornadaJAXB {
 

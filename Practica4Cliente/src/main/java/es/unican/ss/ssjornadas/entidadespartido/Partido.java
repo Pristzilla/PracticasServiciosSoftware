@@ -1,4 +1,4 @@
-package es.unican.ss.ssjornadas.entidades;
+package es.unican.ss.ssjornadas.entidadespartido;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

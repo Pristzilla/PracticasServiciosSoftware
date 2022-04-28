@@ -1,4 +1,4 @@
-package es.unican.ss.ssjornadas.entidades;
+package es.unican.ss.ssjornadas.entidadespartido;
 
 import java.util.LinkedList;
 import java.util.List;
