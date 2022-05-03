@@ -13,9 +13,9 @@ import es.unican.ss.ssjornadas.entidades.Jugador;
 public class JugadorDTO {
 
 	private Jugador jugador;
-	private AtomLink self;
-	private AtomLink next;
-	private AtomLink previous;
+	private AtomLink self = null;
+	private AtomLink next = null;
+	private AtomLink previous = null;
 
 	public JugadorDTO() {};
 	public JugadorDTO (Jugador j) {
@@ -27,7 +27,7 @@ public class JugadorDTO {
 	}
 	@XmlElement()
 	public int getGoles() {
-		return this.jugador..getGoles();
+		return this.jugador.getGoles();
 	}
 	@XmlElement()
 	public String getNombre() {

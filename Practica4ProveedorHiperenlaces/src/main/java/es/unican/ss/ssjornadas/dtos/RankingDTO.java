@@ -16,30 +16,26 @@ import es.unican.ss.ssjornadas.entidades.Jugador;
 @XmlAccessorType(XmlAccessType.PROPERTY)
 public class RankingDTO {
 	private List<AtomLink> jugadoresDTO;
-	private AtomLink self;
-	private AtomLink next;
-	private AtomLink previous;
+	private AtomLink self = null;
+	private AtomLink next = null;
+	private AtomLink previous = null;
 
 	public RankingDTO() {
 	};
 
 	public RankingDTO(List<JugadorDTO> rankingJugadores, UriInfo uri) {
 		for (JugadorDTO j : rankingJugadores) {
-			// TODO: preguntar como se sabe si el uri base es 'liga/{id}/ranking' o
-			// 'liga/{id}/{nombre}/ranking'
-			// el base es lo que esta antes de esto (localhost:8080/nombre war) hay que
-			// escribir lo que hayamos puesto en el servicio
-			AtomLink jugadorLink = new AtomLink("jugador", uri.getBaseUriBuilder().path("ranking/").build().toString());
+			AtomLink jugadorLink = new AtomLink("jugador", uri.getAbsolutePathBuilder().path("ranking/").build().toString());
 			jugadoresDTO.add(jugadorLink);
 		}
 	}
 
 	@XmlElement(name = "jugador")
-	public List<NestedReference> getJugadoresDTO() {
+	public List<AtomLink> getJugadoresDTO() {
 		return jugadoresDTO;
 	}
 
-	public void setJugadoresDTO(List<NestedReference> jugadoresDTO) {
+	public void setJugadoresDTO(List<AtomLink> jugadoresDTO) {
 		this.jugadoresDTO = jugadoresDTO;
 	}
 
