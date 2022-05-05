@@ -12,12 +12,12 @@ import javax.xml.bind.annotation.XmlElement;
 public class EquipoPartido {
 	private String nombre;
 	private List<Gol> goles;
-	List<TarjetaAmarilla> tAmarillas;
-	List<TarjetaRoja> tRojas;
+	List<Tarjeta> tAmarillas;
+	List<Tarjeta> tRojas;
 	
 	public EquipoPartido() {
-		this.tAmarillas = new LinkedList<TarjetaAmarilla>();
-		this.tRojas = new LinkedList<TarjetaRoja>();
+		this.tAmarillas = new LinkedList<Tarjeta>();
+		this.tRojas = new LinkedList<Tarjeta>();
 	}
 
 	@XmlAttribute
@@ -38,20 +38,20 @@ public class EquipoPartido {
 		this.goles = goles;
 	}
 	@XmlElement(name="tarjetaAmarilla")
-	public List<TarjetaAmarilla> getTAmarillas() {
+	public List<Tarjeta> getTAmarillas() {
 		return tAmarillas;
 	}
 
-	public void setTAmarillas(List<TarjetaAmarilla> tAmarillas) {
+	public void setTAmarillas(List<Tarjeta> tAmarillas) {
 		this.tAmarillas = tAmarillas;
 	}
 	
 	@XmlElement(name="tarjetaRoja")
-	public List<TarjetaRoja> getTRojas() {
+	public List<Tarjeta> getTRojas() {
 		return tRojas;
 	}
 
-	public void setTRojas(List<TarjetaRoja> tRojas) {
+	public void setTRojas(List<Tarjeta> tRojas) {
 		this.tRojas = tRojas;
 	}
 	
@@ -64,11 +64,11 @@ public class EquipoPartido {
 			st+= "-gol: " + g.toString();
 		}}
 		if(!this.tAmarillas.isEmpty()) {
-		for(TarjetaAmarilla ta: this.tAmarillas) {
+		for(Tarjeta ta: this.tAmarillas) {
 			st+= "-tAmarilla: " + ta.toString();
 		}}
 		if(!this.tRojas.isEmpty()) {
-		for(TarjetaRoja tr: this.tRojas) {
+		for(Tarjeta tr: this.tRojas) {
 			st+= "-tRoja: " + tr.toString();
 		}}
 		return st;

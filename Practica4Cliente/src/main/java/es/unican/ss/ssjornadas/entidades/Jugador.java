@@ -4,7 +4,9 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement
 @XmlAccessorType(XmlAccessType.PROPERTY)
 public class Jugador implements Comparable<Jugador>{
 	
@@ -112,5 +114,14 @@ public class Jugador implements Comparable<Jugador>{
 			// if current object is equal to o,then return 0
 			return 0;
 		}
+	}
+	@Override
+	public String toString() {
+		String st = "";
+		st += this.nombre +"\n";
+		st += "\tDORSAL: " + this.dorsal +"\n";
+		st += "\tGOLES: " + this.goles +"\n";
+		st += "\tJuegaEN: " + this.juegaEn +"\n";
+		return st;
 	}
 }

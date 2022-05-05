@@ -6,7 +6,12 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
+import es.unican.ss.ssjornadas.entidadespartido.Gol;
+import es.unican.ss.ssjornadas.entidadespartido.Tarjeta;
+
+@XmlRootElement
 @XmlAccessorType(XmlAccessType.PROPERTY)
 public class Equipo implements Comparable<Equipo> {
 	
@@ -157,6 +162,16 @@ public class Equipo implements Comparable<Equipo> {
 			return jugador;
 		}
 		return null;
+	}
+	
+	@Override
+	public String toString() {
+		String st = "";
+		st += this.nombre +"\n";
+		st += "PJUGADOS: " + this.partidosJugados +"\n";
+		st += "PGANADOS: " + this.partidosGanados +"\n";
+		st += "PPERDIDOS: " + this.partidosPerdidos +"\n";
+		return st;
 	}
 
 

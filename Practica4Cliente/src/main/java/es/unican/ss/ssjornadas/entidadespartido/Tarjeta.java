@@ -5,13 +5,11 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 
 @XmlAccessorType(XmlAccessType.PROPERTY)
-public class TarjetaAmarilla {
-
+public class Tarjeta {
 	private int dorsal;
 	private int minuto;
 	
-	public TarjetaAmarilla() {}
-	
+	public Tarjeta() {}
 	@XmlAttribute
 	public int getDorsal() {
 		return dorsal;
@@ -32,4 +30,5 @@ public class TarjetaAmarilla {
 	public String toString() {
 		return "Dorsal: "+ this.dorsal + "\tMinuto: " +this.minuto +"\n";
 	}
+
 }
