@@ -26,11 +26,27 @@ public class ClasificacionDTO {
 	public ClasificacionDTO() {
 	};
 
-	public ClasificacionDTO(List<EquipoDTO> equiposParam, UriInfo uri) {
-		for (EquipoDTO e : equiposParam) {
-			AtomLink equipoLink = new AtomLink("equipo", uri.getAbsolutePathBuilder().path(e.getNombre()).build().toString());
+	public ClasificacionDTO(List<Equipo> equiposParam, UriInfo uri) {
+		EquipoDTO eq = null;
+		for (Equipo e : equiposParam) {
+			eq = new EquipoDTO(e, uri);
+			AtomLink equipoLink = new AtomLink("equipo", uri.getAbsolutePathBuilder().path(eq.getNombre()).build().toString());
 			equipos.add(equipoLink);
 		}
+		
+		self = new AtomLink();
+		self.setRel("self");
+		self.setHref(uri.getAbsolutePathBuilder().build().toString());
+		self.setType("application/xml");
+		next = new AtomLink();
+		next.setRel("self");
+		next.setHref(uri.getAbsolutePathBuilder().build().toString());
+		next.setType("application/xml");
+		previous = new AtomLink();
+		previous.setRel("self");
+		previous.setHref(uri.getAbsolutePathBuilder().build().toString());
+		previous.setType("application/xml");
+		
 	}
 
 	@XmlElement(name = "equipo")

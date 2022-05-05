@@ -23,8 +23,10 @@ public class RankingDTO {
 	public RankingDTO() {
 	};
 
-	public RankingDTO(List<JugadorDTO> rankingJugadores, UriInfo uri) {
-		for (JugadorDTO j : rankingJugadores) {
+	public RankingDTO(List<Jugador> rankingJugadores, UriInfo uri) {
+		JugadorDTO jug = new JugadorDTO();
+		for (Jugador j : rankingJugadores) {
+			jug = new JugadorDTO(j);
 			AtomLink jugadorLink = new AtomLink("jugador", uri.getAbsolutePathBuilder().path("ranking/").build().toString());
 			jugadoresDTO.add(jugadorLink);
 		}

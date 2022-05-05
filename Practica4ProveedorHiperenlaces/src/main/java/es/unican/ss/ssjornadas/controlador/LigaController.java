@@ -28,6 +28,7 @@ import es.unican.ss.ssjornadas.dtos.ClasificacionDTO;
 import es.unican.ss.ssjornadas.dtos.EquipoDTO;
 import es.unican.ss.ssjornadas.dtos.JugadorDTO;
 import es.unican.ss.ssjornadas.dtos.RankingDTO;
+import es.unican.ss.ssjornadas.entidades.AtomLink;
 import es.unican.ss.ssjornadas.entidades.Equipo;
 import es.unican.ss.ssjornadas.entidades.Grupo;
 import es.unican.ss.ssjornadas.entidades.Jugador;
@@ -49,8 +50,7 @@ public class LigaController {
 
 	@GET
 	@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-	public Response getClasificacionActual(@PathParam("id") String idGrupo) {
-		System.out.println("getClasificacionActual CONTROLLER");
+	public Response getClasificacionActual(@PathParam("id") String idGrupo, @Context UriInfo uriInfo) {
 		Response.ResponseBuilder builder;
 		List<Equipo> equipos;
 		Grupo g = ligaDAO.getGrupo(idGrupo);
@@ -58,7 +58,7 @@ public class LigaController {
 		if(g != null) {
 			equipos = ligaDAO.getEquipos(idGrupo);
 			Collections.sort(equipos);
-			ClasificacionDTO clasificacion = new ClasificacionDTO(equipos);
+			ClasificacionDTO clasificacion = new ClasificacionDTO(equipos, uriInfo);
 			builder = Response.ok(clasificacion);
 		}
 		else {
@@ -71,7 +71,7 @@ public class LigaController {
 	@GET
 	@Path("/ranking")
 	@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-	public Response getRankingGoleadoresGrupo(@PathParam("id") String idGrupo) {
+	public Response getRankingGoleadoresGrupo(@PathParam("id") String idGrupo, @Context UriInfo uriInfo) {
 		Response.ResponseBuilder builder;
 		List<Jugador> rankingJugadores = new LinkedList<Jugador>();
 		List<Equipo> equipos;
@@ -82,7 +82,7 @@ public class LigaController {
 				rankingJugadores.addAll(e.getJugadores());
 			}
 			Collections.sort(rankingJugadores);
-			RankingDTO ranking = new RankingDTO(rankingJugadores);
+			RankingDTO ranking = new RankingDTO(rankingJugadores, uriInfo);
 			builder = Response.ok(ranking);
 		}
 		else {
@@ -95,7 +95,7 @@ public class LigaController {
 	@GET
 	@Path("/{nombre}")
 	@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-	public Response getEquipo(@PathParam("id")String idGrupo, @PathParam("nombre") String nombreEquipo) {
+	public Response getEquipo(@PathParam("id")String idGrupo, @PathParam("nombre") String nombreEquipo, @Context UriInfo uriInfo) {
 		Response.ResponseBuilder builder;
 		Equipo e;
 		Grupo g = ligaDAO.getGrupo(idGrupo);
@@ -103,7 +103,7 @@ public class LigaController {
 		if(g != null) {
 			e = ligaDAO.getEquipo(nombreEquipo);
 			if(e != null) {
-				EquipoDTO equipo = new EquipoDTO(e);
+				EquipoDTO equipo = new EquipoDTO(e, uriInfo);
 				builder = Response.ok(equipo);
 			}
 			else {
@@ -122,7 +122,7 @@ public class LigaController {
 	@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
 	@Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
 	public Response modifyEquipo(@PathParam("id")String idGrupo, @PathParam("nombre") 
-	String nombreEquipo, Equipo equipo) {
+	String nombreEquipo, Equipo equipo, @Context UriInfo uriInfo) {
 		Response.ResponseBuilder builder;
 		Equipo e;
 		Grupo g = ligaDAO.getGrupo(idGrupo);
@@ -130,7 +130,7 @@ public class LigaController {
 			e = ligaDAO.getEquipo(nombreEquipo);
 			if (e != null) {
 				e = ligaDAO.actualizaEquipo(equipo);
-				EquipoDTO equipoActualizado = new EquipoDTO(e);
+				EquipoDTO equipoActualizado = new EquipoDTO(e, uriInfo);
 				builder = Response.ok(equipoActualizado);
 			}
 			else {
@@ -147,7 +147,7 @@ public class LigaController {
 	@Path("/{nombre}/ranking")
 	@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
 	public Response getRankingGoleadoresEquipo(@PathParam("id") String idGrupo,
-			@PathParam("nombre") String nombreEquipo) {
+			@PathParam("nombre") String nombreEquipo, @Context UriInfo uriInfo) {
 		Response.ResponseBuilder builder;
 		List<Jugador> rankingJugadores;
 		Equipo equipo;
@@ -157,7 +157,7 @@ public class LigaController {
 			if(equipo != null) {
 				rankingJugadores = equipo.getJugadores();
 				Collections.sort(rankingJugadores);
-				RankingDTO ranking = new RankingDTO(rankingJugadores);
+				RankingDTO ranking = new RankingDTO(rankingJugadores, uriInfo);
 				builder = Response.ok(ranking);
 			}
 			else {
