@@ -19,28 +19,26 @@ import es.unican.ss.ssjornadas.entidades.Jugador;
 public class ClasificacionDTO {
 
 	private List<AtomLink> equipos;
-	private AtomLink self;
-	private AtomLink next;
-	private AtomLink previous;
+	private AtomLink self = null;
+	private AtomLink next = null;
+	private AtomLink previous = null;
 
 	public ClasificacionDTO() {
 	};
 
 	public ClasificacionDTO(List<EquipoDTO> equiposParam, UriInfo uri) {
 		for (EquipoDTO e : equiposParam) {
-			// TODO: preguntar si el getBaseUri coge el 'liga/{id}/'
-			// no, no lo coge, solo el localhost:8080/nombreWAR
-			AtomLink equipoLink = new AtomLink("equipo", uri.getBaseUriBuilder().path(e.getNombre()).build().toString());
+			AtomLink equipoLink = new AtomLink("equipo", uri.getAbsolutePathBuilder().path(e.getNombre()).build().toString());
 			equipos.add(equipoLink);
 		}
 	}
 
 	@XmlElement(name = "equipo")
-	public List<NestedReference> getEquipos() {
+	public List<AtomLink> getEquipos() {
 		return equipos;
 	}
 
-	public void setEquipos(List<NestedReference> equipos) {
+	public void setEquipos(List<AtomLink> equipos) {
 		this.equipos = equipos;
 	}
 

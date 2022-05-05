@@ -18,10 +18,10 @@ public class EquipoDTO {
 
 	private Equipo equipo;
 	private List<AtomLink> jugadores;
-	private AtomLink self = null; // TODO: preguntar como se inicializa esto : (no me ha sabido responder, me ha
-																// dicho null?)
-	private AtomLink next;
-	private AtomLink previous;
+	private AtomLink self = null;
+																
+	private AtomLink next = null;
+	private AtomLink previous = null;
 
 	public EquipoDTO() {
 	};
@@ -29,12 +29,9 @@ public class EquipoDTO {
 	public EquipoDTO(Equipo e, UriInfo uri) {
 		this.equipo = e;
 		for (Jugador j : e.getJugadores()) {
-			// TODO: preguntar si el getBaseUri coge el 'liga/{id}/{nombre}/'
-			// no, solo lo del localhost:8080/nombreWAR
-			AtomLink jugadorLink = new AtomLink ("jugador", uri.getBaseUriBuilder().path("jugadores/"+j.getDorsal()).build().toString()));
+			AtomLink jugadorLink = new AtomLink ("jugador", uri.getAbsolutePathBuilder().path("jugadores/"+j.getDorsal()).build().toString());
 			jugadores.add(jugadorLink);
 		}
-		
 	}
 
 	@XmlElement()
@@ -85,11 +82,11 @@ public class EquipoDTO {
 	// TODO: preguntar de donde sale esta clase
 	// esta puesto en el seminario Jaxrs para implementar
 	@XmlElement(name = "jugador")
-	public List<NestedReference> getJugadores() {
+	public List<AtomLink> getJugadores() {
 		return jugadores;
 	}
 
-	public void setJugadores(List<NestedReference> jugadores) {
+	public void setJugadores(List<AtomLink> jugadores) {
 		this.jugadores = jugadores;
 	}
 
