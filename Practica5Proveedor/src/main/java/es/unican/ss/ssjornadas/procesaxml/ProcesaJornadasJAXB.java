@@ -21,7 +21,7 @@ public class ProcesaJornadasJAXB {
 			ruta="C:/Users/Sara/Desktop/Uni/SS/primeraRFEF.xml";
 		}
 		else {
-			ruta = "/Users/barquinj/GitHub/PracticasServiciosSoftware/primeraRFEF.xml";
+			ruta = "/Users/barquinj/GitHub/PracticasServiciosSoftware/primeraRFEFp5.xml";
 		}
 		try {
 			jaxbctx = JAXBContext.newInstance(PrimeraRFEF.class);
@@ -42,7 +42,7 @@ public class ProcesaJornadasJAXB {
 			ruta="C:/Users/Sara/Desktop/Uni/SS/primeraRFEF.xml";
 		}
 		else {
-			ruta = "/Users/barquinj/GitHub/PracticasServiciosSoftware/primeraRFEF.xml";
+			ruta = "/Users/barquinj/GitHub/PracticasServiciosSoftware/primeraRFEFp5.xml";
 		}
 		try {
 			jaxbctx = JAXBContext.newInstance(PrimeraRFEF.class);

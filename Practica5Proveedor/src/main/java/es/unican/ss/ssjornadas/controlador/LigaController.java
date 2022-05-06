@@ -56,7 +56,7 @@ public class LigaController {
 	}
 	
 	@GET
-	@Path("/liga/{id}/getToken")
+	@Path("/getToken")
 	@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
 	public Response getToken() {
 		Response.ResponseBuilder builder;
