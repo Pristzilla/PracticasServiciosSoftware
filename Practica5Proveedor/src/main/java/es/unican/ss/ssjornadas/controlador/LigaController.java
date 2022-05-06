@@ -10,9 +10,11 @@ package es.unican.ss.ssjornadas.controlador;
 import java.net.URI;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -63,7 +65,11 @@ public class LigaController {
         Date date = new Date(System.currentTimeMillis());
         Date now = Date.valueOf(formatter.format(date));
 		
-        String token = Jwts.builder().setSubject("sara").setIssuedAt(now).claim("numGrupos", "2").signWith(SignatureAlgorithm.RS256, SECRET_KEY).compact();
+        date = new Date(System.currentTimeMillis()+TimeUnit.MINUTES.toMillis(2));
+        Date expiration = Date.valueOf(formatter.format(date));
+   
+        
+        String token = Jwts.builder().setExpiration(expiration).setSubject("sara").setIssuedAt(now).claim("numGrupos", "2").signWith(SignatureAlgorithm.RS256, SECRET_KEY).compact();
 		builder = Response.ok(token);
 		return builder.build();
 	}
