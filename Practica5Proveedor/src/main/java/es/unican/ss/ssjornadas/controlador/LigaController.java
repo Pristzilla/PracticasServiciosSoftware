@@ -10,7 +10,6 @@ package es.unican.ss.ssjornadas.controlador;
 import java.net.URI;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
