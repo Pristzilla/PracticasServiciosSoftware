@@ -10,7 +10,6 @@ package es.unican.ss.ssjornadas.controlador;
 import java.net.URI;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -56,7 +55,7 @@ public class LigaController {
 	}
 	
 	@GET
-	@Path("/liga/{id}/getToken")
+	@Path("/getToken")
 	@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
 	public Response getToken() {
 		Response.ResponseBuilder builder;
