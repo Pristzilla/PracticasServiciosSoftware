@@ -1,5 +1,6 @@
 package es.unican.ss.ssjornadas.dtos;
 
+import javax.ws.rs.core.UriInfo;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -18,8 +19,20 @@ public class JugadorDTO {
 	private AtomLink previous = null;
 
 	public JugadorDTO() {};
-	public JugadorDTO (Jugador j) {
+	public JugadorDTO (Jugador j, UriInfo uri) {
 		this.jugador = j;
+		self = new AtomLink();
+		self.setRel("self");
+		self.setHref(uri.getAbsolutePathBuilder().build().toString());
+		self.setType("application/xml");
+		next = new AtomLink();
+		next.setRel("self");
+		next.setHref(uri.getAbsolutePathBuilder().build().toString());
+		next.setType("application/xml");
+		previous = new AtomLink();
+		previous.setRel("self");
+		previous.setHref(uri.getAbsolutePathBuilder().build().toString());
+		previous.setType("application/xml");
 	}
 	@XmlElement()
 	public int getDorsal() {

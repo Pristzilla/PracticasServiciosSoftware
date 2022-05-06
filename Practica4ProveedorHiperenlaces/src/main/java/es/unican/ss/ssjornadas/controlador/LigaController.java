@@ -58,6 +58,7 @@ public class LigaController {
 		if(g != null) {
 			equipos = ligaDAO.getEquipos(idGrupo);
 			Collections.sort(equipos);
+			System.out.println(uriInfo.toString());
 			ClasificacionDTO clasificacion = new ClasificacionDTO(equipos, uriInfo);
 			builder = Response.ok(clasificacion);
 		}
@@ -176,14 +177,14 @@ public class LigaController {
 	@Path("/{nombre}/jugadores/{dorsal}")
 	@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
 	public Response getJugador(@PathParam("id") String idGrupo,
-			@PathParam("nombre") String nombreEquipo, @PathParam("dorsal") String dorsal) {
+			@PathParam("nombre") String nombreEquipo, @PathParam("dorsal") String dorsal, @Context UriInfo uriInfo) {
 		Response.ResponseBuilder builder;
 		Jugador j;
 		Grupo g = ligaDAO.getGrupo(idGrupo);
 		if (g!= null) {
 			j = ligaDAO.getJugador(nombreEquipo, Integer.parseInt(dorsal));
 			if (j != null) {
-				JugadorDTO jugador = new JugadorDTO(j);
+				JugadorDTO jugador = new JugadorDTO(j, uriInfo);
 				builder = Response.ok(jugador);
 			} else {
 				builder = Response.status(Response.Status.NOT_FOUND);
@@ -212,7 +213,7 @@ public class LigaController {
 				builder = Response.created(location);
 			} else {
 				j = ligaDAO.actualizaJugador(nombreEquipo, jugador);
-				JugadorDTO jugadorActualizado = new JugadorDTO(j);
+				JugadorDTO jugadorActualizado = new JugadorDTO(j, uriInfo);
 				builder = Response.ok(jugadorActualizado);
 			}
 		}
@@ -227,7 +228,7 @@ public class LigaController {
 	@Path("/{nombre}/jugadores/{dorsal}")
 	@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
 	public Response deleteJugador(@PathParam("id") String idGrupo, @PathParam("nombre") String nombreEquipo,
-			@PathParam("dorsal") String dorsal) {
+			@PathParam("dorsal") String dorsal, @Context UriInfo uriInfo) {
 		Response.ResponseBuilder builder;
 		Jugador j;
 		Grupo g = ligaDAO.getGrupo(idGrupo);
@@ -235,7 +236,7 @@ public class LigaController {
 			j = ligaDAO.getJugador(nombreEquipo, Integer.parseInt(dorsal));
 			if (j != null) {
 				j = ligaDAO.eliminaJugador(nombreEquipo, Integer.parseInt(dorsal));
-				JugadorDTO jugador = new JugadorDTO(j);
+				JugadorDTO jugador = new JugadorDTO(j, uriInfo);
 				builder = Response.ok(jugador);
 			} else {
 				builder = Response.status(Response.Status.NOT_FOUND);

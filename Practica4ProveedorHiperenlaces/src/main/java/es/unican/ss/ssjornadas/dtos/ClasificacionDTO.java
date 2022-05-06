@@ -11,8 +11,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import es.unican.ss.ssjornadas.entidades.AtomLink;
 import es.unican.ss.ssjornadas.entidades.Equipo;
-import es.unican.ss.ssjornadas.entidades.Grupo;
-import es.unican.ss.ssjornadas.entidades.Jugador;
+
+
 
 @XmlRootElement(name = "clasificacion")
 @XmlAccessorType(XmlAccessType.PROPERTY)
@@ -24,12 +24,14 @@ public class ClasificacionDTO {
 	private AtomLink previous = null;
 
 	public ClasificacionDTO() {
+		this.equipos = new LinkedList<AtomLink>();
 	};
 
 	public ClasificacionDTO(List<Equipo> equiposParam, UriInfo uri) {
-		EquipoDTO eq = null;
+		this.equipos = new LinkedList<AtomLink>();
+
 		for (Equipo e : equiposParam) {
-			eq = new EquipoDTO(e, uri);
+			EquipoDTO eq = new EquipoDTO(e, uri);
 			AtomLink equipoLink = new AtomLink("equipo", uri.getAbsolutePathBuilder().path(eq.getNombre()).build().toString());
 			equipos.add(equipoLink);
 		}

@@ -1,5 +1,6 @@
 package es.unican.ss.ssjornadas.dtos;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.ws.rs.core.UriInfo;
@@ -24,9 +25,11 @@ public class EquipoDTO {
 	private AtomLink previous = null;
 
 	public EquipoDTO() {
+		this.jugadores = new LinkedList<AtomLink>();
 	};
 
 	public EquipoDTO(Equipo e, UriInfo uri) {
+		this.jugadores = new LinkedList<AtomLink>();
 		this.equipo = e;
 		for (Jugador j : e.getJugadores()) {
 			AtomLink jugadorLink = new AtomLink ("jugador", uri.getAbsolutePathBuilder().path("jugadores/"+j.getDorsal()).build().toString());
