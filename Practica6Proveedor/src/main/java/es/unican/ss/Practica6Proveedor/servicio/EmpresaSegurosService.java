@@ -28,11 +28,10 @@ public class EmpresaSegurosService {
 		return clientesrepo.save(c);
 	}
 	public Seguro anhadeSeguroACliente(Seguro s, String dni) {
-		return segurosrepo.save(s);
+		return segurosrepo.save(s); //TODO: modificar cuando se pongan las anotaciones 
 	}
 	public List<Cliente> listaClientes() {
-		// TODO Auto-generated method stub
-		return null;
+		return clientesrepo.findAll();
 	}
 	
 	
