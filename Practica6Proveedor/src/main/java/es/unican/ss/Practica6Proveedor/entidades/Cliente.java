@@ -4,22 +4,25 @@ import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
-import javax.xml.bind.annotation.*;
+import javax.persistence.Entity;
+import org.springframework.data.annotation.Id;
 
-@XmlType(name="Cliente")
-@XmlAccessorType(XmlAccessType.FIELD)
+
+
+
+@Entity
 public class Cliente implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	@XmlAttribute(required= true)
+	
 	private String nombre;
-	@XmlAttribute(required= true)
+	
 	private String email;
-	@XmlAttribute(required= true)
+	@Id
 	private String DNI;
-	@XmlElement(required= true)
+	
 	private List<Seguro> seguros; 
-	@XmlElement()
+	
 	private List<Parte> partes;
 	
 	public Cliente() { /* constructor vacio */ }

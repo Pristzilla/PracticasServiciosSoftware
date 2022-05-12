@@ -1,25 +1,19 @@
 package es.unican.ss.Practica6Proveedor.entidades;
 
 import java.io.Serializable;
-import javax.xml.bind.annotation.*;
 
-@XmlType(name="Seguro")
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlSeeAlso({
-	Terceros.class,
-	TodoRiesgo.class,
-	TodoRiesgoFranquicia.class
-})
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public abstract class Seguro implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	@XmlAttribute(name = "id", required= true)
-	@XmlID
-	@XmlSchemaType(name = "ID")
+	@Id
 	protected String id;
-	@XmlElement(required= true)
+	
 	protected Vehiculo vehiculoAsegurado;
-	@XmlAttribute(required= true)
+	
 	protected double precio;
 
 	protected Seguro() {}
