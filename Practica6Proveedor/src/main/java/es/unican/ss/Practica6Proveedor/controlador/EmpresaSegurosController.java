@@ -1,6 +1,7 @@
 package es.unican.ss.Practica6Proveedor.controlador;
 
 import java.net.URI;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,14 +17,24 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import es.unican.ss.Practica6Proveedor.entidades.Cliente;
+import es.unican.ss.Practica6Proveedor.entidades.Seguro;
 import es.unican.ss.Practica6Proveedor.servicio.EmpresaSegurosService;
 
 @RestController
-@RequestMapping("/empresa")
+@RequestMapping("/ssEmpresa/clientes")
 public class EmpresaSegurosController {
 
 	@Autowired
 	private EmpresaSegurosService empService;
+	
+	@GetMapping
+	public ResponseEntity<List<Cliente>> getAllClientes() {
+		List<Cliente> lista = empService.listaClientes();
+		if(lista != null) {
+			return ResponseEntity.ok(lista);
+		}
+		return ResponseEntity.notFound().build();
+	}
 	
 	@GetMapping("/{dni}")
 	public ResponseEntity<Cliente> getCliente(@PathVariable String dni) {
@@ -34,7 +45,7 @@ public class EmpresaSegurosController {
 		return ResponseEntity.notFound().build();
 	}
 	
-	@PostMapping("/{dni}")
+	@PutMapping("/{dni}")
 	public ResponseEntity<Cliente> addCliente(@RequestBody Cliente c, @PathVariable String dni) {
 		Cliente creado = empService.anhadeCliente(c);
 		if(creado == null) {
@@ -42,6 +53,25 @@ public class EmpresaSegurosController {
 		}
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().build().toUri();
 		return ResponseEntity.created(location).body(creado);
+	}
+	
+	@GetMapping("/{dni}/totalAPagar")
+	public ResponseEntity<Double> getTotalAPagarDeCliente(@PathVariable String dni) {
+		Cliente c = empService.buscaClientePorDNI(dni);
+		if(c != null) {
+			double total = c.getTotalAPagar();
+			return ResponseEntity.ok(total);
+		}
+		return ResponseEntity.notFound().build();
+	}
+	
+	@PostMapping("/{dni}/seguros")
+	public ResponseEntity<Seguro> addSeguroACliente(@RequestBody Seguro s, @PathVariable String dni) {
+		Cliente c = empService.buscaClientePorDNI(dni);
+		if(c != null) {
+			return ResponseEntity.ok(empService.anhadeSeguroACliente(s, dni));
+		}
+		return ResponseEntity.notFound().build();
 	}
 	
 	
