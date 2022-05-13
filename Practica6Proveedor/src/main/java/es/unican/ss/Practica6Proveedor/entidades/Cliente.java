@@ -4,10 +4,12 @@ import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+
 import org.springframework.data.annotation.Id;
-
-
 
 
 @Entity
@@ -21,8 +23,12 @@ public class Cliente implements Serializable {
 	@Id
 	private String DNI;
 	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="Cliente_FK")
 	private List<Seguro> seguros; 
 	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="Cliente_FK")
 	private List<Parte> partes;
 	
 	public Cliente() { /* constructor vacio */ }

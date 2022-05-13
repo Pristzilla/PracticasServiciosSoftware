@@ -1,23 +1,28 @@
 package es.unican.ss.Practica6Proveedor.entidades;
 
 import java.util.Date;
-import javax.xml.bind.annotation.*;
 
-@XmlType(name="Parte")
-@XmlAccessorType(XmlAccessType.FIELD)
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 public class Parte {
 
-	@XmlElement(required = true)
-	@XmlIDREF
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+	
+	@ManyToOne
+	@JoinColumn(name="Seguro_FK")
 	private Seguro seguro;
-	@XmlAttribute(required= true)
+	
 	private double importe;
-	@XmlAttribute(required= true)
+	
 	private Date fecha;
 	
 	public Parte() { /* constructor vacio */ }
-	
-	
 	
 	public Seguro getSeguro() {
 		return seguro;
