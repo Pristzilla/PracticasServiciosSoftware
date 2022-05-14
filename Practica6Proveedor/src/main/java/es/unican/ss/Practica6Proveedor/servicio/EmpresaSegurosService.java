@@ -28,7 +28,9 @@ public class EmpresaSegurosService {
 		return clientesrepo.save(c);
 	}
 	public Seguro anhadeSeguroACliente(Seguro s, String dni) {
-		return segurosrepo.save(s); //TODO: modificar cuando se pongan las anotaciones 
+		Cliente c = buscaClientePorDNI(dni);
+		
+		return segurosrepo.save(s); 
 	}
 	public List<Cliente> listaClientes() {
 		return clientesrepo.findAll();
