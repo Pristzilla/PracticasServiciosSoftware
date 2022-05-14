@@ -3,15 +3,22 @@ package es.unican.ss.Practica6Proveedor.entidades;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public abstract class Seguro implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	protected String id;
 	
+	@OneToOne
+	@JoinColumn(name="Vehiculo_FK")
 	protected Vehiculo vehiculoAsegurado;
 	
 	protected double precio;

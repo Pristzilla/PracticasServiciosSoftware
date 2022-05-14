@@ -1,11 +1,10 @@
 package es.unican.ss.Practica6Proveedor.entidades;
 
+
 import java.io.Serializable;
+import javax.persistence.Entity;
 
-import javax.xml.bind.annotation.*;
-
-@XmlType(name = "Terceros")
-@XmlAccessorType(XmlAccessType.FIELD)
+@Entity
 public class Terceros extends Seguro implements Serializable{
 
 	private static final long serialVersionUID = 1L;

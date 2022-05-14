@@ -1,6 +1,7 @@
 package es.unican.ss.Practica6Proveedor.entidades;
 
 import java.io.Serializable;
+import javax.persistence.Id;
 import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -8,12 +9,12 @@ import javax.xml.bind.annotation.*;
 public class Vehiculo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	@XmlAttribute(required= true)
-	@XmlID
+	
+	@Id
 	private String matricula;
-	@XmlAttribute(required= true)
+
 	private int potencia;
-	@XmlAttribute(required= true)
+
 	private Boolean usoProfesional;
 	
 	public Vehiculo() {}
