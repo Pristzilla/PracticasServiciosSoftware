@@ -1,6 +1,7 @@
 package es.unican.ss.Practica6Proveedor.servicio;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,7 @@ public class EmpresaSegurosService {
 	
 	
 	public Cliente buscaClientePorDNI(String dni) {
-		return clientesrepo.getById(dni);
+		return clientesrepo.findById(dni).orElse(null);
 	}
 	public Cliente anhadeCliente(Cliente c) {
 		return clientesrepo.save(c);
