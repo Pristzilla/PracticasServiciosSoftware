@@ -2,12 +2,15 @@ package es.unican.ss.Practica6Proveedor.entidades;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
+
 
 @Entity
 public abstract class Seguro implements Serializable {
@@ -17,10 +20,10 @@ public abstract class Seguro implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	protected String id;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="Vehiculo_FK")
 	protected Vehiculo vehiculoAsegurado;
-	
+	@Transient
 	protected double precio;
 
 	protected Seguro() {}

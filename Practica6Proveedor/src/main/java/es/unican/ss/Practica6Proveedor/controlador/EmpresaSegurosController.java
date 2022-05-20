@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -69,7 +68,10 @@ public class EmpresaSegurosController {
 	public ResponseEntity<Seguro> addSeguroACliente(@RequestBody Seguro s, @PathVariable String dni) {
 		Cliente c = empService.buscaClientePorDNI(dni);
 		if(c != null) {
-			return ResponseEntity.ok(empService.anhadeSeguroACliente(s, dni));
+			Seguro segAnadido = empService.anhadeSeguroACliente(s, dni);
+			URI location = ServletUriComponentsBuilder.fromCurrentRequest().path(segAnadido.getId()).build().toUri();
+			System.out.println(location.getPath());
+			return ResponseEntity.created(location).body(segAnadido);
 		}
 		return ResponseEntity.notFound().build();
 	}

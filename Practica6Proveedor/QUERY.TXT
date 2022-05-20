@@ -1,0 +1,1 @@
+INSERT INTO `agenciaseguros`.`seguro` (`dtype`, `id`, `precio`, `vehiculo_fk`) VALUES ('TERCEROS', 'XXX-123456', '0', 'CHE1234');

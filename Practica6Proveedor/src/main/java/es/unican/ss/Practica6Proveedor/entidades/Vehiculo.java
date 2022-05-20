@@ -1,11 +1,11 @@
 package es.unican.ss.Practica6Proveedor.entidades;
 
 import java.io.Serializable;
-import javax.persistence.Id;
-import javax.xml.bind.annotation.*;
 
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name="Vehiculo")
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Vehiculo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
