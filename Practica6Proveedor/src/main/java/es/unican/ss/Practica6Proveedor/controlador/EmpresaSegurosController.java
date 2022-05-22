@@ -17,6 +17,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import es.unican.ss.Practica6Proveedor.entidades.Cliente;
 import es.unican.ss.Practica6Proveedor.entidades.Seguro;
+import es.unican.ss.Practica6Proveedor.entidades.Terceros;
 import es.unican.ss.Practica6Proveedor.servicio.EmpresaSegurosService;
 
 @RestController

@@ -2,9 +2,12 @@ package es.unican.ss.Practica6Proveedor.entidades;
 
 
 import java.io.Serializable;
+
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
+@DiscriminatorValue("TERCEROS")
 public class Terceros extends Seguro implements Serializable{
 
 	private static final long serialVersionUID = 1L;

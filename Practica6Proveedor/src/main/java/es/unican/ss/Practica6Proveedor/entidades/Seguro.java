@@ -3,16 +3,22 @@ package es.unican.ss.Practica6Proveedor.entidades;
 import java.io.Serializable;
 
 import javax.persistence.CascadeType;
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Transient;
-
+import javax.persistence.InheritanceType;
+import javax.persistence.DiscriminatorType;
 
 @Entity
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="tipo_seguro", discriminatorType=DiscriminatorType.STRING)
+
 public abstract class Seguro implements Serializable {
 
 	private static final long serialVersionUID = 1L;
