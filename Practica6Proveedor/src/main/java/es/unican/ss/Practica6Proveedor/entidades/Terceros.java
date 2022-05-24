@@ -17,8 +17,12 @@ public class Terceros extends Seguro implements Serializable{
 		super();
 	}
 	
-	public Terceros(String id, Vehiculo vehiculoAsegurado) {
+	public Terceros(int id, Vehiculo vehiculoAsegurado) {
 		super(id, vehiculoAsegurado);
+	}
+	
+	public Terceros(Vehiculo v) {
+		super(v);
 	}
 	
 	@Override

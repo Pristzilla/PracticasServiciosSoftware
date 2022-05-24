@@ -3,6 +3,7 @@ package es.unican.ss.Practica6Proveedor.entidades;
 import java.io.Serializable;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,8 +25,7 @@ public abstract class Seguro implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	protected String id;
-	
+	protected int id;
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="Vehiculo_FK")
 	protected Vehiculo vehiculoAsegurado;
@@ -33,14 +33,17 @@ public abstract class Seguro implements Serializable {
 	protected double precio;
 
 	protected Seguro() {}
-	protected Seguro (String id, Vehiculo vehiculoAsegurado) {
+	protected Seguro (int id, Vehiculo vehiculoAsegurado) {
 		this.id = id;
 		this.vehiculoAsegurado = vehiculoAsegurado;
 	}
-	public String getId() {
+	protected Seguro(Vehiculo vehiculoAsegurado) {
+		this.vehiculoAsegurado = vehiculoAsegurado;
+	}
+	public int getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public abstract double getPrecio();
@@ -54,6 +57,7 @@ public abstract class Seguro implements Serializable {
 	public void setVehiculoAsegurado(Vehiculo vehiculoAsegurado) {
 		this.vehiculoAsegurado = vehiculoAsegurado;
 	}
+
 
 	
 }

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import es.unican.ss.Practica6Proveedor.dtos.SeguroDTO;
 import es.unican.ss.Practica6Proveedor.entidades.Cliente;
 import es.unican.ss.Practica6Proveedor.entidades.Seguro;
 import es.unican.ss.Practica6Proveedor.entidades.Terceros;
@@ -66,11 +67,13 @@ public class EmpresaSegurosController {
 	}
 	
 	@PostMapping("/{dni}/seguros")
-	public ResponseEntity<Seguro> addSeguroACliente(@RequestBody Seguro s, @PathVariable String dni) {
+	public ResponseEntity<Seguro> addSeguroACliente(@RequestBody SeguroDTO sdto, @PathVariable String dni) {
 		Cliente c = empService.buscaClientePorDNI(dni);
+		Seguro s = sdto.getSeguro();
 		if(c != null) {
 			Seguro segAnadido = empService.anhadeSeguroACliente(s, dni);
-			URI location = ServletUriComponentsBuilder.fromCurrentRequest().path(segAnadido.getId()).build().toUri();
+			String idString = Integer.toString(segAnadido.getId());
+			URI location = ServletUriComponentsBuilder.fromCurrentRequest().path(idString).build().toUri();
 			System.out.println(location.getPath());
 			return ResponseEntity.created(location).body(segAnadido);
 		}

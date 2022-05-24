@@ -15,10 +15,13 @@ public class TodoRiesgo extends Seguro implements Serializable {
 	public TodoRiesgo() {
 		super();
 	}
-	public TodoRiesgo(String id, Vehiculo vehiculoAsegurado) {
+	public TodoRiesgo(int id, Vehiculo vehiculoAsegurado) {
 		super(id, vehiculoAsegurado);
 	}
 	
+	public TodoRiesgo(Vehiculo vehiculo) {
+		super(vehiculo);
+	}
 	@Override
 	public double getPrecio() {
 		if(this.precio == 0.0) {
