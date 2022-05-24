@@ -9,12 +9,17 @@ import org.springframework.stereotype.Service;
 import es.unican.ss.Practica6Proveedor.entidades.Cliente;
 import es.unican.ss.Practica6Proveedor.entidades.Seguro;
 import es.unican.ss.Practica6Proveedor.repositorios.ClientesRepository;
+import es.unican.ss.Practica6Proveedor.repositorios.SegurosRepository;
 
 @Service
 public class EmpresaSegurosService {
 	
 	@Autowired
 	private ClientesRepository clientesrepo;
+	
+	@Autowired
+	private SegurosRepository segurosrepo;
+	
 	
 	
 	public Cliente buscaClientePorDNI(String dni) {
@@ -38,6 +43,13 @@ public class EmpresaSegurosService {
 	
 	public List<Cliente> listaClientes() {
 		return clientesrepo.findAll();
+	}
+	
+	public Seguro buscaSeguroPorMatricula (String matricula) {
+		if (matricula!=null) {
+			return segurosrepo.findByVehiculo_fk(matricula);
+		}
+		return null;
 	}
 	
 	

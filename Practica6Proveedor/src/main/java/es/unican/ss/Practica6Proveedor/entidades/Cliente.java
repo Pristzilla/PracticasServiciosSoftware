@@ -67,7 +67,7 @@ public class Cliente implements Serializable {
 	public void setPartes(List<Parte> partes) {
 		this.partes = partes;
 	}
-	public double getTotalAPagar() {
+	public double totalAPagar() {
 		double totalAPagar = 0.0;
 		for (Seguro s: this.seguros) {
 			totalAPagar += s.getPrecio();

@@ -18,7 +18,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import es.unican.ss.Practica6Proveedor.dtos.SeguroDTO;
 import es.unican.ss.Practica6Proveedor.entidades.Cliente;
 import es.unican.ss.Practica6Proveedor.entidades.Seguro;
-import es.unican.ss.Practica6Proveedor.entidades.Terceros;
 import es.unican.ss.Practica6Proveedor.servicio.EmpresaSegurosService;
 
 @RestController
@@ -60,7 +59,7 @@ public class EmpresaSegurosController {
 	public ResponseEntity<Double> getTotalAPagarDeCliente(@PathVariable String dni) {
 		Cliente c = empService.buscaClientePorDNI(dni);
 		if(c != null) {
-			double total = c.getTotalAPagar();
+			double total = c.totalAPagar();
 			return ResponseEntity.ok(total);
 		}
 		return ResponseEntity.notFound().build();
@@ -72,10 +71,15 @@ public class EmpresaSegurosController {
 		Seguro s = sdto.getSeguro();
 		if(c != null) {
 			Seguro segAnadido = empService.anhadeSeguroACliente(s, dni);
-			String idString = Integer.toString(segAnadido.getId());
-			URI location = ServletUriComponentsBuilder.fromCurrentRequest().path(idString).build().toUri();
-			System.out.println(location.getPath());
-			return ResponseEntity.created(location).body(segAnadido);
+			if (segAnadido!=null) {
+				int idSeguro = empService.buscaSeguroPorMatricula(segAnadido.getVehiculoAsegurado().getMatricula()).Id();
+				URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/"+idSeguro).build().toUri();
+				System.out.println(location.getPath()); //TODO
+				return ResponseEntity.created(location).body(segAnadido);
+			} else {
+				return ResponseEntity.badRequest().build();
+			}
+			
 		}
 		return ResponseEntity.notFound().build();
 	}

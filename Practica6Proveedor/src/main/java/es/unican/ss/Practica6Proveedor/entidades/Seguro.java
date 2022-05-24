@@ -40,7 +40,7 @@ public abstract class Seguro implements Serializable {
 	protected Seguro(Vehiculo vehiculoAsegurado) {
 		this.vehiculoAsegurado = vehiculoAsegurado;
 	}
-	public int getId() {
+	public int Id() {
 		return id;
 	}
 	public void setId(int id) {
