@@ -21,6 +21,18 @@ public class SeguroDTO {
 		this.tipo = tipo;
 	}
 
+	public SeguroDTO(Seguro s) {
+		this.vehiculo = s.getVehiculoAsegurado();
+		if(s instanceof TodoRiesgo) {
+			this.tipo = "TODO_RIESGO";
+		} else if (s instanceof TodoRiesgoFranquicia) {
+			this.tipo = "TODO_RIESGO_FRQ";
+		}
+		else {
+			this.tipo = "TERCEROS";
+		}
+	}
+
 	public Vehiculo getVehiculo() {
 		return vehiculo;
 	}

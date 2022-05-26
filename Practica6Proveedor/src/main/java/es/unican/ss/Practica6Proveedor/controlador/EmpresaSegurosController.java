@@ -74,10 +74,10 @@ public class EmpresaSegurosController {
 			if (segAnadido!=null) {
 				int idSeguro = empService.buscaSeguroPorMatricula(segAnadido.getVehiculoAsegurado().getMatricula()).Id();
 				URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/"+idSeguro).build().toUri();
-				System.out.println(location.getPath()); //TODO
+				System.out.println(location.getPath());
 				return ResponseEntity.created(location).body(segAnadido);
 			} else {
-				return ResponseEntity.badRequest().build();
+				return ResponseEntity.status(HttpStatus.CONFLICT).build();
 			}
 			
 		}
