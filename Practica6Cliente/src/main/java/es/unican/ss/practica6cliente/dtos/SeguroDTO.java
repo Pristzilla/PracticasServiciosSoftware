@@ -76,4 +76,8 @@ public class SeguroDTO {
 	public void setSeguro(Seguro seguro) {
 		this.seguro = seguro;
 	}
+	
+
+
 }
+

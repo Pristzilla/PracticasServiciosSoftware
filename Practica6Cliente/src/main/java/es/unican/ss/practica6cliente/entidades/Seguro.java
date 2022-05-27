@@ -36,6 +36,10 @@ public abstract class Seguro implements Serializable {
 		this.vehiculoAsegurado = vehiculoAsegurado;
 	}
 
+	@Override
+	public String toString() {
+		return "Seguro: " + this.id + ".\t Vehiculo: " + this.vehiculoAsegurado.getMatricula() + ". Precio: " + this.precio + "€.\n";
+	}
 
 	
 }

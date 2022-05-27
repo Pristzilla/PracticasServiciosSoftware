@@ -15,23 +15,33 @@ public class ClienteP6 {
 	public static void main(String[] args) {
 		RestTemplate r = new RestTemplate();
 		
-		Cliente nuevo = new Cliente();
-		nuevo.setDNI("12121212A");
-		nuevo.setNombre("Beatriz");
-		nuevo.setEmail("bea@gmail.com");
+		Cliente cliNuevo = new Cliente();
+		cliNuevo.setDNI("00011122X");
+		cliNuevo.setNombre("Beatriz");
+		cliNuevo.setEmail("bea@gmail.com");
 		
 		Vehiculo v = new Vehiculo("0447DPL", 85, false);
 		Seguro seg = new Terceros(v);
 		// Guardamos el cliente
-		r.put(URIBase+"/"+nuevo.getDNI(), nuevo);
+		r.put(URIBase+"/"+cliNuevo.getDNI(), cliNuevo);
 		// Anhadimos eel seguro
 		SeguroDTO sdto = new SeguroDTO(seg);
-		r.postForLocation(URIBase+"/"+nuevo.getDNI()+"/seguros",sdto);
-		ResponseEntity<Double> re = r.getForEntity(URIBase+"/"+nuevo.getDNI()+"/totalAPagar", Double.class);
-		
-		System.out.println(re.getBody());
+		r.postForLocation(URIBase+"/"+cliNuevo.getDNI()+"/seguros",sdto);
+		ResponseEntity<Double> re = r.getForEntity(URIBase+"/"+cliNuevo.getDNI()+"/totalAPagar", Double.class);
+		ResponseEntity<Cliente> rcli = r.getForEntity(URIBase+"/"+cliNuevo.getDNI(), Cliente.class);
+		imprimeCliente(rcli.getBody());
+		System.out.println("Precio a pagar: " + re.getBody() + "€.");
 		
 	
+	}
+	private static void imprimeCliente(Cliente cliente) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("Cliente: ");
+		if (cliente != null) {
+			sb.append(cliente.getNombre() + " - " + cliente.getEmail() + " - DNI: " + cliente.getDNI() + "\n");
+					
+		}
+		System.out.println(sb.toString());
 	}
 
 

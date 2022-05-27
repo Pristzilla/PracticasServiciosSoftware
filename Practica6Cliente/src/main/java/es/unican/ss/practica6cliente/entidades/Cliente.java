@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
+import es.unican.ss.practica6cliente.dtos.SeguroDTO;
+
 
 
 
@@ -17,7 +19,7 @@ public class Cliente implements Serializable {
 
 	private String email;
 	
-	private List<Seguro> seguros; 
+	private List<SeguroDTO> seguros; 
 
 	private List<Parte> partes;
 
@@ -43,10 +45,10 @@ public class Cliente implements Serializable {
 	public void setDNI(String dNI) {
 		dni = dNI;
 	}
-	public List<Seguro> getSeguros() {
+	public List<SeguroDTO> getSeguros() {
 		return this.seguros;
 	}
-	public void setSeguros(List<Seguro> seguros) {
+	public void setSeguros(List<SeguroDTO> seguros) {
 		this.seguros = seguros;
 	}
 	public List<Parte> getPartes() {
@@ -57,12 +59,12 @@ public class Cliente implements Serializable {
 	}
 	public double totalAPagar() {
 		double totalAPagar = 0.0;
-		for (Seguro s: this.seguros) {
-			totalAPagar += s.getPrecio();
+		for (SeguroDTO s: this.seguros) {
+			totalAPagar += s.seguro().getPrecio();
 		}
 		return totalAPagar;
 	}
-	public boolean anhadeSeguro(Seguro s) {
+	public boolean anhadeSeguro(SeguroDTO s) {
 		if (s != null) {
 			return seguros.add(s);
 		}
