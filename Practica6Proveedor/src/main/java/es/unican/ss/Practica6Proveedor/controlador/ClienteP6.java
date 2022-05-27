@@ -1,4 +1,4 @@
-package es.unican.ss.Practica6Proveedor.cliente;
+package es.unican.ss.Practica6Proveedor.controlador;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
